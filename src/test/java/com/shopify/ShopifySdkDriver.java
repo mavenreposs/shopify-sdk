@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shopify.mappers.ShopifySdkObjectMapper;
 import com.shopify.model.Image;
 import com.shopify.model.Metafield;
-import com.shopify.model.MetafieldValueType;
+import com.shopify.model.enums.MetafieldValueType;
 import com.shopify.model.Shop;
 import com.shopify.model.ShopifyAddress;
 import com.shopify.model.ShopifyAttribute;

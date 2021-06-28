@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.shopify.model.InventoryPolicy;
+import com.shopify.model.enums.InventoryPolicy;
 
 public class InventoryPolicyAdapterTest {
 

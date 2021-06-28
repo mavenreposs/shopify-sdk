@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.shopify.model.OrderRiskRecommendation;
+import com.shopify.model.enums.OrderRiskRecommendation;
 
 public class OrderRiskRecommendationAdapterTest {
 
