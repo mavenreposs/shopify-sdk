@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import com.shopify.model.request.ImageAltTextCreationRequest;
 import org.junit.Test;
 
 public class ImageAltTextCreationRequestTest {

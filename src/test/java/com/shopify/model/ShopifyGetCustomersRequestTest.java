@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.shopify.model.request.ShopifyGetCustomersRequest;
 import org.joda.time.DateTime;
 import org.junit.Test;
 

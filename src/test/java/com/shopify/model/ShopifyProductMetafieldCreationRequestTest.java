@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.UUID;
 
+import com.shopify.model.request.ShopifyProductMetafieldCreationRequest;
 import org.junit.Test;
 
 public class ShopifyProductMetafieldCreationRequestTest {

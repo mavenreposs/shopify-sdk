@@ -2,6 +2,7 @@ package com.shopify.model;
 
 import static org.junit.Assert.assertEquals;
 
+import com.shopify.model.request.ShopifyCustomerUpdateRequest;
 import org.junit.Test;
 
 public class ShopifyCustomerUpdateRequestTest {

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import com.shopify.model.request.ShopifyFulfillmentUpdateRequest;
 import org.junit.Test;
 
 public class ShopifyFulfillmentUpdateRequestTest {

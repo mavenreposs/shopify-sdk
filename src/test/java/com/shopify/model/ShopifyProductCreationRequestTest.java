@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.shopify.model.request.ShopifyProductCreationRequest;
+import com.shopify.model.request.ShopifyVariantCreationRequest;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;

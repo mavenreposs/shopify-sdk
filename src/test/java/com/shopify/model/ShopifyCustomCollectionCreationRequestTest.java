@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import com.shopify.model.request.ShopifyCustomCollectionCreationRequest;
 import org.junit.Test;
 
 public class ShopifyCustomCollectionCreationRequestTest {

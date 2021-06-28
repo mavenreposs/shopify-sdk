@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.UUID;
 
+import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
 import org.junit.Test;
 
 public class ShopifyVariantMetafieldCreationRequestTest {

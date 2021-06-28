@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 
+import com.shopify.model.request.ShopifyVariantCreationRequest;
+import com.shopify.model.request.ShopifyVariantUpdateRequest;
 import org.junit.Test;
 
 public class ShopifyVariantUpdateRequestTest {
