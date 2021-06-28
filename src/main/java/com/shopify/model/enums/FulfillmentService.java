@@ -1,4 +1,4 @@
-package com.shopify.model;
+package com.shopify.model.enums;
 
 public enum FulfillmentService {
 
