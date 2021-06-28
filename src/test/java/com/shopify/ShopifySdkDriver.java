@@ -58,7 +58,7 @@ import com.shopify.model.request.ShopifyRecurringApplicationChargeCreationReques
 import com.shopify.model.ShopifyRefund;
 import com.shopify.model.request.ShopifyRefundCreationRequest;
 import com.shopify.model.ShopifyRefundLineItem;
-import com.shopify.model.ShopifyRefundRoot;
+import com.shopify.model.roots.ShopifyRefundRoot;
 import com.shopify.model.ShopifyRefundShippingDetails;
 import com.shopify.model.ShopifyShippingLine;
 import com.shopify.model.ShopifyTransaction;
