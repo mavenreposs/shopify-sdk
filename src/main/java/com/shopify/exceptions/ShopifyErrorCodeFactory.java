@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shopify.mappers.ShopifySdkObjectMapper;
-import com.shopify.model.ShopifyErrorsRoot;
+import com.shopify.model.roots.ShopifyErrorsRoot;
 
 public class ShopifyErrorCodeFactory {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ShopifyErrorCodeFactory.class);
