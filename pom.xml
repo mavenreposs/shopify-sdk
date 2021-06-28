@@ -238,6 +238,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M5</version>
 				<executions>
 					<execution>
 						<goals>
@@ -259,6 +260,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -271,6 +273,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.3.0</version>
 				<configuration>
 					<additionalparam>-Xdoclint:none</additionalparam>
 					<source>8</source>
@@ -306,6 +309,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
+						<version>3.2.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
