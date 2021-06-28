@@ -3,7 +3,7 @@ package com.shopify.model.request;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import com.shopify.model.InventoryPolicy;
+import com.shopify.model.enums.InventoryPolicy;
 import com.shopify.model.ShopifyVariant;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;

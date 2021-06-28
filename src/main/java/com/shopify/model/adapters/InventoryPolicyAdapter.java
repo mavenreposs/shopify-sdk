@@ -2,7 +2,7 @@ package com.shopify.model.adapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import com.shopify.model.InventoryPolicy;
+import com.shopify.model.enums.InventoryPolicy;
 
 public class InventoryPolicyAdapter extends XmlAdapter<String, InventoryPolicy> {
 

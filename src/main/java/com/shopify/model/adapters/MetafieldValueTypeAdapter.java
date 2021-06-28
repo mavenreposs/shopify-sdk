@@ -2,7 +2,7 @@ package com.shopify.model.adapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import com.shopify.model.MetafieldValueType;
+import com.shopify.model.enums.MetafieldValueType;
 
 public class MetafieldValueTypeAdapter extends XmlAdapter<String, MetafieldValueType> {
 

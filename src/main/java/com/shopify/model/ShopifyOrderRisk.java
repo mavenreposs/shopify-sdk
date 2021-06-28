@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.shopify.model.adapters.OrderRiskRecommendationAdapter;
+import com.shopify.model.enums.OrderRiskRecommendation;
 
 @XmlRootElement
 public class ShopifyOrderRisk {

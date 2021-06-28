@@ -1,7 +1,7 @@
 package com.shopify.model.request;
 
-import com.shopify.model.FulfillmentService;
-import com.shopify.model.InventoryPolicy;
+import com.shopify.model.enums.FulfillmentService;
+import com.shopify.model.enums.InventoryPolicy;
 import com.shopify.model.ShopifyVariant;
 
 import java.math.BigDecimal;

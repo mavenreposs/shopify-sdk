@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.shopify.model.adapters.EscapedStringAdapter;
 import com.shopify.model.adapters.InventoryPolicyAdapter;
+import com.shopify.model.enums.InventoryPolicy;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

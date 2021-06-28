@@ -2,7 +2,7 @@ package com.shopify.model.adapters;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import com.shopify.model.OrderRiskRecommendation;
+import com.shopify.model.enums.OrderRiskRecommendation;
 
 public class OrderRiskRecommendationAdapter extends XmlAdapter<String, OrderRiskRecommendation> {
 

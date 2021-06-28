@@ -1,7 +1,7 @@
 package com.shopify.model.request;
 
 import com.shopify.model.Metafield;
-import com.shopify.model.MetafieldValueType;
+import com.shopify.model.enums.MetafieldValueType;
 
 public class ShopifyVariantMetafieldCreationRequest {
 
