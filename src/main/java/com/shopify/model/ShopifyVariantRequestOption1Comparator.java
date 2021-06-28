@@ -2,6 +2,7 @@ package com.shopify.model;
 
 import java.util.Comparator;
 
+import com.shopify.model.request.ShopifyVariantRequest;
 import org.apache.commons.lang3.ObjectUtils;
 
 public class ShopifyVariantRequestOption1Comparator implements Comparator<ShopifyVariantRequest> {

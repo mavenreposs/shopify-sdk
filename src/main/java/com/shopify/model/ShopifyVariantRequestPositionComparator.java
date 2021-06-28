@@ -1,5 +1,7 @@
 package com.shopify.model;
 
+import com.shopify.model.request.ShopifyVariantRequest;
+
 import java.util.Comparator;
 
 public class ShopifyVariantRequestPositionComparator implements Comparator<ShopifyVariantRequest>
