@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.shopify.model.*;
+import com.shopify.model.structs.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 

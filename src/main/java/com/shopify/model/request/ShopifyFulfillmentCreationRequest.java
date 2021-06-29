@@ -1,7 +1,7 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyFulfillment;
-import com.shopify.model.ShopifyLineItem;
+import com.shopify.model.structs.ShopifyFulfillment;
+import com.shopify.model.structs.ShopifyLineItem;
 
 import java.util.List;
 

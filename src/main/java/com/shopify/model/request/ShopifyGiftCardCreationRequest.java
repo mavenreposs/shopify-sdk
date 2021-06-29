@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyGiftCard;
+import com.shopify.model.structs.ShopifyGiftCard;
 
 import java.math.BigDecimal;
 

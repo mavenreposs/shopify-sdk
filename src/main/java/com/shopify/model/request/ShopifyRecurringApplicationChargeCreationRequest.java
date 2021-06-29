@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyRecurringApplicationCharge;
+import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 
 import java.math.BigDecimal;
 

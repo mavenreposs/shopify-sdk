@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyVariant;
+import com.shopify.model.structs.ShopifyVariant;
 
 public interface ShopifyVariantRequest {
 

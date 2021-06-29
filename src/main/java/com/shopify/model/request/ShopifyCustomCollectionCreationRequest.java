@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyCustomCollection;
+import com.shopify.model.structs.ShopifyCustomCollection;
 
 public class ShopifyCustomCollectionCreationRequest {
 

@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.Metafield;
+import com.shopify.model.structs.Metafield;
 import com.shopify.model.enums.MetafieldValueType;
 
 public class ShopifyProductMetafieldCreationRequest {

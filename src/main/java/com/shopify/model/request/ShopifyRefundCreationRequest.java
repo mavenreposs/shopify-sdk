@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyRefund;
+import com.shopify.model.structs.ShopifyRefund;
 
 public class ShopifyRefundCreationRequest {
 

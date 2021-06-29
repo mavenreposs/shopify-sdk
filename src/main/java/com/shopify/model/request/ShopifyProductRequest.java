@@ -1,6 +1,6 @@
 package com.shopify.model.request;
 
-import com.shopify.model.ShopifyProduct;
+import com.shopify.model.structs.ShopifyProduct;
 
 public interface ShopifyProductRequest {
 
