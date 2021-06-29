@@ -43,69 +43,69 @@ import com.github.restdriver.clientdriver.capture.StringBodyCapture;
 import com.shopify.exceptions.ShopifyClientException;
 import com.shopify.exceptions.ShopifyErrorResponseException;
 import com.shopify.mappers.ShopifySdkObjectMapper;
-import com.shopify.model.Count;
-import com.shopify.model.Image;
-import com.shopify.model.Metafield;
+import com.shopify.model.structs.Count;
+import com.shopify.model.structs.Image;
+import com.shopify.model.structs.Metafield;
 import com.shopify.model.roots.MetafieldRoot;
 import com.shopify.model.enums.MetafieldValueType;
 import com.shopify.model.roots.MetafieldsRoot;
 import com.shopify.model.enums.OrderRiskRecommendation;
-import com.shopify.model.Shop;
+import com.shopify.model.structs.Shop;
 import com.shopify.model.roots.ShopifyAccessTokenRoot;
-import com.shopify.model.ShopifyAddress;
-import com.shopify.model.ShopifyAdjustment;
-import com.shopify.model.ShopifyAttribute;
-import com.shopify.model.ShopifyCustomCollection;
+import com.shopify.model.structs.ShopifyAddress;
+import com.shopify.model.structs.ShopifyAdjustment;
+import com.shopify.model.structs.ShopifyAttribute;
+import com.shopify.model.structs.ShopifyCustomCollection;
 import com.shopify.model.request.ShopifyCustomCollectionCreationRequest;
 import com.shopify.model.roots.ShopifyCustomCollectionRoot;
 import com.shopify.model.roots.ShopifyCustomCollectionsRoot;
-import com.shopify.model.ShopifyCustomer;
+import com.shopify.model.structs.ShopifyCustomer;
 import com.shopify.model.roots.ShopifyCustomerRoot;
 import com.shopify.model.request.ShopifyCustomerUpdateRequest;
 import com.shopify.model.roots.ShopifyCustomersRoot;
-import com.shopify.model.ShopifyFulfillment;
+import com.shopify.model.structs.ShopifyFulfillment;
 import com.shopify.model.request.ShopifyFulfillmentCreationRequest;
 import com.shopify.model.roots.ShopifyFulfillmentRoot;
 import com.shopify.model.request.ShopifyFulfillmentUpdateRequest;
 import com.shopify.model.request.ShopifyGetCustomersRequest;
-import com.shopify.model.ShopifyGiftCard;
+import com.shopify.model.structs.ShopifyGiftCard;
 import com.shopify.model.request.ShopifyGiftCardCreationRequest;
 import com.shopify.model.roots.ShopifyGiftCardRoot;
-import com.shopify.model.ShopifyInventoryLevel;
+import com.shopify.model.structs.ShopifyInventoryLevel;
 import com.shopify.model.roots.ShopifyInventoryLevelRoot;
-import com.shopify.model.ShopifyLineItem;
-import com.shopify.model.ShopifyLocation;
+import com.shopify.model.structs.ShopifyLineItem;
+import com.shopify.model.structs.ShopifyLocation;
 import com.shopify.model.roots.ShopifyLocationsRoot;
-import com.shopify.model.ShopifyOrder;
+import com.shopify.model.structs.ShopifyOrder;
 import com.shopify.model.request.ShopifyOrderCreationRequest;
-import com.shopify.model.ShopifyOrderRisk;
+import com.shopify.model.structs.ShopifyOrderRisk;
 import com.shopify.model.roots.ShopifyOrderRisksRoot;
 import com.shopify.model.roots.ShopifyOrderRoot;
 import com.shopify.model.request.ShopifyOrderShippingAddressUpdateRequest;
 import com.shopify.model.roots.ShopifyOrdersRoot;
 import com.shopify.model.ShopifyPage;
-import com.shopify.model.ShopifyProduct;
+import com.shopify.model.structs.ShopifyProduct;
 import com.shopify.model.request.ShopifyProductCreationRequest;
 import com.shopify.model.request.ShopifyProductMetafieldCreationRequest;
 import com.shopify.model.roots.ShopifyProductRoot;
 import com.shopify.model.request.ShopifyProductUpdateRequest;
 import com.shopify.model.ShopifyProducts;
 import com.shopify.model.roots.ShopifyProductsRoot;
-import com.shopify.model.ShopifyRecurringApplicationCharge;
+import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 import com.shopify.model.request.ShopifyRecurringApplicationChargeCreationRequest;
 import com.shopify.model.roots.ShopifyRecurringApplicationChargeRoot;
-import com.shopify.model.ShopifyRefund;
+import com.shopify.model.structs.ShopifyRefund;
 import com.shopify.model.request.ShopifyRefundCreationRequest;
-import com.shopify.model.ShopifyRefundLineItem;
+import com.shopify.model.structs.ShopifyRefundLineItem;
 import com.shopify.model.roots.ShopifyRefundRoot;
-import com.shopify.model.ShopifyRefundShippingDetails;
-import com.shopify.model.ShopifyShippingLine;
-import com.shopify.model.ShopifyShop;
-import com.shopify.model.ShopifyTaxLine;
-import com.shopify.model.ShopifyTransaction;
-import com.shopify.model.ShopifyTransactionReceipt;
+import com.shopify.model.structs.ShopifyRefundShippingDetails;
+import com.shopify.model.structs.ShopifyShippingLine;
+import com.shopify.model.roots.ShopifyShopRoot;
+import com.shopify.model.structs.ShopifyTaxLine;
+import com.shopify.model.structs.ShopifyTransaction;
+import com.shopify.model.structs.ShopifyTransactionReceipt;
 import com.shopify.model.roots.ShopifyTransactionsRoot;
-import com.shopify.model.ShopifyVariant;
+import com.shopify.model.structs.ShopifyVariant;
 import com.shopify.model.request.ShopifyVariantCreationRequest;
 import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
 import com.shopify.model.roots.ShopifyVariantRoot;
@@ -138,13 +138,13 @@ public class ShopifySdkTest {
 				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifySdk.SHOP)
 				.toString();
 
-		final ShopifyShop shopifyShop = new ShopifyShop();
+		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
 
 		final Shop shop = new Shop();
 		shop.setId("1");
 		shop.setName("Some Cool Shopify Store");
 		shopifyShop.setShop(shop);
-		final String expectedResponseBodyString = getJsonString(ShopifyShop.class, shopifyShop);
+		final String expectedResponseBodyString = getJsonString(ShopifyShopRoot.class, shopifyShop);
 
 		driver.addExpectation(
 				onRequestTo(expectedPath).withHeader(ShopifySdk.ACCESS_TOKEN_HEADER, accessToken)
@@ -206,13 +206,13 @@ public class ShopifySdkTest {
 
 		final String expectedShopPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.SHOP).toString();
 
-		final ShopifyShop shopifyShop = new ShopifyShop();
+		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
 
 		final Shop shop = new Shop();
 		shop.setId("4");
 		shop.setName("Some Generated Access Token Cool Shopify Store");
 		shopifyShop.setShop(shop);
-		final String expectedShopResponseBodyString = getJsonString(ShopifyShop.class, shopifyShop);
+		final String expectedShopResponseBodyString = getJsonString(ShopifyShopRoot.class, shopifyShop);
 
 		driver.addExpectation(
 				onRequestTo(expectedShopPath).withHeader(ShopifySdk.ACCESS_TOKEN_HEADER, "897123871827381723")
@@ -222,7 +222,7 @@ public class ShopifySdkTest {
 				.anyTimes();
 
 		assertNull(shopifySdk.getAccessToken());
-		final ShopifyShop actualShop = shopifySdk.getShop();
+		final ShopifyShopRoot actualShop = shopifySdk.getShop();
 		assertEquals("897123871827381723", shopifySdk.getAccessToken());
 		assertEquals("4", actualShop.getShop().getId());
 		assertEquals("Some Generated Access Token Cool Shopify Store", actualShop.getShop().getName());
