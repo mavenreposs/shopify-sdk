@@ -46,8 +46,4 @@ public class ShopifyEndpoint {
     static final String REFUND_KIND = "refund";
     static final String SET = "set";
 
-
-
-
-
 }
