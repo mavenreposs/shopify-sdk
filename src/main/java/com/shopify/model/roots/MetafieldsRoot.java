@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.Metafield;
+import com.shopify.model.structs.Metafield;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyFulfillment;
+import com.shopify.model.structs.ShopifyFulfillment;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

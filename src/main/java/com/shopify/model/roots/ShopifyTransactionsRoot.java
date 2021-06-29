@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyTransaction;
+import com.shopify.model.structs.ShopifyTransaction;
 
 import java.util.LinkedList;
 import java.util.List;

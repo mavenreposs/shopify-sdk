@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyOrderRisk;
+import com.shopify.model.structs.ShopifyOrderRisk;
 
 import java.util.LinkedList;
 import java.util.List;

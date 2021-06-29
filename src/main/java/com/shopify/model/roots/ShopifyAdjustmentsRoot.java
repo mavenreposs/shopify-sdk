@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyAdjustment;
+import com.shopify.model.structs.ShopifyAdjustment;
 
 import java.util.LinkedList;
 import java.util.List;

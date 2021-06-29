@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyOrder;
+import com.shopify.model.structs.ShopifyOrder;
 
 public class ShopifyOrderRoot {
 

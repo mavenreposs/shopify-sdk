@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyLocation;
+import com.shopify.model.structs.ShopifyLocation;
 
 import java.util.LinkedList;
 import java.util.List;

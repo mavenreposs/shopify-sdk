@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyRefund;
+import com.shopify.model.structs.ShopifyRefund;
 
 public class ShopifyRefundRoot {
 

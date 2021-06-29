@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyRecurringApplicationCharge;
+import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

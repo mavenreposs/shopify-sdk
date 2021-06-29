@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyCustomer;
+import com.shopify.model.structs.ShopifyCustomer;
 
 public class ShopifyCustomerRoot {
 

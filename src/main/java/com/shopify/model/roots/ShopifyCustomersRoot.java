@@ -1,6 +1,6 @@
 package com.shopify.model.roots;
 
-import com.shopify.model.ShopifyCustomer;
+import com.shopify.model.structs.ShopifyCustomer;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.LinkedList;
