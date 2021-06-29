@@ -1,5 +1,8 @@
 package com.shopify.model;
 
+import com.shopify.model.structs.ShopifyProduct;
+import com.shopify.model.structs.ShopifyVariant;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
