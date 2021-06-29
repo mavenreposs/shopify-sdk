@@ -14,6 +14,7 @@ import java.util.Set;
 
 import com.shopify.model.request.ShopifyProductCreationRequest;
 import com.shopify.model.request.ShopifyVariantCreationRequest;
+import com.shopify.model.structs.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;

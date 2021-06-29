@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 
 import com.shopify.model.request.ShopifyRecurringApplicationChargeCreationRequest;
+import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 import org.junit.Test;
 
 public class ShopifyRecurringApplicationChargeCreationRequestTest {

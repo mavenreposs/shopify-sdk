@@ -3,6 +3,7 @@ package com.shopify.model;
 import static org.junit.Assert.assertSame;
 
 import com.shopify.model.roots.ShopifyInventoryLevelRoot;
+import com.shopify.model.structs.ShopifyInventoryLevel;
 import org.junit.Test;
 
 public class ShopifyInventoryLevelRootTest {

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 import com.shopify.model.request.ShopifyFulfillmentCreationRequest;
+import com.shopify.model.structs.ShopifyFulfillment;
+import com.shopify.model.structs.ShopifyLineItem;
 import org.junit.Test;
 
 public class ShopifyFulfillmentCreationRequestTest {

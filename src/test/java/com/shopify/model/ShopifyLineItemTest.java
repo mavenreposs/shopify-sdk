@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 
+import com.shopify.model.structs.ShopifyLineItem;
+import com.shopify.model.structs.ShopifyTaxLine;
 import org.junit.Test;
 
 public class ShopifyLineItemTest {

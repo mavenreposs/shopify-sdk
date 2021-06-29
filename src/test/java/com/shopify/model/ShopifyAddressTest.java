@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 
+import com.shopify.model.structs.ShopifyAddress;
 import org.junit.Test;
 
 public class ShopifyAddressTest {

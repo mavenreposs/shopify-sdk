@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 import com.shopify.model.request.*;
+import com.shopify.model.structs.Image;
+import com.shopify.model.structs.Option;
+import com.shopify.model.structs.ShopifyProduct;
+import com.shopify.model.structs.ShopifyVariant;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;

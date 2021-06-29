@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
 
+import com.shopify.model.structs.*;
 import org.joda.time.DateTime;
 import org.junit.Test;
 

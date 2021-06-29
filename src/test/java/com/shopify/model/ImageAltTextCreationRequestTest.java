@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import com.shopify.model.request.ImageAltTextCreationRequest;
+import com.shopify.model.structs.Metafield;
 import org.junit.Test;
 
 public class ImageAltTextCreationRequestTest {

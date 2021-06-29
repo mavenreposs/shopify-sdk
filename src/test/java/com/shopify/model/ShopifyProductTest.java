@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import com.shopify.model.structs.Option;
+import com.shopify.model.structs.ShopifyProduct;
 import org.junit.Test;
 
 public class ShopifyProductTest {

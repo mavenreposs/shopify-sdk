@@ -11,6 +11,7 @@ import com.shopify.model.enums.FulfillmentService;
 import com.shopify.model.enums.InventoryPolicy;
 import com.shopify.model.request.ShopifyVariantCreationRequest;
 import com.shopify.model.request.ShopifyVariantUpdateRequest;
+import com.shopify.model.structs.ShopifyVariant;
 import org.junit.Test;
 
 public class ShopifyVariantUpdateRequestTest {

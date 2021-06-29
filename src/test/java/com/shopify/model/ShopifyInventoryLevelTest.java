@@ -2,6 +2,7 @@ package com.shopify.model;
 
 import static org.junit.Assert.assertEquals;
 
+import com.shopify.model.structs.ShopifyInventoryLevel;
 import org.junit.Test;
 
 public class ShopifyInventoryLevelTest {

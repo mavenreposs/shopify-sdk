@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 
+import com.shopify.model.structs.ShopifyOrder;
 import org.junit.Test;
 
 public class ShopifyPageTest {
