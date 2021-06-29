@@ -173,11 +173,11 @@ public class ShopifySdk {
 	private static final String DEPRECATED_SHOPIFY_CALL_ERROR_MESSAGE = "Shopify call is deprecated. Please take note of the X-Shopify-API-Deprecated-Reason and correct the call.\nRequest Location of {}\nResponse Status Code of {}\nResponse Headers of:\n{}";
 	static final String GENERAL_ACCESS_TOKEN_EXCEPTION_MESSAGE = "There was a problem generating access token using shop subdomain of %s and authorization code of %s.";
 
-	private static final Long DEFAULT_MAXIMUM_REQUEST_RETRY_TIMEOUT_IN_MILLISECONDS = 180000L;
-	private static final Long DEFAULT_MAXIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS = 5000L;
-	private static final Long DEFAULT_MINIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS = 1000L;
-	private static final long DEFAULT_READ_TIMEOUT_IN_MILLISECONDS = 15000L;
-	private static final long DEFAULT_CONNECTION_TIMEOUT_IN_MILLISECONDS = 60000L;
+	static final Long DEFAULT_MAXIMUM_REQUEST_RETRY_TIMEOUT_IN_MILLISECONDS = 180000L;
+	static final Long DEFAULT_MAXIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS = 5000L;
+	static final Long DEFAULT_MINIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS = 1000L;
+	static final long DEFAULT_READ_TIMEOUT_IN_MILLISECONDS = 15000L;
+	static final long DEFAULT_CONNECTION_TIMEOUT_IN_MILLISECONDS = 60000L;
 
 	private String shopSubdomain;
 	private String apiUrl;
@@ -202,19 +202,19 @@ public class ShopifySdk {
 
 	protected ShopifySdk(final Steps steps) {
 		if (steps != null) {
-			this.shopSubdomain = steps.subdomain;
-			this.accessToken = steps.accessToken;
-			this.clientId = steps.clientId;
-			this.clientSecret = steps.clientSecret;
-			this.authorizationToken = steps.authorizationToken;
-			this.apiUrl = steps.apiUrl;
-			this.apiVersion = steps.apiVersion;
-			this.minimumRequestRetryRandomDelayMilliseconds = steps.minimumRequestRetryRandomDelayMilliseconds;
-			this.maximumRequestRetryRandomDelayMilliseconds = steps.maximumRequestRetryRandomDelayMilliseconds;
-			this.maximumRequestRetryTimeoutMilliseconds = steps.maximumRequestRetryTimeoutMilliseconds;
+			this.shopSubdomain = steps.getSubdomain();
+			this.accessToken = steps.getAccessToken();
+			this.clientId = steps.getClientId();
+			this.clientSecret = steps.getClientSecret();
+			this.authorizationToken = steps.getAuthorizationToken();
+			this.apiUrl = steps.getApiUrl();
+			this.apiVersion = steps.getApiVersion();
+			this.minimumRequestRetryRandomDelayMilliseconds = steps.getMinimumRequestRetryRandomDelayMilliseconds();
+			this.maximumRequestRetryRandomDelayMilliseconds = steps.getMaximumRequestRetryRandomDelayMilliseconds();
+			this.maximumRequestRetryTimeoutMilliseconds = steps.getMaximumRequestRetryTimeoutMilliseconds();
 
-			CLIENT.property(ClientProperties.CONNECT_TIMEOUT, Math.toIntExact(steps.connectionTimeoutMilliseconds));
-			CLIENT.property(ClientProperties.READ_TIMEOUT, Math.toIntExact(steps.readTimeoutMilliseconds));
+			CLIENT.property(ClientProperties.CONNECT_TIMEOUT, Math.toIntExact(steps.getConnectionTimeoutMilliseconds()));
+			CLIENT.property(ClientProperties.READ_TIMEOUT, Math.toIntExact(steps.getReadTimeoutMilliseconds()));
 			validateConstructionOfShopifySdk();
 		}
 
@@ -228,101 +228,6 @@ public class ShopifySdk {
 			throw new IllegalArgumentException(
 					MINIMUM_REQUEST_RETRY_DELAY_CANNOT_BE_LARGER_THAN_MAXIMUM_REQUEST_RETRY_DELAY_MESSAGE);
 		}
-	}
-
-	protected static class Steps
-			implements SubdomainStep, ClientSecretStep, AuthorizationTokenStep, AccessTokenStep, OptionalsStep {
-
-		private String subdomain;
-		private String accessToken;
-		private String clientId;
-		private String clientSecret;
-		private String authorizationToken;
-		private String apiUrl;
-		private String apiVersion;
-		private long minimumRequestRetryRandomDelayMilliseconds = DEFAULT_MINIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS;
-		private long maximumRequestRetryRandomDelayMilliseconds = DEFAULT_MAXIMUM_REQUEST_RETRY_RANDOM_DELAY_IN_MILLISECONDS;
-		private long maximumRequestRetryTimeoutMilliseconds = DEFAULT_MAXIMUM_REQUEST_RETRY_TIMEOUT_IN_MILLISECONDS;
-		private long connectionTimeoutMilliseconds = DEFAULT_CONNECTION_TIMEOUT_IN_MILLISECONDS;
-		private long readTimeoutMilliseconds = DEFAULT_READ_TIMEOUT_IN_MILLISECONDS;
-
-		@Override
-		public ShopifySdk build() {
-			return new ShopifySdk(this);
-		}
-
-		@Override
-		public OptionalsStep withAccessToken(final String accessToken) {
-			this.accessToken = accessToken;
-			return this;
-		}
-
-		@Override
-		public AccessTokenStep withSubdomain(final String subdomain) {
-			this.subdomain = subdomain;
-			return this;
-		}
-
-		@Override
-		public AccessTokenStep withApiUrl(final String apiUrl) {
-			this.apiUrl = apiUrl;
-			return this;
-		}
-
-		@Override
-		public ClientSecretStep withClientId(final String clientId) {
-			this.clientId = clientId;
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withAuthorizationToken(final String authorizationToken) {
-			this.authorizationToken = authorizationToken;
-			return this;
-		}
-
-		@Override
-		public AuthorizationTokenStep withClientSecret(final String clientSecret) {
-			this.clientSecret = clientSecret;
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withMinimumRequestRetryRandomDelay(final int duration, final TimeUnit timeUnit) {
-			this.minimumRequestRetryRandomDelayMilliseconds = timeUnit.toMillis(duration);
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withMaximumRequestRetryRandomDelay(final int duration, final TimeUnit timeUnit) {
-			this.maximumRequestRetryRandomDelayMilliseconds = timeUnit.toMillis(duration);
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withMaximumRequestRetryTimeout(final int duration, final TimeUnit timeUnit) {
-			this.maximumRequestRetryTimeoutMilliseconds = timeUnit.toMillis(duration);
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withConnectionTimeout(final int duration, final TimeUnit timeUnit) {
-			this.connectionTimeoutMilliseconds = timeUnit.toMillis(duration);
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withReadTimeout(final int duration, final TimeUnit timeUnit) {
-			this.readTimeoutMilliseconds = timeUnit.toMillis(duration);
-			return this;
-		}
-
-		@Override
-		public OptionalsStep withApiVersion(final String apiVersion) {
-			this.apiVersion = apiVersion;
-			return this;
-		}
-
 	}
 
 	public boolean revokeOAuthToken() {
