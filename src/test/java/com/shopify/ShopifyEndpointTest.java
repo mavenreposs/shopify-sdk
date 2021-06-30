@@ -35,6 +35,11 @@ public class ShopifyEndpointTest {
     }
 
     @Test
+    public void getShop() {
+        System.out.println(shopifySdk.getShop());
+    }
+
+    @Test
     public void getProducts() {
         final ShopifyPage<ShopifyProduct> shopifyProducts = shopifySdk.getProducts(null, 1);
         System.out.println(shopifyProducts);
