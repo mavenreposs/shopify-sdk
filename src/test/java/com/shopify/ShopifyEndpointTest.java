@@ -1,7 +1,6 @@
 package com.shopify;
 
 import com.shopify.model.ShopifyPage;
-import com.shopify.model.roots.ShopifyDeprecatedApiCallsRoot;
 import com.shopify.model.structs.ShopifyDeprecatedApiCall;
 import com.shopify.model.structs.ShopifyProduct;
 import org.junit.Before;
