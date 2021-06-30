@@ -168,4 +168,24 @@ public class ShopifyProduct {
 		};
 		return options.stream().sorted(optionPositionCompartor).map(Option::getName).collect(Collectors.toList());
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyProduct{" +
+				"id='" + id + '\'' +
+				", title='" + title + '\'' +
+				", productType='" + productType + '\'' +
+				", bodyHtml='" + bodyHtml + '\'' +
+				", vendor='" + vendor + '\'' +
+				", tags=" + tags +
+				", options=" + options +
+				", metafieldsGlobalTitleTag='" + metafieldsGlobalTitleTag + '\'' +
+				", metafieldsGlobalDescriptionTag='" + metafieldsGlobalDescriptionTag + '\'' +
+				", images=" + images +
+				", image=" + image +
+				", variants=" + variants +
+				", publishedAt='" + publishedAt + '\'' +
+				", published=" + published +
+				'}';
+	}
 }
