@@ -1,11 +1,14 @@
 package com.shopify;
 
 import com.shopify.model.ShopifyPage;
+import com.shopify.model.roots.ShopifyDeprecatedApiCallsRoot;
+import com.shopify.model.structs.ShopifyDeprecatedApiCall;
 import com.shopify.model.structs.ShopifyProduct;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.client.WebTarget;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ShopifyEndpointTest {
@@ -35,6 +38,24 @@ public class ShopifyEndpointTest {
     public void getProducts() {
         final ShopifyPage<ShopifyProduct> shopifyProducts = shopifySdk.getProducts(null, 1);
         System.out.println(shopifyProducts);
+    }
+
+    @Test
+    public void getProductCount() {
+        final int count = shopifySdk.getProductCount();
+        System.out.println(count);
+    }
+
+    @Test
+    public void getOrderCount() {
+        final int count = shopifySdk.getOrderCount();
+        System.out.println(count);
+    }
+
+    @Test
+    public void getDeprecatedApiCalls() {
+        final List<ShopifyDeprecatedApiCall> shopifyDeprecatedApiCalls = shopifySdk.getDeprecatedApiCalls();
+        System.out.println(shopifyDeprecatedApiCalls);
     }
 
     @Test
