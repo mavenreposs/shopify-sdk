@@ -17,4 +17,10 @@ public class ShopifyShopRoot {
 		this.shop = shop;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyShopRoot{" +
+				"shop=" + shop +
+				'}';
+	}
 }
