@@ -46,4 +46,7 @@ public class ShopifyEndpoint {
     static final String REFUND_KIND = "refund";
     static final String SET = "set";
 
+    // new
+    static final String DEPRECATED_API_CALLS = "deprecated_api_calls";
+
 }

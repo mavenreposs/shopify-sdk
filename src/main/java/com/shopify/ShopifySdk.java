@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.client.Client;
@@ -19,6 +18,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.shopify.model.roots.*;
+import com.shopify.model.structs.*;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -30,73 +31,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import com.github.rholder.retry.RetryException;
 import com.github.rholder.retry.Retryer;
-import com.github.rholder.retry.RetryerBuilder;
-import com.github.rholder.retry.StopStrategies;
-import com.github.rholder.retry.WaitStrategies;
 import com.shopify.exceptions.ShopifyClientException;
 import com.shopify.exceptions.ShopifyErrorResponseException;
-import com.shopify.mappers.ResponseEntityToStringMapper;
 import com.shopify.mappers.ShopifySdkObjectMapper;
-import com.shopify.model.structs.Count;
-import com.shopify.model.structs.Image;
 import com.shopify.model.request.ImageAltTextCreationRequest;
-import com.shopify.model.structs.Metafield;
-import com.shopify.model.roots.MetafieldRoot;
-import com.shopify.model.roots.MetafieldsRoot;
-import com.shopify.model.structs.Shop;
-import com.shopify.model.roots.ShopifyAccessTokenRoot;
 import com.shopify.model.request.ShopifyCancelOrderRequest;
-import com.shopify.model.structs.ShopifyCustomCollection;
 import com.shopify.model.request.ShopifyCustomCollectionCreationRequest;
-import com.shopify.model.roots.ShopifyCustomCollectionRoot;
-import com.shopify.model.roots.ShopifyCustomCollectionsRoot;
-import com.shopify.model.structs.ShopifyCustomer;
-import com.shopify.model.roots.ShopifyCustomerRoot;
 import com.shopify.model.request.ShopifyCustomerUpdateRequest;
-import com.shopify.model.roots.ShopifyCustomerUpdateRoot;
-import com.shopify.model.roots.ShopifyCustomersRoot;
-import com.shopify.model.structs.ShopifyFulfillment;
 import com.shopify.model.request.ShopifyFulfillmentCreationRequest;
-import com.shopify.model.roots.ShopifyFulfillmentRoot;
 import com.shopify.model.request.ShopifyFulfillmentUpdateRequest;
 import com.shopify.model.request.ShopifyGetCustomersRequest;
-import com.shopify.model.structs.ShopifyGiftCard;
 import com.shopify.model.request.ShopifyGiftCardCreationRequest;
-import com.shopify.model.roots.ShopifyGiftCardRoot;
-import com.shopify.model.roots.ShopifyImageRoot;
-import com.shopify.model.structs.ShopifyInventoryLevel;
-import com.shopify.model.roots.ShopifyInventoryLevelRoot;
-import com.shopify.model.structs.ShopifyLocation;
-import com.shopify.model.roots.ShopifyLocationsRoot;
-import com.shopify.model.structs.ShopifyOrder;
 import com.shopify.model.request.ShopifyOrderCreationRequest;
-import com.shopify.model.structs.ShopifyOrderRisk;
-import com.shopify.model.roots.ShopifyOrderRisksRoot;
-import com.shopify.model.roots.ShopifyOrderRoot;
 import com.shopify.model.request.ShopifyOrderShippingAddressUpdateRequest;
-import com.shopify.model.roots.ShopifyOrderUpdateRoot;
-import com.shopify.model.roots.ShopifyOrdersRoot;
 import com.shopify.model.ShopifyPage;
-import com.shopify.model.structs.ShopifyProduct;
 import com.shopify.model.request.ShopifyProductCreationRequest;
 import com.shopify.model.request.ShopifyProductMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyProductRequest;
-import com.shopify.model.roots.ShopifyProductRoot;
 import com.shopify.model.request.ShopifyProductUpdateRequest;
 import com.shopify.model.ShopifyProducts;
-import com.shopify.model.roots.ShopifyProductsRoot;
-import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 import com.shopify.model.request.ShopifyRecurringApplicationChargeCreationRequest;
-import com.shopify.model.roots.ShopifyRecurringApplicationChargeRoot;
-import com.shopify.model.structs.ShopifyRefund;
 import com.shopify.model.request.ShopifyRefundCreationRequest;
-import com.shopify.model.roots.ShopifyRefundRoot;
-import com.shopify.model.roots.ShopifyShopRoot;
-import com.shopify.model.structs.ShopifyTransaction;
-import com.shopify.model.roots.ShopifyTransactionsRoot;
-import com.shopify.model.structs.ShopifyVariant;
 import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
-import com.shopify.model.roots.ShopifyVariantRoot;
 import com.shopify.model.request.ShopifyVariantUpdateRequest;
 
 public class ShopifySdk {
@@ -108,7 +64,6 @@ public class ShopifySdk {
 	private static final String REL_PREVIOUS_HEADER_KEY = "previous";
 	private static final String REL_NEXT_HEADER_KEY = "next";
 	private static final String EMPTY_STRING = "";
-	static final String RETRY_AFTER_HEADER = "Retry-After";
 	private static final String MINIMUM_REQUEST_RETRY_DELAY_CANNOT_BE_LARGER_THAN_MAXIMUM_REQUEST_RETRY_DELAY_MESSAGE = "Maximum request retry delay must be larger than minimum request retry delay.";
 	private static final String INVALID_MINIMUM_REQUEST_RETRY_DELAY_MESSAGE = "Minimum request retry delay cannot be set lower than 200 milliseconds.";
 
@@ -118,7 +73,8 @@ public class ShopifySdk {
 	private static final String API_TARGET = ".myshopify.com/admin";
 	static final String ACCESS_TOKEN_HEADER = "X-Shopify-Access-Token";
 	static final String DEPRECATED_REASON_HEADER = "X-Shopify-API-Deprecated-Reason";
-//	static final String OAUTH = "oauth";
+	static final String RETRY_AFTER_HEADER = "Retry-After";
+	//	static final String OAUTH = "oauth";
 //	static final String REVOKE = "revoke";
 //	static final String ACCESS_TOKEN = "access_token";
 //	static final String PRODUCTS = "products";
@@ -161,9 +117,9 @@ public class ShopifySdk {
 	private static final String AUTHORIZATION_CODE = "code";
 
 	private static final int DEFAULT_REQUEST_LIMIT = 50;
-	private static final int TOO_MANY_REQUESTS_STATUS_CODE = 429;
-	private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
-	private static final int LOCKED_STATUS_CODE = 423;
+//	private static final int TOO_MANY_REQUESTS_STATUS_CODE = 429;
+//	private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
+//	private static final int LOCKED_STATUS_CODE = 423;
 
 	private static final String SHOP_RETRIEVED_MESSAGE = "Starting to make calls for Shopify store with ID of {} and name of {}";
 	private static final String COULD_NOT_BE_SAVED_SHOPIFY_ERROR_MESSAGE = "could not successfully be saved";
@@ -183,8 +139,10 @@ public class ShopifySdk {
 	private String clientId;
 	private String clientSecret;
 	private String authorizationToken;
+
 	private WebTarget webTarget;
 	private String accessToken;
+
 	private long minimumRequestRetryRandomDelayMilliseconds;
 	private long maximumRequestRetryRandomDelayMilliseconds;
 	private long maximumRequestRetryTimeoutMilliseconds;
@@ -289,6 +247,12 @@ public class ShopifySdk {
 
 	public int getProductCount() {
 		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(ShopifyEndpoint.COUNT));
+		final Count count = response.readEntity(Count.class);
+		return count.getCount();
+	}
+
+	public int getOrderCount() {
+		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.ORDERS).path(ShopifyEndpoint.COUNT));
 		final Count count = response.readEntity(Count.class);
 		return count.getCount();
 	}
@@ -708,6 +672,12 @@ public class ShopifySdk {
 		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.GIFT_CARDS), shopifyGiftCardRoot);
 		final ShopifyGiftCardRoot shopifyOrderRootResponse = response.readEntity(ShopifyGiftCardRoot.class);
 		return shopifyOrderRootResponse.getGiftCard();
+	}
+
+	public List<ShopifyDeprecatedApiCall> getDeprecatedApiCalls() {
+		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.DEPRECATED_API_CALLS));
+		final ShopifyDeprecatedApiCallsRoot shopifyDeprecatedApiCallsRoot = response.readEntity(ShopifyDeprecatedApiCallsRoot.class);
+		return shopifyDeprecatedApiCallsRoot.getDeprecatedApiCalls();
 	}
 
 	public String getAccessToken() {
