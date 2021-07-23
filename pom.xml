@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.channelape</groupId>
 	<artifactId>shopify-sdk</artifactId>
-	<version>2.3.0</version>
+	<version>3.0.0</version>
 
 	<name>Shopify SDK</name>
 	<description>Java SDK for Shopify REST API.</description>
@@ -40,17 +40,6 @@
 		<developerConnection>scm:git:ssh://github.com:channelape/shopify-sdk.git</developerConnection>
 		<url>https://github.com/channelape/shopify-sdk/tree/master</url>
 	</scm>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -275,7 +264,6 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.3.0</version>
 				<configuration>
-					<additionalparam>-Xdoclint:none</additionalparam>
 					<source>8</source>
 				</configuration>
 				<executions>
@@ -290,67 +278,14 @@
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.7</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>3.2.1</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<configuration>
-							<additionalparam>-Xdoclint:none</additionalparam>
-						</configuration>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+	<!-- omitted xml -->
+	<distributionManagement>
+		<repository>
+			<!--必须与 settings.xml 的 id 一致-->
+			<id>shenyii-workbench-sdk</id>
+			<name>sdk</name>
+			<url>https://shenyii-maven.pkg.coding.net/repository/workbench/sdk/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
