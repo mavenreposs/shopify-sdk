@@ -136,4 +136,21 @@ public class ShopifyCustomer {
 		this.note = note;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyCustomer{" +
+				"id='" + id + '\'' +
+				", email='" + email + '\'' +
+				", acceptsMarketing=" + acceptsMarketing +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				", firstName='" + firstName + '\'' +
+				", lastname='" + lastname + '\'' +
+				", phone='" + phone + '\'' +
+				", ordersCount=" + ordersCount +
+				", state='" + state + '\'' +
+				", totalSpent=" + totalSpent +
+				", note='" + note + '\'' +
+				'}';
+	}
 }

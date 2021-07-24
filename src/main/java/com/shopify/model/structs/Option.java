@@ -67,4 +67,14 @@ public class Option {
 		this.values = values;
 	}
 
+	@Override
+	public String toString() {
+		return "Option{" +
+				"id='" + id + '\'' +
+				", productId='" + productId + '\'' +
+				", name='" + name + '\'' +
+				", position=" + position +
+				", values=" + values +
+				'}';
+	}
 }

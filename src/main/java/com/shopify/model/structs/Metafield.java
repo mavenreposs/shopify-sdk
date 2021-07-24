@@ -108,4 +108,18 @@ public class Metafield {
 		this.updatedAt = updatedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Metafield{" +
+				"id='" + id + '\'' +
+				", key='" + key + '\'' +
+				", value='" + value + '\'' +
+				", valueType=" + valueType +
+				", namespace='" + namespace + '\'' +
+				", ownerId='" + ownerId + '\'' +
+				", ownerResource='" + ownerResource + '\'' +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				'}';
+	}
 }

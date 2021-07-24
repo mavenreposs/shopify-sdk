@@ -130,4 +130,20 @@ public class ShopifyRefund {
 		this.currency = currency;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyRefund{" +
+				"id='" + id + '\'' +
+				", orderId='" + orderId + '\'' +
+				", createdAt=" + createdAt +
+				", note='" + note + '\'' +
+				", userId='" + userId + '\'' +
+				", processedAt=" + processedAt +
+				", refundLineItems=" + refundLineItems +
+				", shipping=" + shipping +
+				", transactions=" + transactions +
+				", adjustments=" + adjustments +
+				", currency=" + currency +
+				'}';
+	}
 }

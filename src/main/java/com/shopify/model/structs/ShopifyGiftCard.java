@@ -178,4 +178,25 @@ public class ShopifyGiftCard {
 		this.templateSuffix = templateSuffix;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyGiftCard{" +
+				"id='" + id + '\'' +
+				", note='" + note + '\'' +
+				", apiClientId='" + apiClientId + '\'' +
+				", balance=" + balance +
+				", createdAt=" + createdAt +
+				", initialValue=" + initialValue +
+				", currency='" + currency + '\'' +
+				", customerId='" + customerId + '\'' +
+				", code='" + code + '\'' +
+				", disabledAt=" + disabledAt +
+				", expiresOn=" + expiresOn +
+				", updatedAt=" + updatedAt +
+				", lastCharacters='" + lastCharacters + '\'' +
+				", lineItemId='" + lineItemId + '\'' +
+				", userId='" + userId + '\'' +
+				", templateSuffix='" + templateSuffix + '\'' +
+				'}';
+	}
 }

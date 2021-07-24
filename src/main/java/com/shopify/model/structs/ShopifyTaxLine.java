@@ -38,4 +38,12 @@ public class ShopifyTaxLine {
 		this.rate = rate;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyTaxLine{" +
+				"title='" + title + '\'' +
+				", price=" + price +
+				", rate=" + rate +
+				'}';
+	}
 }

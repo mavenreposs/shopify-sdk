@@ -132,4 +132,21 @@ public class ShopifyCustomCollection {
 	public void setAdminGraphqlApiId(String adminGraphqlApiId) {
 		this.adminGraphqlApiId = adminGraphqlApiId;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyCustomCollection{" +
+				"id='" + id + '\'' +
+				", title='" + title + '\'' +
+				", handle='" + handle + '\'' +
+				", published=" + published +
+				", bodyHtml='" + bodyHtml + '\'' +
+				", publishedScope='" + publishedScope + '\'' +
+				", sortOrder='" + sortOrder + '\'' +
+				", templateSuffix='" + templateSuffix + '\'' +
+				", publishedAt=" + publishedAt +
+				", updatedAt=" + updatedAt +
+				", adminGraphqlApiId='" + adminGraphqlApiId + '\'' +
+				'}';
+	}
 }

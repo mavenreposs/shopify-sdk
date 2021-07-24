@@ -81,4 +81,16 @@ public class ShopifyAdjustment {
 		this.reason = reason;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyAdjustment{" +
+				"id='" + id + '\'' +
+				", orderId='" + orderId + '\'' +
+				", refundId='" + refundId + '\'' +
+				", amount=" + amount +
+				", taxAmount=" + taxAmount +
+				", kind='" + kind + '\'' +
+				", reason='" + reason + '\'' +
+				'}';
+	}
 }

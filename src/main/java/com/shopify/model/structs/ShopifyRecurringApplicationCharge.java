@@ -182,4 +182,27 @@ public class ShopifyRecurringApplicationCharge {
 	public void setTest(Boolean test) {
 		this.test = test;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyRecurringApplicationCharge{" +
+				"id='" + id + '\'' +
+				", apiClientId='" + apiClientId + '\'' +
+				", name='" + name + '\'' +
+				", terms='" + terms + '\'' +
+				", price=" + price +
+				", cappedAmount=" + cappedAmount +
+				", status='" + status + '\'' +
+				", returnUrl='" + returnUrl + '\'' +
+				", confirmationUrl='" + confirmationUrl + '\'' +
+				", trialDays=" + trialDays +
+				", trialEndsOn='" + trialEndsOn + '\'' +
+				", activatedOn='" + activatedOn + '\'' +
+				", billingOn='" + billingOn + '\'' +
+				", cancelledOn='" + cancelledOn + '\'' +
+				", createdAt='" + createdAt + '\'' +
+				", updatedOn='" + updatedOn + '\'' +
+				", test=" + test +
+				'}';
+	}
 }

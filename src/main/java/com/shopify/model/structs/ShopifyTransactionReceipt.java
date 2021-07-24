@@ -23,4 +23,10 @@ public class ShopifyTransactionReceipt {
 		this.applePay = applePay;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyTransactionReceipt{" +
+				"applePay=" + applePay +
+				'}';
+	}
 }

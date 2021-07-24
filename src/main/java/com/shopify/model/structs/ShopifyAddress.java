@@ -154,4 +154,24 @@ public class ShopifyAddress {
 		this.longitude = longitude;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyAddress{" +
+				"firstName='" + firstName + '\'' +
+				", lastname='" + lastname + '\'' +
+				", name='" + name + '\'' +
+				", company='" + company + '\'' +
+				", address1='" + address1 + '\'' +
+				", address2='" + address2 + '\'' +
+				", city='" + city + '\'' +
+				", zip='" + zip + '\'' +
+				", province='" + province + '\'' +
+				", country='" + country + '\'' +
+				", provinceCode='" + provinceCode + '\'' +
+				", countryCode='" + countryCode + '\'' +
+				", phone='" + phone + '\'' +
+				", latitude=" + latitude +
+				", longitude=" + longitude +
+				'}';
+	}
 }

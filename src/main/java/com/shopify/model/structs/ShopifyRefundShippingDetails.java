@@ -53,4 +53,13 @@ public class ShopifyRefundShippingDetails {
 		this.fullRefund = fullRefund;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyRefundShippingDetails{" +
+				"amount=" + amount +
+				", tax=" + tax +
+				", maximumRefundable=" + maximumRefundable +
+				", fullRefund=" + fullRefund +
+				'}';
+	}
 }

@@ -208,4 +208,29 @@ public class ShopifyLineItem {
 		this.taxLines = taxLines;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyLineItem{" +
+				"id='" + id + '\'' +
+				", variantId='" + variantId + '\'' +
+				", title='" + title + '\'' +
+				", quantity=" + quantity +
+				", price=" + price +
+				", grams=" + grams +
+				", sku='" + sku + '\'' +
+				", variantTitle='" + variantTitle + '\'' +
+				", vendor='" + vendor + '\'' +
+				", productId='" + productId + '\'' +
+				", requiresShipping=" + requiresShipping +
+				", taxable=" + taxable +
+				", giftCard=" + giftCard +
+				", name='" + name + '\'' +
+				", variantInventoryManagement='" + variantInventoryManagement + '\'' +
+				", fulfillableQuantity=" + fulfillableQuantity +
+				", totalDiscount=" + totalDiscount +
+				", fulfillmentStatus='" + fulfillmentStatus + '\'' +
+				", fulfillmentService='" + fulfillmentService + '\'' +
+				", taxLines=" + taxLines +
+				'}';
+	}
 }

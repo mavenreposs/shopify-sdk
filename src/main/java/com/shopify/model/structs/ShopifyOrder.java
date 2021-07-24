@@ -457,4 +457,54 @@ public class ShopifyOrder {
 	public void setRefunds(final List<ShopifyRefund> refunds) {
 		this.refunds = refunds;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyOrder{" +
+				"id='" + id + '\'' +
+				", email='" + email + '\'' +
+				", closedAt=" + closedAt +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				", number=" + number +
+				", note='" + note + '\'' +
+				", token='" + token + '\'' +
+				", totalPrice=" + totalPrice +
+				", subtotalPrice=" + subtotalPrice +
+				", totalWeight=" + totalWeight +
+				", totalTax=" + totalTax +
+				", taxesIncluded=" + taxesIncluded +
+				", currency=" + currency +
+				", financialStatus='" + financialStatus + '\'' +
+				", totalDiscounts=" + totalDiscounts +
+				", totaLineItemsPrice=" + totaLineItemsPrice +
+				", cartToken='" + cartToken + '\'' +
+				", buyerAcceptsMarketing=" + buyerAcceptsMarketing +
+				", name='" + name + '\'' +
+				", referringSite='" + referringSite + '\'' +
+				", landingSite='" + landingSite + '\'' +
+				", cancelledAt=" + cancelledAt +
+				", cancelReason='" + cancelReason + '\'' +
+				", userId='" + userId + '\'' +
+				", locationId='" + locationId + '\'' +
+				", processedAt=" + processedAt +
+				", browserIp='" + browserIp + '\'' +
+				", orderNumber='" + orderNumber + '\'' +
+				", processingMethod='" + processingMethod + '\'' +
+				", sourceName='" + sourceName + '\'' +
+				", fulfillmentStatus='" + fulfillmentStatus + '\'' +
+				", tags='" + tags + '\'' +
+				", orderStatusUrl='" + orderStatusUrl + '\'' +
+				", lineItems=" + lineItems +
+				", fulfillments=" + fulfillments +
+				", billingAddress=" + billingAddress +
+				", shippingAddress=" + shippingAddress +
+				", customer=" + customer +
+				", shippingLines=" + shippingLines +
+				", taxLines=" + taxLines +
+				", noteAttributes=" + noteAttributes +
+				", refunds=" + refunds +
+				", metafields=" + metafields +
+				'}';
+	}
 }

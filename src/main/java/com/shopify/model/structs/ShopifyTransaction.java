@@ -121,4 +121,20 @@ public class ShopifyTransaction {
 		this.receipt = receipt;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyTransaction{" +
+				"id='" + id + '\'' +
+				", orderId='" + orderId + '\'' +
+				", kind='" + kind + '\'' +
+				", gateway='" + gateway + '\'' +
+				", parentId='" + parentId + '\'' +
+				", status='" + status + '\'' +
+				", message='" + message + '\'' +
+				", amount=" + amount +
+				", currency=" + currency +
+				", maximumRefundable=" + maximumRefundable +
+				", receipt=" + receipt +
+				'}';
+	}
 }

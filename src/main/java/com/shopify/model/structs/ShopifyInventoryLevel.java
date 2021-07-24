@@ -44,4 +44,12 @@ public class ShopifyInventoryLevel {
 		this.available = available;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyInventoryLevel{" +
+				"inventoryItemId='" + inventoryItemId + '\'' +
+				", locationId='" + locationId + '\'' +
+				", available=" + available +
+				'}';
+	}
 }

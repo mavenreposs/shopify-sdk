@@ -93,4 +93,17 @@ public class ShopifyRefundLineItem {
 		this.lineItem = lineItem;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyRefundLineItem{" +
+				"id='" + id + '\'' +
+				", quantity=" + quantity +
+				", lineItemId='" + lineItemId + '\'' +
+				", locationId='" + locationId + '\'' +
+				", restockType='" + restockType + '\'' +
+				", subtotal=" + subtotal +
+				", totalTax=" + totalTax +
+				", lineItem=" + lineItem +
+				'}';
+	}
 }

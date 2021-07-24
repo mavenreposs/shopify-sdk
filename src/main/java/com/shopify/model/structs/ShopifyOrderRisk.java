@@ -110,4 +110,19 @@ public class ShopifyOrderRisk {
 		this.merchantMessage = merchantMessage;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyOrderRisk{" +
+				"id='" + id + '\'' +
+				", orderId='" + orderId + '\'' +
+				", checkoutId='" + checkoutId + '\'' +
+				", source='" + source + '\'' +
+				", score=" + score +
+				", recommendation=" + recommendation +
+				", display=" + display +
+				", causeCancel=" + causeCancel +
+				", message='" + message + '\'' +
+				", merchantMessage='" + merchantMessage + '\'' +
+				'}';
+	}
 }

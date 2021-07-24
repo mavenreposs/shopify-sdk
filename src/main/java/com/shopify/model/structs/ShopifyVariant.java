@@ -227,4 +227,30 @@ public class ShopifyVariant {
 		this.available = available;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyVariant{" +
+				"id='" + id + '\'' +
+				", productId='" + productId + '\'' +
+				", title='" + title + '\'' +
+				", price=" + price +
+				", compareAtPrice=" + compareAtPrice +
+				", sku='" + sku + '\'' +
+				", barcode='" + barcode + '\'' +
+				", position=" + position +
+				", grams=" + grams +
+				", inventoryQuantity=" + inventoryQuantity +
+				", imageId='" + imageId + '\'' +
+				", inventoryPolicy=" + inventoryPolicy +
+				", inventoryManagement='" + inventoryManagement + '\'' +
+				", option1='" + option1 + '\'' +
+				", option2='" + option2 + '\'' +
+				", option3='" + option3 + '\'' +
+				", fulfillmentService='" + fulfillmentService + '\'' +
+				", requiresShipping=" + requiresShipping +
+				", taxable=" + taxable +
+				", inventoryItemId='" + inventoryItemId + '\'' +
+				", available=" + available +
+				'}';
+	}
 }

@@ -59,4 +59,14 @@ public class ShopifyShippingLine {
 		this.source = source;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyShippingLine{" +
+				"id='" + id + '\'' +
+				", title='" + title + '\'' +
+				", price=" + price +
+				", code='" + code + '\'' +
+				", source='" + source + '\'' +
+				'}';
+	}
 }

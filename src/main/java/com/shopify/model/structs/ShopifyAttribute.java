@@ -27,4 +27,11 @@ public class ShopifyAttribute {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyAttribute{" +
+				"name='" + name + '\'' +
+				", value='" + value + '\'' +
+				'}';
+	}
 }
