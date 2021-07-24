@@ -21,8 +21,8 @@ public class ResponseEntityToStringMapper {
 	 * by string. To combat this and be able to read entities via a string more than
 	 * once, this deals with the input streams involved and resets where necessary.
 	 *
-	 * @param response
-	 * @return
+	 * @param response Response
+	 * @return String
 	 */
 	public static String map(final Response response) {
 
