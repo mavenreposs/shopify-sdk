@@ -29,6 +29,17 @@ public class Image {
 	private List<String> variantIds = new LinkedList<>();
 	private List<Metafield> metafields = new LinkedList<>();
 
+	@XmlElement(name = "created_at")
+	private String createdAt;
+	@XmlElement(name = "updated_at")
+	private String updatedAt;
+	@XmlElement(name = "alt")
+	private String alt;
+	@XmlElement(name = "width")
+	private String width;
+	@XmlElement(name = "height")
+	private String height;
+
 	public String getId() {
 		return id;
 	}
@@ -85,4 +96,43 @@ public class Image {
 		this.metafields = metafields;
 	}
 
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getAlt() {
+		return alt;
+	}
+
+	public void setAlt(String alt) {
+		this.alt = alt;
+	}
+
+	public String getWidth() {
+		return width;
+	}
+
+	public void setWidth(String width) {
+		this.width = width;
+	}
+
+	public String getHeight() {
+		return height;
+	}
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
 }
