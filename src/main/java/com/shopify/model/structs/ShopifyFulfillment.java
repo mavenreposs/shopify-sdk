@@ -84,6 +84,19 @@ public class ShopifyFulfillment {
 	@XmlElement(name = "location_id")
 	private String locationId;
 
+	private String name;
+	private long order_id;
+	private ShopifyReceipt receipt;
+	private String service;
+	private String shipment_status;
+	private String tracking_company;
+	private String tracking_number;
+	private List<String> tracking_numbers;
+	private String tracking_url;
+	private List<String> tracking_urls;
+	private String updated_at;
+	private ShopifyPaymentDetails payment_details;
+
 	public String getId() {
 		return id;
 	}
