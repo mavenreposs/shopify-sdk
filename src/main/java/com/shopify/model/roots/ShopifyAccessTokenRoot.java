@@ -1,8 +1,11 @@
 package com.shopify.model.roots;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyAccessTokenRoot {
 

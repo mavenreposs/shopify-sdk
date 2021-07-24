@@ -1,10 +1,12 @@
 package com.shopify.model.roots;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyCustomCollection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyCustomCollectionRoot {
 

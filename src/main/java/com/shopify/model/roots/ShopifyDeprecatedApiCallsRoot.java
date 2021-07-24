@@ -1,11 +1,13 @@
 package com.shopify.model.roots;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyDeprecatedApiCall;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyDeprecatedApiCallsRoot {
 
