@@ -21,4 +21,11 @@ public class ShopifyAdjustmentsRoot {
 	public void setAdjustments(final List<ShopifyAdjustment> adjustments) {
 		this.adjustments = adjustments;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyAdjustmentsRoot{" +
+				"adjustments=" + adjustments +
+				'}';
+	}
 }

@@ -22,4 +22,10 @@ public class ShopifyLocationsRoot {
 		this.locations = locations;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyLocationsRoot{" +
+				"locations=" + locations +
+				'}';
+	}
 }

@@ -20,4 +20,11 @@ public class ShopifyCustomCollectionRoot {
 	public void setCustomCollection(ShopifyCustomCollection customCollection) {
 		this.customCollection = customCollection;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyCustomCollectionRoot{" +
+				"customCollection=" + customCollection +
+				'}';
+	}
 }

@@ -22,4 +22,11 @@ public class ShopifyCustomCollectionsRoot {
 	public void setCustomCollections(List<ShopifyCustomCollection> customCollections) {
 		this.customCollections = customCollections;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyCustomCollectionsRoot{" +
+				"customCollections=" + customCollections +
+				'}';
+	}
 }

@@ -21,4 +21,11 @@ public class ShopifyTransactionsRoot {
 	public void setTransactions(final List<ShopifyTransaction> transactions) {
 		this.transactions = transactions;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyTransactionsRoot{" +
+				"transactions=" + transactions +
+				'}';
+	}
 }

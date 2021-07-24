@@ -20,4 +20,10 @@ public class ShopifyGiftCardRoot {
 		this.giftCard = giftCard;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyGiftCardRoot{" +
+				"giftCard=" + giftCard +
+				'}';
+	}
 }

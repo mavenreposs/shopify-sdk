@@ -21,4 +21,11 @@ public class ShopifyProductsRoot {
 	public void setProducts(List<ShopifyProduct> products) {
 		this.products = products;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyProductsRoot{" +
+				"products=" + products +
+				'}';
+	}
 }

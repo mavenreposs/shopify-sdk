@@ -19,4 +19,10 @@ public class ShopifyCustomerRoot {
 		this.customer = customer;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyCustomerRoot{" +
+				"customer=" + customer +
+				'}';
+	}
 }

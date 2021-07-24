@@ -18,4 +18,11 @@ public class ShopifyVariantRoot {
 	public void setVariant(ShopifyVariant variant) {
 		this.variant = variant;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyVariantRoot{" +
+				"variant=" + variant +
+				'}';
+	}
 }

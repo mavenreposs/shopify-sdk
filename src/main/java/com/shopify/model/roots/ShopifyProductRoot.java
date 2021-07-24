@@ -19,4 +19,10 @@ public class ShopifyProductRoot {
 		this.product = product;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyProductRoot{" +
+				"product=" + product +
+				'}';
+	}
 }

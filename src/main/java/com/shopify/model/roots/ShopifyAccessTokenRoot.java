@@ -19,4 +19,11 @@ public class ShopifyAccessTokenRoot {
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyAccessTokenRoot{" +
+				"accessToken='" + accessToken + '\'' +
+				'}';
+	}
 }

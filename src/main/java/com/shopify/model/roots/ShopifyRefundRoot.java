@@ -19,4 +19,10 @@ public class ShopifyRefundRoot {
 		this.refund = refund;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyRefundRoot{" +
+				"refund=" + refund +
+				'}';
+	}
 }

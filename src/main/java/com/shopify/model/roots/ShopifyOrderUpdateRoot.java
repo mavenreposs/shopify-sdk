@@ -19,4 +19,10 @@ public class ShopifyOrderUpdateRoot {
 		this.order = order;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyOrderUpdateRoot{" +
+				"order=" + order +
+				'}';
+	}
 }

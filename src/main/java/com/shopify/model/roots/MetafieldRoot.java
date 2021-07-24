@@ -19,4 +19,10 @@ public class MetafieldRoot {
 		this.metafield = metafield;
 	}
 
+	@Override
+	public String toString() {
+		return "MetafieldRoot{" +
+				"metafield=" + metafield +
+				'}';
+	}
 }

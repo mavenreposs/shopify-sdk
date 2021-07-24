@@ -19,4 +19,10 @@ public class ShopifyFulfillmentRoot {
 		this.fulfillment = fulfillment;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyFulfillmentRoot{" +
+				"fulfillment=" + fulfillment +
+				'}';
+	}
 }

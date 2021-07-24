@@ -18,4 +18,11 @@ public class ShopifyImageRoot {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+
+	@Override
+	public String toString() {
+		return "ShopifyImageRoot{" +
+				"image=" + image +
+				'}';
+	}
 }

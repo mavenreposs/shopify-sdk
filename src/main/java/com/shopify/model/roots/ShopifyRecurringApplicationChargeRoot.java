@@ -21,4 +21,10 @@ public class ShopifyRecurringApplicationChargeRoot {
 		this.recurringApplicationCharge = recurringApplicationCharge;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyRecurringApplicationChargeRoot{" +
+				"recurringApplicationCharge=" + recurringApplicationCharge +
+				'}';
+	}
 }

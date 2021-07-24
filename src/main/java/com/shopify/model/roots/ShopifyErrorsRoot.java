@@ -19,4 +19,10 @@ public class ShopifyErrorsRoot {
 		this.errors = errors;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyErrorsRoot{" +
+				"errors=" + errors +
+				'}';
+	}
 }

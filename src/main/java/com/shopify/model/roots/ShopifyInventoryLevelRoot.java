@@ -24,4 +24,10 @@ public class ShopifyInventoryLevelRoot {
 		this.inventoryLevel = inventoryLevel;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyInventoryLevelRoot{" +
+				"inventoryLevel=" + inventoryLevel +
+				'}';
+	}
 }

@@ -22,4 +22,10 @@ public class ShopifyOrderRisksRoot {
 		this.risks = risks;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyOrderRisksRoot{" +
+				"risks=" + risks +
+				'}';
+	}
 }

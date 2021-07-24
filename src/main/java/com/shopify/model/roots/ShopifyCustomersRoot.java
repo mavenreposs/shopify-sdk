@@ -20,4 +20,10 @@ public class ShopifyCustomersRoot {
 
     private List<ShopifyCustomer> customers = new LinkedList<>();
 
+    @Override
+    public String toString() {
+        return "ShopifyCustomersRoot{" +
+                "customers=" + customers +
+                '}';
+    }
 }
