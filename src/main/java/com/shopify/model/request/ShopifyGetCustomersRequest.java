@@ -2,8 +2,13 @@ package com.shopify.model.request;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.joda.time.DateTime;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyGetCustomersRequest {
 	private int limit;
 	private List<String> ids;

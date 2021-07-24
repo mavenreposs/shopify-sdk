@@ -1,10 +1,14 @@
 package com.shopify.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyFulfillment;
 import com.shopify.model.structs.ShopifyLineItem;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyFulfillmentUpdateRequest {
 
 	private final ShopifyFulfillment request;

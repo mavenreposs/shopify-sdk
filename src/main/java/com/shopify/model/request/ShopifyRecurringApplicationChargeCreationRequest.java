@@ -1,9 +1,13 @@
 package com.shopify.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyRecurringApplicationCharge;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyRecurringApplicationChargeCreationRequest {
 
 	private final ShopifyRecurringApplicationCharge request;

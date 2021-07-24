@@ -1,7 +1,12 @@
 package com.shopify.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyCustomCollection;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyCustomCollectionCreationRequest {
 
 

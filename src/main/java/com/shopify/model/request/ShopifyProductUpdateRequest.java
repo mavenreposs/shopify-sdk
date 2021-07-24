@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.*;
 import com.shopify.model.structs.*;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +19,10 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 
 	private final ShopifyProduct request;

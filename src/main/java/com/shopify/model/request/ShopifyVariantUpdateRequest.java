@@ -3,11 +3,16 @@ package com.shopify.model.request;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.enums.InventoryPolicy;
 import com.shopify.model.structs.ShopifyVariant;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyVariantUpdateRequest implements ShopifyVariantRequest {
 
 	private final ShopifyVariant request;

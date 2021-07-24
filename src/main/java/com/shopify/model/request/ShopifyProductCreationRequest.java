@@ -8,11 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.*;
 import com.shopify.model.structs.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyProductCreationRequest implements ShopifyProductRequest {
 
 	private final ShopifyProduct request;

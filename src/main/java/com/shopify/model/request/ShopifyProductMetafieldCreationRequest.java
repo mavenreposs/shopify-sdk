@@ -1,8 +1,13 @@
 package com.shopify.model.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.Metafield;
 import com.shopify.model.enums.MetafieldValueType;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement
 public class ShopifyProductMetafieldCreationRequest {
 
 	private final String productId;
