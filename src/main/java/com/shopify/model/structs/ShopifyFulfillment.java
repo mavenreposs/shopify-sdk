@@ -21,7 +21,11 @@ public class ShopifyFulfillment {
 
 	public enum Status {
 
-		PENDING("pending"), OPEN("open"), SUCCESS("success"), CANCELLED("cancelled"), ERROR("error"),
+		PENDING("pending"),
+		OPEN("open"),
+		SUCCESS("success"),
+		CANCELLED("cancelled"),
+		ERROR("error"),
 		FAILURE("failure");
 
 		static final String NO_MATCHING_ENUMS_ERROR_MESSAGE = "No matching enum found for status: %s";
