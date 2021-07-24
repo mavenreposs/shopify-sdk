@@ -141,7 +141,7 @@ public class ShopifySdkTest {
 		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
 
 		final Shop shop = new Shop();
-		shop.setId("1");
+		shop.setId(1L);
 		shop.setName("Some Cool Shopify Store");
 		shopifyShop.setShop(shop);
 		final String expectedResponseBodyString = getJsonString(ShopifyShopRoot.class, shopifyShop);
@@ -209,7 +209,7 @@ public class ShopifySdkTest {
 		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
 
 		final Shop shop = new Shop();
-		shop.setId("4");
+		shop.setId(4L);
 		shop.setName("Some Generated Access Token Cool Shopify Store");
 		shopifyShop.setShop(shop);
 		final String expectedShopResponseBodyString = getJsonString(ShopifyShopRoot.class, shopifyShop);
