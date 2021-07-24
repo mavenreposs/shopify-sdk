@@ -1,9 +1,12 @@
 package com.shopify.model.structs;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyTaxLine {
 

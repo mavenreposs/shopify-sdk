@@ -1,5 +1,6 @@
 package com.shopify.model.structs;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.structs.ShopifyLineItem;
 
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ShopifyRefundLineItem {

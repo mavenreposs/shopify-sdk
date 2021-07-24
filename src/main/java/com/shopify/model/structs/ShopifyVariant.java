@@ -9,10 +9,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.adapters.EscapedStringAdapter;
 import com.shopify.model.adapters.InventoryPolicyAdapter;
 import com.shopify.model.enums.InventoryPolicy;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ShopifyVariant {
