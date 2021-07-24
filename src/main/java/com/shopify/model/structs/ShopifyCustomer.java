@@ -1,6 +1,7 @@
 package com.shopify.model.structs;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -39,6 +40,27 @@ public class ShopifyCustomer {
 	@XmlElement(name = "total_spent")
 	private BigDecimal totalSpent;
 	private String note;
+
+	@XmlElement(name = "last_order_id")
+	private long lastOrderId;
+	@XmlElement(name = "verified_email")
+	private boolean verifiedEmail;
+	@XmlElement(name = "multipass_identifier")
+	private String multipassIdentifier;
+	@XmlElement(name = "tax_exempt")
+	private boolean taxExempt;
+	private String tags;
+	@XmlElement(name = "last_order_name")
+	private String lastOrderName;
+	private Object metafield;
+	private String currency;
+	@XmlElement(name = "accepts_marketing_updated_at")
+	private String acceptsMarketingUpdatedAt;
+	@XmlElement(name = "marketing_opt_in_level")
+	private String marketingOptInLevel;
+	@XmlElement(name = "tax_exemptions")
+	private List<String> taxExemptions;
+//	private ShopifyDefaultAddress default_address;
 
 	public String getId() {
 		return id;
