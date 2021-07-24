@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 
 import com.shopify.model.enums.InventoryPolicy;
 import com.shopify.model.structs.ShopifyVariant;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class ShopifyVariantUpdateRequest implements ShopifyVariantRequest {
 
