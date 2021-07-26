@@ -36,9 +36,9 @@ public class Image {
 	@XmlElement(name = "alt")
 	private String alt;
 	@XmlElement(name = "width")
-	private String width;
+	private int width;
 	@XmlElement(name = "height")
-	private String height;
+	private int height;
 
 	public String getId() {
 		return id;
@@ -120,19 +120,37 @@ public class Image {
 		this.alt = alt;
 	}
 
-	public String getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
-	public void setWidth(String width) {
+	public void setWidth(int width) {
 		this.width = width;
 	}
 
-	public String getHeight() {
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(String height) {
+	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	@Override
+	public String toString() {
+		return "Image{" +
+				"id='" + id + '\'' +
+				", productId='" + productId + '\'' +
+				", name='" + name + '\'' +
+				", position=" + position +
+				", source='" + source + '\'' +
+				", variantIds=" + variantIds +
+				", metafields=" + metafields +
+				", createdAt='" + createdAt + '\'' +
+				", updatedAt='" + updatedAt + '\'' +
+				", alt='" + alt + '\'' +
+				", width='" + width + '\'' +
+				", height='" + height + '\'' +
+				'}';
 	}
 }
