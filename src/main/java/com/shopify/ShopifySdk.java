@@ -762,20 +762,20 @@ public class ShopifySdk {
 //		return handleResponse(response, Status.OK);
 //	}
 
-	private Response handleResponse(final Response response, final Status... expectedStatus) {
-
-		if ((response.getHeaders() != null) && response.getHeaders().containsKey(DEPRECATED_REASON_HEADER)) {
-			LOGGER.error(DEPRECATED_SHOPIFY_CALL_ERROR_MESSAGE, response.getLocation(), response.getStatus(),
-					response.getStringHeaders());
-		}
-
-		final List<Integer> expectedStatusCodes = getExpectedStatusCodes(expectedStatus);
-		if (expectedStatusCodes.contains(response.getStatus())) {
-			return response;
-		}
-
-		throw new ShopifyErrorResponseException(response);
-	}
+//	private Response handleResponse(final Response response, final Status... expectedStatus) {
+//
+//		if ((response.getHeaders() != null) && response.getHeaders().containsKey(DEPRECATED_REASON_HEADER)) {
+//			LOGGER.error(DEPRECATED_SHOPIFY_CALL_ERROR_MESSAGE, response.getLocation(), response.getStatus(),
+//					response.getStringHeaders());
+//		}
+//
+//		final List<Integer> expectedStatusCodes = getExpectedStatusCodes(expectedStatus);
+//		if (expectedStatusCodes.contains(response.getStatus())) {
+//			return response;
+//		}
+//
+//		throw new ShopifyErrorResponseException(response);
+//	}
 
 	private List<Integer> getExpectedStatusCodes(final Status... expectedStatus) {
 		return Arrays.asList(expectedStatus).stream().map(Status::getStatusCode).collect(Collectors.toList());
