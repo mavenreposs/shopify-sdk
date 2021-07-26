@@ -355,6 +355,18 @@ public class ShopifySdk {
 		return shopifyVariantRootResponse.getVariant();
 	}
 
+	public Image createProductImage(final String productId, final String imageSource) {
+		final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
+		final Image imageRequest = new Image();
+		imageRequest.setSource(imageSource);
+		shopifyImageRootRequest.setImage(imageRequest);
+		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.IMAGES),
+				shopifyImageRootRequest);
+		final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+		final Image createdImage = shopifyImageRootResponse.getImage();
+		return createdImage;
+	}
+
 	public boolean deleteProduct(final String productId) {
 		final Response response = shopifyWebTarget.delete(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
 		return Status.OK.getStatusCode() == response.getStatus();
