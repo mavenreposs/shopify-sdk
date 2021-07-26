@@ -49,6 +49,17 @@ public class ShopifyProduct {
 	private String publishedAt;
 	private Boolean published;
 
+	private String status;
+	@XmlElement(name = "published_scope")
+	private String publishedScope;
+	@XmlElement(name = "template_suffix")
+	private String templateSuffix;
+	@XmlElement(name = "created_at")
+	private String createdAt;
+	@XmlElement(name = "updated_at")
+	private String updatedAt;
+	private String handle;
+
 	public String getId() {
 		return id;
 	}
@@ -171,6 +182,58 @@ public class ShopifyProduct {
 		return options.stream().sorted(optionPositionCompartor).map(Option::getName).collect(Collectors.toList());
 	}
 
+	public Boolean getPublished() {
+		return published;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getPublishedScope() {
+		return publishedScope;
+	}
+
+	public void setPublishedScope(String publishedScope) {
+		this.publishedScope = publishedScope;
+	}
+
+	public String getTemplateSuffix() {
+		return templateSuffix;
+	}
+
+	public void setTemplateSuffix(String templateSuffix) {
+		this.templateSuffix = templateSuffix;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public String getHandle() {
+		return handle;
+	}
+
+	public void setHandle(String handle) {
+		this.handle = handle;
+	}
+
 	@Override
 	public String toString() {
 		return "ShopifyProduct{" +
@@ -188,6 +251,12 @@ public class ShopifyProduct {
 				", variants=" + variants +
 				", publishedAt='" + publishedAt + '\'' +
 				", published=" + published +
+				", status='" + status + '\'' +
+				", publishedScope='" + publishedScope + '\'' +
+				", templateSuffix='" + templateSuffix + '\'' +
+				", createdAt='" + createdAt + '\'' +
+				", updatedAt='" + updatedAt + '\'' +
+				", handle='" + handle + '\'' +
 				'}';
 	}
 }
