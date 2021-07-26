@@ -1,10 +1,5 @@
 package com.shopify;
 
-import com.shopify.model.structs.Shop;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.ws.rs.client.WebTarget;
-
 public class ShopifyEndpoint {
 
     static final String OAUTH = "oauth";

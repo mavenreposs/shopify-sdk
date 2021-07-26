@@ -2,8 +2,7 @@ package com.shopify;
 
 import java.util.concurrent.TimeUnit;
 
-class Steps
-        implements SubdomainStep, ClientSecretStep, AuthorizationTokenStep, AccessTokenStep, OptionalsStep {
+class Steps implements SubdomainStep, ClientSecretStep, AuthorizationTokenStep, AccessTokenStep, OptionalsStep {
 
     private String subdomain;
     private String accessToken;
