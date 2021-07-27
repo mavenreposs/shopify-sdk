@@ -26,8 +26,6 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import com.github.rholder.retry.RetryException;
-import com.github.rholder.retry.Retryer;
 import com.shopify.exceptions.ShopifyClientException;
 import com.shopify.exceptions.ShopifyErrorResponseException;
 import com.shopify.mappers.ShopifySdkObjectMapper;
@@ -71,52 +69,12 @@ public class ShopifySdk {
 	static final String ACCESS_TOKEN_HEADER = "X-Shopify-Access-Token";
 	static final String DEPRECATED_REASON_HEADER = "X-Shopify-API-Deprecated-Reason";
 	static final String RETRY_AFTER_HEADER = "Retry-After";
-	//	static final String OAUTH = "oauth";
-//	static final String REVOKE = "revoke";
-//	static final String ACCESS_TOKEN = "access_token";
-//	static final String PRODUCTS = "products";
-//	static final String VARIANTS = "variants";
-//	static final String CUSTOM_COLLECTIONS = "custom_collections";
-//	static final String RECURRING_APPLICATION_CHARGES = "recurring_application_charges";
-//	static final String ORDERS = "orders";
-//	static final String FULFILLMENTS = "fulfillments";
-//	static final String ACTIVATE = "activate";
-//	static final String IMAGES = "images";
-//	static final String SHOP = "shop";
-//	static final String COUNT = "count";
-//	static final String CLOSE = "close";
-//	static final String CANCEL = "cancel";
-//	static final String METAFIELDS = "metafields";
-//	static final String RISKS = "risks";
-//	static final String LOCATIONS = "locations";
-//	static final String INVENTORY_LEVELS = "inventory_levels";
-//	static final String JSON = ".json";
-//	static final String LIMIT_QUERY_PARAMETER = "limit";
-//	static final String PAGE_INFO_QUERY_PARAMETER = "page_info";
-//	static final String STATUS_QUERY_PARAMETER = "status";
-//	static final String ANY_STATUSES = "any";
-//	static final String CREATED_AT_MIN_QUERY_PARAMETER = "created_at_min";
-//	static final String CREATED_AT_MAX_QUERY_PARAMETER = "created_at_max";
-//	static final String UPDATED_AT_MIN_QUERY_PARAMETER = "updated_at_min";
-//	static final String UPDATED_AT_MAX_QUERY_PARAMETER = "updated_at_max";
-//	static final String ATTRIBUTION_APP_ID_QUERY_PARAMETER = "attribution_app_id";
-//	static final String IDS_QUERY_PARAMETER = "ids";
-//	static final String SINCE_ID_QUERY_PARAMETER = "since_id";
-//	static final String QUERY_QUERY_PARAMETER = "query";
-//	static final String CALCULATE = "calculate";
-//	static final String REFUNDS = "refunds";
-//	static final String TRANSACTIONS = "transactions";
-//	static final String GIFT_CARDS = "gift_cards";
-//	static final String REFUND_KIND = "refund";
-//	static final String SET = "set";
+
 	private static final String CLIENT_ID = "client_id";
 	private static final String CLIENT_SECRET = "client_secret";
 	private static final String AUTHORIZATION_CODE = "code";
 
 	private static final int DEFAULT_REQUEST_LIMIT = 50;
-//	private static final int TOO_MANY_REQUESTS_STATUS_CODE = 429;
-//	private static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
-//	private static final int LOCKED_STATUS_CODE = 423;
 
 	private static final String SHOP_RETRIEVED_MESSAGE = "Starting to make calls for Shopify store with ID of {} and name of {}";
 	private static final String COULD_NOT_BE_SAVED_SHOPIFY_ERROR_MESSAGE = "could not successfully be saved";
@@ -738,98 +696,6 @@ public class ShopifySdk {
 		final ShopifyOrdersRoot shopifyOrderRootResponse = response.readEntity(ShopifyOrdersRoot.class);
 		return mapPagedResponse(shopifyOrderRootResponse.getOrders(), response);
 	}
-
-//	private Response get(final WebTarget webTarget) {
-//		final Callable<Response> responseCallable = () -> webTarget.request(MediaType.APPLICATION_JSON)
-//				.header(ACCESS_TOKEN_HEADER, accessToken).get();
-//		final Response response = invokeResponseCallable(responseCallable);
-//		return handleResponse(response, Status.OK);
-//	}
-
-//	private Response delete(final WebTarget webTarget) {
-//		final Callable<Response> responseCallable = () -> webTarget.request(MediaType.APPLICATION_JSON)
-//				.header(ACCESS_TOKEN_HEADER, accessToken).delete();
-//		final Response response = invokeResponseCallable(responseCallable);
-//		return handleResponse(response, Status.OK);
-//	}
-
-//	private <T> Response post(final WebTarget webTarget, final T object) {
-//		final Callable<Response> responseCallable = () -> {
-//			final Entity<T> entity = Entity.entity(object, MediaType.APPLICATION_JSON);
-//			return webTarget.request(MediaType.APPLICATION_JSON).header(ACCESS_TOKEN_HEADER, accessToken).post(entity);
-//		};
-//		final Response response = invokeResponseCallable(responseCallable);
-//		return handleResponse(response, Status.CREATED, Status.OK);
-//	}
-
-//	private <T> Response put(final WebTarget webTarget, final T object) {
-//		final Callable<Response> responseCallable = () -> {
-//			final Entity<T> entity = Entity.entity(object, MediaType.APPLICATION_JSON);
-//			return webTarget.request(MediaType.APPLICATION_JSON).header(ACCESS_TOKEN_HEADER, accessToken).put(entity);
-//		};
-//		final Response response = invokeResponseCallable(responseCallable);
-//		return handleResponse(response, Status.OK);
-//	}
-
-//	private Response handleResponse(final Response response, final Status... expectedStatus) {
-//
-//		if ((response.getHeaders() != null) && response.getHeaders().containsKey(DEPRECATED_REASON_HEADER)) {
-//			LOGGER.error(DEPRECATED_SHOPIFY_CALL_ERROR_MESSAGE, response.getLocation(), response.getStatus(),
-//					response.getStringHeaders());
-//		}
-//
-//		final List<Integer> expectedStatusCodes = getExpectedStatusCodes(expectedStatus);
-//		if (expectedStatusCodes.contains(response.getStatus())) {
-//			return response;
-//		}
-//
-//		throw new ShopifyErrorResponseException(response);
-//	}
-
-//	private List<Integer> getExpectedStatusCodes(final Status... expectedStatus) {
-//		return Arrays.asList(expectedStatus).stream().map(Status::getStatusCode).collect(Collectors.toList());
-//	}
-
-//	private Response invokeResponseCallable(final Callable<Response> responseCallable) {
-//		final Retryer<Response> retryer = shopifyWebTarget.buildResponseRetyer();
-//		try {
-//			return retryer.call(responseCallable);
-//		} catch (ExecutionException | RetryException e) {
-//			throw new ShopifyClientException(RETRY_FAILED_MESSAGE, e);
-//		}
-//	}
-
-//	private Retryer<Response> buildResponseRetyer() {
-//		return RetryerBuilder.<Response>newBuilder().retryIfResult(ShopifySdk::shouldRetryResponse).retryIfException()
-//				.withWaitStrategy(WaitStrategies.randomWait(minimumRequestRetryRandomDelayMilliseconds,
-//						TimeUnit.MILLISECONDS, maximumRequestRetryRandomDelayMilliseconds, TimeUnit.MILLISECONDS))
-//				.withStopStrategy(
-//						StopStrategies.stopAfterDelay(maximumRequestRetryTimeoutMilliseconds, TimeUnit.MILLISECONDS))
-//				.withRetryListener(new ShopifySdkRetryListener()).build();
-//	}
-
-//	private static boolean shouldRetryResponse(final Response response) {
-//		return isServerError(response) || hasExceededRateLimit(response) || hasNotBeenSaved(response);
-//	}
-
-//	private static boolean hasExceededRateLimit(final Response response) {
-//		return TOO_MANY_REQUESTS_STATUS_CODE == response.getStatus()
-//				&& response.getHeaders().containsKey(RETRY_AFTER_HEADER);
-//	}
-
-//	private static boolean isServerError(final Response response) {
-//		return (Status.Family.SERVER_ERROR == Status.Family.familyOf(response.getStatus()))
-//				|| (LOCKED_STATUS_CODE == response.getStatus());
-//	}
-
-//	private static boolean hasNotBeenSaved(final Response response) {
-//		if ((UNPROCESSABLE_ENTITY_STATUS_CODE == response.getStatus()) && response.hasEntity()) {
-//			final String shopifyErrorResponse = ResponseEntityToStringMapper.map(response);
-//			LOGGER.debug(shopifyErrorResponse);
-//			return shopifyErrorResponse.contains(COULD_NOT_BE_SAVED_SHOPIFY_ERROR_MESSAGE);
-//		}
-//		return false;
-//	}
 
 	private String generateToken() {
 		try {
