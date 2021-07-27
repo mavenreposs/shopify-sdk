@@ -15,6 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.shopify.actions.ProductActionImpl;
+import com.shopify.actions.ShopActionImpl;
 import com.shopify.model.roots.*;
 import com.shopify.model.structs.*;
 import org.apache.commons.lang3.StringUtils;
@@ -50,7 +52,7 @@ import com.shopify.model.request.ShopifyRefundCreationRequest;
 import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyVariantUpdateRequest;
 
-public class ShopifySdk {
+public class ShopifySdk implements ShopifySdkAction {
 
 	static final String API_VERSION_PREFIX = "api";
 	private static final long TWO_HUNDRED_MILLISECONDS = 200L;
@@ -258,29 +260,39 @@ public class ShopifySdk {
 	}
 
 	public ShopifyShopRoot getShop() {
-		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.SHOP));
-		return response.readEntity(ShopifyShopRoot.class);
+//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.SHOP));
+//		return response.readEntity(ShopifyShopRoot.class);
+
+		return new ShopActionImpl(this).getShop();
 	}
 
 	public ShopifyProduct createProduct(final ShopifyProductCreationRequest shopifyProductCreationRequest) {
-		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
-		final ShopifyProduct shopifyProduct = shopifyProductCreationRequest.getRequest();
-		shopifyProductRootRequest.setProduct(shopifyProduct);
-		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS), shopifyProductRootRequest);
-		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
-		final ShopifyProduct createdShopifyProduct = shopifyProductRootResponse.getProduct();
-		return updateProductImages(shopifyProductCreationRequest, createdShopifyProduct);
+//		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
+//		final ShopifyProduct shopifyProduct = shopifyProductCreationRequest.getRequest();
+//		shopifyProductRootRequest.setProduct(shopifyProduct);
+//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS), shopifyProductRootRequest);
+//		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
+//		final ShopifyProduct createdShopifyProduct = shopifyProductRootResponse.getProduct();
+//		return updateProductImages(shopifyProductCreationRequest, createdShopifyProduct);
+		return new ProductActionImpl(this).createProduct(shopifyProductCreationRequest);
 	}
 
 	public ShopifyProduct updateProduct(final ShopifyProductUpdateRequest shopifyProductUpdateRequest) {
-		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
-		final ShopifyProduct shopifyProduct = shopifyProductUpdateRequest.getRequest();
-		shopifyProductRootRequest.setProduct(shopifyProduct);
-		final Response response = shopifyWebTarget.put(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(shopifyProduct.getId()),
-				shopifyProductRootRequest);
-		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
-		final ShopifyProduct updatedShopifyProduct = shopifyProductRootResponse.getProduct();
-		return updateProductImages(shopifyProductUpdateRequest, updatedShopifyProduct);
+//		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
+//		final ShopifyProduct shopifyProduct = shopifyProductUpdateRequest.getRequest();
+//		shopifyProductRootRequest.setProduct(shopifyProduct);
+//		final Response response = shopifyWebTarget.put(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(shopifyProduct.getId()),
+//				shopifyProductRootRequest);
+//		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
+//		final ShopifyProduct updatedShopifyProduct = shopifyProductRootResponse.getProduct();
+//		return updateProductImages(shopifyProductUpdateRequest, updatedShopifyProduct);
+		return new ProductActionImpl(this).updateProduct(shopifyProductUpdateRequest);
+	}
+
+	public boolean deleteProduct(final String productId) {
+//		final Response response = shopifyWebTarget.delete(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
+//		return Status.OK.getStatusCode() == response.getStatus();
+		return new ProductActionImpl(this).deleteProduct(productId);
 	}
 
 	public ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest) {
@@ -326,11 +338,6 @@ public class ShopifySdk {
 		final Response response = shopifyWebTarget.delete(getWebTarget()
 				.path(ShopifyEndpoint.PRODUCTS).path(productId)
 				.path(ShopifyEndpoint.IMAGES).path(imageId));
-		return Status.OK.getStatusCode() == response.getStatus();
-	}
-
-	public boolean deleteProduct(final String productId) {
-		final Response response = shopifyWebTarget.delete(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
 		return Status.OK.getStatusCode() == response.getStatus();
 	}
 
@@ -676,7 +683,7 @@ public class ShopifySdk {
 
 	}
 
-	private ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
+	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
 			final ShopifyProduct shopifyProduct) {
 		setVariantImageIds(shopifyProductRequest, shopifyProduct);
 		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
@@ -734,7 +741,7 @@ public class ShopifySdk {
 		return CLIENT.target(this.apiUrl);
 	}
 
-	private WebTarget getWebTarget() {
+	public WebTarget getWebTarget() {
 		if (this.webTarget == null) {
 
 			if (StringUtils.isNotBlank(this.shopSubdomain)) {
@@ -795,6 +802,10 @@ public class ShopifySdk {
 
 	private WebTarget buildOrdersEndpoint() {
 		return getWebTarget().path(ShopifyEndpoint.ORDERS);
+	}
+
+	public ShopifyWebTarget getShopifyWebTarget() {
+		return shopifyWebTarget;
 	}
 
 	@Override
