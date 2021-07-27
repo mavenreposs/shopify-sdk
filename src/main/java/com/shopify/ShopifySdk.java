@@ -322,6 +322,13 @@ public class ShopifySdk {
 		return createdImage;
 	}
 
+	public boolean deleteProductImage(final String productId, final String imageId) {
+		final Response response = shopifyWebTarget.delete(getWebTarget()
+				.path(ShopifyEndpoint.PRODUCTS).path(productId)
+				.path(ShopifyEndpoint.IMAGES).path(imageId));
+		return Status.OK.getStatusCode() == response.getStatus();
+	}
+
 	public boolean deleteProduct(final String productId) {
 		final Response response = shopifyWebTarget.delete(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
 		return Status.OK.getStatusCode() == response.getStatus();
