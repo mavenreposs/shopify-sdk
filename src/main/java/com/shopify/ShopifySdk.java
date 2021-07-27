@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -789,18 +786,18 @@ public class ShopifySdk {
 //		throw new ShopifyErrorResponseException(response);
 //	}
 
-	private List<Integer> getExpectedStatusCodes(final Status... expectedStatus) {
-		return Arrays.asList(expectedStatus).stream().map(Status::getStatusCode).collect(Collectors.toList());
-	}
+//	private List<Integer> getExpectedStatusCodes(final Status... expectedStatus) {
+//		return Arrays.asList(expectedStatus).stream().map(Status::getStatusCode).collect(Collectors.toList());
+//	}
 
-	private Response invokeResponseCallable(final Callable<Response> responseCallable) {
-		final Retryer<Response> retryer = shopifyWebTarget.buildResponseRetyer();
-		try {
-			return retryer.call(responseCallable);
-		} catch (ExecutionException | RetryException e) {
-			throw new ShopifyClientException(RETRY_FAILED_MESSAGE, e);
-		}
-	}
+//	private Response invokeResponseCallable(final Callable<Response> responseCallable) {
+//		final Retryer<Response> retryer = shopifyWebTarget.buildResponseRetyer();
+//		try {
+//			return retryer.call(responseCallable);
+//		} catch (ExecutionException | RetryException e) {
+//			throw new ShopifyClientException(RETRY_FAILED_MESSAGE, e);
+//		}
+//	}
 
 //	private Retryer<Response> buildResponseRetyer() {
 //		return RetryerBuilder.<Response>newBuilder().retryIfResult(ShopifySdk::shouldRetryResponse).retryIfException()
