@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.*;
+import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.structs.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -94,7 +95,13 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 	}
 
 	public static interface PublishedStep {
-		public BuildStep withPublished(final boolean published);
+		public StatusStep withPublished(final boolean published);
+	}
+
+	public static interface StatusStep {
+		public BuildStep withStatus(final ProductStatus status);
+
+		public BuildStep withSameStatus();
 	}
 
 	public static interface BuildStep {
@@ -134,7 +141,7 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 
 	private static class Steps implements CurrentShopifyProductStep, TitleStep, MetafieldsGlobalTitleTagStep,
 			MetafieldsGlobalDescriptionTagStep, ProductTypeStep, BodyHtmlStep, VendorStep, TagsStep,
-			SortedOptionNamesStep, ImageSourcesStep, VariantUpdateRequestsStep, PublishedStep, BuildStep {
+			SortedOptionNamesStep, ImageSourcesStep, VariantUpdateRequestsStep, PublishedStep, StatusStep, BuildStep {
 
 		private ShopifyProduct shopifyProduct;
 		private Map<Integer, Integer> variantPositionToImagePosition = new HashMap<>();
@@ -319,7 +326,7 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 		}
 
 		@Override
-		public BuildStep withPublished(boolean published) {
+		public StatusStep withPublished(boolean published) {
 			if (shopifyProduct.isPublished() != published) {
 				final String publishedAt = published ? DateTime.now(DateTimeZone.UTC).toString() : null;
 				shopifyProduct.setPublishedAt(publishedAt);
@@ -330,8 +337,19 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 		}
 
 		@Override
+		public BuildStep withStatus(ProductStatus status) {
+			shopifyProduct.setStatus(status.toString());
+			return this;
+		}
+
+		@Override
 		public TitleStep withCurrentShopifyProduct(final ShopifyProduct shopifyProduct) {
 			this.shopifyProduct = shopifyProduct;
+			return this;
+		}
+
+		@Override
+		public BuildStep withSameStatus() {
 			return this;
 		}
 

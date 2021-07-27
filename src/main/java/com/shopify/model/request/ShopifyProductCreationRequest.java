@@ -10,6 +10,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopify.model.*;
+import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.structs.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -65,7 +66,11 @@ public class ShopifyProductCreationRequest implements ShopifyProductRequest {
 	}
 
 	public static interface PublishedStep {
-		public BuildStep withPublished(final boolean published);
+		public StatusStep withPublished(final boolean published);
+	}
+
+	public static interface StatusStep {
+		public BuildStep withStatus(final ProductStatus status);
 	}
 
 	public static interface BuildStep {
@@ -104,7 +109,7 @@ public class ShopifyProductCreationRequest implements ShopifyProductRequest {
 
 	private static class Steps implements TitleStep, MetafieldsGlobalTitleTagStep, MetafieldsGlobalDescriptionTagStep,
 			ProductTypeStep, BodyHtmlStep, VendorStep, TagsStep, SortedOptionNamesStep, ImageSourcesStep,
-			VariantCreationRequestsStep, PublishedStep, BuildStep {
+			VariantCreationRequestsStep, PublishedStep, StatusStep, BuildStep {
 
 		private final ShopifyProduct shopifyProduct = new ShopifyProduct();
 		private final Map<Integer, Integer> variantPositionToImagePosition = new HashMap<>();
@@ -218,11 +223,16 @@ public class ShopifyProductCreationRequest implements ShopifyProductRequest {
 		}
 
 		@Override
-		public BuildStep withPublished(final boolean published) {
+		public StatusStep withPublished(final boolean published) {
 			final String publishedAt = published ? DateTime.now(DateTimeZone.UTC).toString() : null;
 			shopifyProduct.setPublishedAt(publishedAt);
 			return this;
 		}
 
+		@Override
+		public BuildStep withStatus(ProductStatus status) {
+			shopifyProduct.setStatus(status.toString());
+			return this;
+		}
 	}
 }
