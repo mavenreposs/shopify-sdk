@@ -44,34 +44,64 @@ public class ShopifyProductCreationRequestTest {
 		final String firstVariantSecondOptionValue = "Lemon";
 		final String firstVariantThirdOptionValue = "24 ea";
 		final ShopifyVariantCreationRequest firstVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(firstVariantFirstOptionValue).withSecondOption(firstVariantSecondOptionValue)
-				.withThirdOption(firstVariantThirdOptionValue).withImageSource(SOME_FIRST_IMAGE_SOURCE)
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(firstVariantFirstOptionValue)
+				.withSecondOption(firstVariantSecondOptionValue)
+				.withThirdOption(firstVariantThirdOptionValue)
+				.withImageSource(SOME_FIRST_IMAGE_SOURCE)
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String secondVariantFirstOptionValue = "Green";
 		final String secondVariantSecondOptionValue = "Strawberry";
 		final String secondVariantThirdOptionValue = "11-t5";
 		final ShopifyVariantCreationRequest secondVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(secondVariantFirstOptionValue).withSecondOption(secondVariantSecondOptionValue)
-				.withThirdOption(secondVariantThirdOptionValue).noImageSource().withDefaultInventoryManagement()
-				.withDefaultInventoryPolicy().withDefaultFulfillmentService().withRequiresShippingDefault()
-				.withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(secondVariantFirstOptionValue)
+				.withSecondOption(secondVariantSecondOptionValue)
+				.withThirdOption(secondVariantThirdOptionValue)
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String thirdVariantFirstOptionValue = "Pink";
 		final String thirdVariantSecondOptionValue = "Watermelon";
 		final String thirdVariantThirdOptionValue = "40 count";
 		final ShopifyVariantCreationRequest thirdVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(thirdVariantFirstOptionValue).withSecondOption(thirdVariantSecondOptionValue)
-				.withThirdOption(thirdVariantThirdOptionValue).withImageSource("imageNotFound444")
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(thirdVariantFirstOptionValue)
+				.withSecondOption(thirdVariantSecondOptionValue)
+				.withThirdOption(thirdVariantThirdOptionValue)
+				.withImageSource("imageNotFound444")
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyProductCreationRequest actualShopifyProductCreationRequest = ShopifyProductCreationRequest
 				.newBuilder()
@@ -145,34 +175,64 @@ public class ShopifyProductCreationRequestTest {
 		final String firstVariantSecondOptionValue = "Lemon";
 		final String firstVariantThirdOptionValue = "24 ea";
 		final ShopifyVariantCreationRequest firstVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(firstVariantFirstOptionValue).withSecondOption(firstVariantSecondOptionValue)
-				.withThirdOption(firstVariantThirdOptionValue).withImageSource(SOME_FIRST_IMAGE_SOURCE)
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(firstVariantFirstOptionValue)
+				.withSecondOption(firstVariantSecondOptionValue)
+				.withThirdOption(firstVariantThirdOptionValue)
+				.withImageSource(SOME_FIRST_IMAGE_SOURCE)
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String secondVariantFirstOptionValue = "Green";
 		final String secondVariantSecondOptionValue = "Strawberry";
 		final String secondVariantThirdOptionValue = "11-t5";
 		final ShopifyVariantCreationRequest secondVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(secondVariantFirstOptionValue).withSecondOption(secondVariantSecondOptionValue)
-				.withThirdOption(secondVariantThirdOptionValue).noImageSource().withDefaultInventoryManagement()
-				.withDefaultInventoryPolicy().withDefaultFulfillmentService().withRequiresShippingDefault()
-				.withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(secondVariantFirstOptionValue)
+				.withSecondOption(secondVariantSecondOptionValue)
+				.withThirdOption(secondVariantThirdOptionValue)
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String thirdVariantFirstOptionValue = "Pink";
 		final String thirdVariantSecondOptionValue = "Watermelon";
 		final String thirdVariantThirdOptionValue = "40 count";
 		final ShopifyVariantCreationRequest thirdVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(thirdVariantFirstOptionValue).withSecondOption(thirdVariantSecondOptionValue)
-				.withThirdOption(thirdVariantThirdOptionValue).withImageSource("imageNotFound444")
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(thirdVariantFirstOptionValue)
+				.withSecondOption(thirdVariantSecondOptionValue)
+				.withThirdOption(thirdVariantThirdOptionValue)
+				.withImageSource("imageNotFound444")
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyProductCreationRequest actualShopifyProductCreationRequest = ShopifyProductCreationRequest
 				.newBuilder()

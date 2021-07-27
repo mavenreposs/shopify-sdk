@@ -19,8 +19,13 @@ public class ShopifyVariantMetafieldCreationRequestTest {
 	@Test
 	public void givenSomeValuesWhenCreatingShopifyVariantMetafieldCreationRequestThenReturnValues() {
 		final ShopifyVariantMetafieldCreationRequest actualShopifyVariantMetafieldCreationRequest = ShopifyVariantMetafieldCreationRequest
-				.newBuilder().withVariantId(SOME_VARIANT_ID).withNamespace(SOME_NAMESPACE).withKey(SOME_KEY)
-				.withValue(SOME_VALUE).withValueType(SOME_VALUE_TYPE).build();
+				.newBuilder()
+				.withVariantId(SOME_VARIANT_ID)
+				.withNamespace(SOME_NAMESPACE)
+				.withKey(SOME_KEY)
+				.withValue(SOME_VALUE)
+				.withValueType(SOME_VALUE_TYPE)
+				.build();
 
 		assertEquals(SOME_VARIANT_ID, actualShopifyVariantMetafieldCreationRequest.getVariantId());
 		assertEquals(SOME_NAMESPACE, actualShopifyVariantMetafieldCreationRequest.getRequest().getNamespace());

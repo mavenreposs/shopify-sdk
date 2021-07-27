@@ -46,11 +46,24 @@ public class ShopifyVariantUpdateRequestTest {
 		final ShopifyVariant currentShopifyVariant = buildCurrentShopifyVariant();
 
 		final ShopifyVariantUpdateRequest actualShopifyVariantUpdateRequest = ShopifyVariantUpdateRequest.newBuilder()
-				.withCurrentShopifyVariant(currentShopifyVariant).withSamePrice().withSameCompareAtPrice().withSameSku()
-				.withSameBarcode().withSameWeight().withAvailable(SOME_CURRENT_QUANTITY).withSameFirstOption()
-				.withSameSecondOption().withSameThirdOption().withSameImage().withSameInventoryManagement()
-				.withSameInventoryPolicy().withSameFulfillmentService().withSameRequiresShipping().withSameTaxable()
-				.withSameInventoryItemId().build();
+				.withCurrentShopifyVariant(currentShopifyVariant)
+				.withSamePrice()
+				.withSameCompareAtPrice()
+				.withSameSku()
+				.withSameBarcode()
+				.withSameWeight()
+				.withAvailable(SOME_CURRENT_QUANTITY)
+				.withSameFirstOption()
+				.withSameSecondOption()
+				.withSameThirdOption()
+				.withSameImage()
+				.withSameInventoryManagement()
+				.withSameInventoryPolicy()
+				.withSameFulfillmentService()
+				.withSameRequiresShipping()
+				.withSameTaxable()
+				.withSameInventoryItemId()
+				.build();
 
 		assertNull(actualShopifyVariantUpdateRequest.getImageSource());
 		assertFalse(actualShopifyVariantUpdateRequest.hasImageSource());
@@ -79,14 +92,24 @@ public class ShopifyVariantUpdateRequestTest {
 		final ShopifyVariant currentShopifyVariant = buildCurrentShopifyVariant();
 
 		final ShopifyVariantUpdateRequest actualShopifyVariantUpdateRequest = ShopifyVariantUpdateRequest.newBuilder()
-				.withCurrentShopifyVariant(currentShopifyVariant).withPrice(SOME_NEW_PRICE_AMOUNT)
-				.withCompareAtPrice(SOME_NEW_COMPARE_AT_PRICE_AMOUNT).withSku(SOME_NEW_SKU)
-				.withBarcode(SOME_NEW_BARCODE).withWeight(SOME_NEW_GRAMS_AMOUNT).withAvailable(SOME_NEW_QUANTITY)
-				.withFirstOption(SOME_NEW_FIRST_OPTION).withSecondOption(SOME_NEW_SECOND_OPTION)
-				.withThirdOption(SOME_NEW_THIRD_OPTION).withImageSource(SOME_NEW_IMAGE_SOURCE)
-				.withInventoryManagement(SOME_NEW_INVENTORY_MANAGEMENT).withInventoryPolicy(SOME_NEW_INVENTORY_POLICY)
-				.withFulfillmentService(SOME_NEW_FULFILLMENT_SERVICE).withRequiresShipping(false).withTaxable(false)
-				.withSameInventoryItemId().build();
+				.withCurrentShopifyVariant(currentShopifyVariant)
+				.withPrice(SOME_NEW_PRICE_AMOUNT)
+				.withCompareAtPrice(SOME_NEW_COMPARE_AT_PRICE_AMOUNT)
+				.withSku(SOME_NEW_SKU)
+				.withBarcode(SOME_NEW_BARCODE)
+				.withWeight(SOME_NEW_GRAMS_AMOUNT)
+				.withAvailable(SOME_NEW_QUANTITY)
+				.withFirstOption(SOME_NEW_FIRST_OPTION)
+				.withSecondOption(SOME_NEW_SECOND_OPTION)
+				.withThirdOption(SOME_NEW_THIRD_OPTION)
+				.withImageSource(SOME_NEW_IMAGE_SOURCE)
+				.withInventoryManagement(SOME_NEW_INVENTORY_MANAGEMENT)
+				.withInventoryPolicy(SOME_NEW_INVENTORY_POLICY)
+				.withFulfillmentService(SOME_NEW_FULFILLMENT_SERVICE)
+				.withRequiresShipping(false)
+				.withTaxable(false)
+				.withSameInventoryItemId()
+				.build();
 
 		assertEquals(SOME_NEW_IMAGE_SOURCE, actualShopifyVariantUpdateRequest.getImageSource());
 		assertTrue(actualShopifyVariantUpdateRequest.hasImageSource());
@@ -117,13 +140,24 @@ public class ShopifyVariantUpdateRequestTest {
 		currentShopifyVariant.setCompareAtPrice(null);
 
 		final ShopifyVariantUpdateRequest actualShopifyVariantUpdateRequest = ShopifyVariantUpdateRequest.newBuilder()
-				.withCurrentShopifyVariant(currentShopifyVariant).withPrice(SOME_NEW_PRICE_AMOUNT)
-				.withCompareAtPrice(SOME_NEW_COMPARE_AT_PRICE_AMOUNT).withSku(SOME_NEW_SKU)
-				.withBarcode(SOME_NEW_BARCODE).withWeight(SOME_NEW_GRAMS_AMOUNT).withAvailable(SOME_NEW_QUANTITY)
-				.noFirstOption().noSecondOption().noThirdOption().noImage()
-				.withInventoryManagement(SOME_NEW_INVENTORY_MANAGEMENT).withInventoryPolicy(SOME_NEW_INVENTORY_POLICY)
-				.withFulfillmentService(SOME_NEW_FULFILLMENT_SERVICE).withRequiresShipping(false).withTaxable(false)
-				.withSameInventoryItemId().build();
+				.withCurrentShopifyVariant(currentShopifyVariant)
+				.withPrice(SOME_NEW_PRICE_AMOUNT)
+				.withCompareAtPrice(SOME_NEW_COMPARE_AT_PRICE_AMOUNT)
+				.withSku(SOME_NEW_SKU)
+				.withBarcode(SOME_NEW_BARCODE)
+				.withWeight(SOME_NEW_GRAMS_AMOUNT)
+				.withAvailable(SOME_NEW_QUANTITY)
+				.noFirstOption()
+				.noSecondOption()
+				.noThirdOption()
+				.noImage()
+				.withInventoryManagement(SOME_NEW_INVENTORY_MANAGEMENT)
+				.withInventoryPolicy(SOME_NEW_INVENTORY_POLICY)
+				.withFulfillmentService(SOME_NEW_FULFILLMENT_SERVICE)
+				.withRequiresShipping(false)
+				.withTaxable(false)
+				.withSameInventoryItemId()
+				.build();
 
 		assertNull(actualShopifyVariantUpdateRequest.getImageSource());
 		assertFalse(actualShopifyVariantUpdateRequest.hasImageSource());
@@ -149,12 +183,22 @@ public class ShopifyVariantUpdateRequestTest {
 
 	private ShopifyVariant buildCurrentShopifyVariant() {
 		final ShopifyVariant currentShopifyVariant = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(SOME_CURRENT_PRICE_AMOUNT).withCompareAtPrice(SOME_CURRENT_COMPARE_AT_PRICE_AMOUNT)
-				.withSku(SOME_CURRENT_SKU).withBarcode(SOME_CURRENT_BARCODE).withWeight(SOME_CURRENT_GRAMS_AMOUNT)
-				.withAvailable(SOME_CURRENT_QUANTITY).withFirstOption(SOME_CURRENT_FIRST_OPTION)
-				.withSecondOption(SOME_CURRENT_SECOND_OPTION).withThirdOption(SOME_CURRENT_THIRD_OPTION)
-				.withImageSource(SOME_NEW_IMAGE_SOURCE).withDefaultInventoryManagement().withDefaultInventoryPolicy()
-				.withDefaultFulfillmentService().withRequiresShippingDefault().withTaxableDefault().build()
+				.withPrice(SOME_CURRENT_PRICE_AMOUNT)
+				.withCompareAtPrice(SOME_CURRENT_COMPARE_AT_PRICE_AMOUNT)
+				.withSku(SOME_CURRENT_SKU)
+				.withBarcode(SOME_CURRENT_BARCODE)
+				.withWeight(SOME_CURRENT_GRAMS_AMOUNT)
+				.withAvailable(SOME_CURRENT_QUANTITY)
+				.withFirstOption(SOME_CURRENT_FIRST_OPTION)
+				.withSecondOption(SOME_CURRENT_SECOND_OPTION)
+				.withThirdOption(SOME_CURRENT_THIRD_OPTION)
+				.withImageSource(SOME_NEW_IMAGE_SOURCE)
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build()
 				.getRequest();
 		currentShopifyVariant.setImageId(SOME_CURRENT_IMAGE_ID);
 		return currentShopifyVariant;

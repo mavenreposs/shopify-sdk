@@ -61,34 +61,64 @@ public class ShopifyProductUpdateRequestTest {
 		final String firstVariantSecondOptionValue = "Lemon";
 		final String firstVariantThirdOptionValue = "24 ea";
 		final ShopifyVariantCreationRequest firstVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(firstVariantFirstOptionValue).withSecondOption(firstVariantSecondOptionValue)
-				.withThirdOption(firstVariantThirdOptionValue).noImageSource().withDefaultInventoryManagement()
-				.withDefaultInventoryPolicy().withDefaultFulfillmentService().withRequiresShippingDefault()
-				.withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(firstVariantFirstOptionValue)
+				.withSecondOption(firstVariantSecondOptionValue)
+				.withThirdOption(firstVariantThirdOptionValue)
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String secondVariantFirstOptionValue = "Pink";
 		final String secondVariantSecondOptionValue = "Strawberry";
 		final String secondVariantThirdOptionValue = "11-t5";
 		final ShopifyVariantCreationRequest secondVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(secondVariantFirstOptionValue).withSecondOption(secondVariantSecondOptionValue)
-				.withThirdOption(secondVariantThirdOptionValue).noImageSource().withDefaultInventoryManagement()
-				.withDefaultInventoryPolicy().withDefaultFulfillmentService().withRequiresShippingDefault()
-				.withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(secondVariantFirstOptionValue)
+				.withSecondOption(secondVariantSecondOptionValue)
+				.withThirdOption(secondVariantThirdOptionValue)
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final String thirdVariantFirstOptionValue = "Red";
 		final String thirdVariantSecondOptionValue = "Watermelon";
 		final String thirdVariantThirdOptionValue = "40 count";
 		final ShopifyVariantCreationRequest thirdVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption(thirdVariantFirstOptionValue).withSecondOption(thirdVariantSecondOptionValue)
-				.withThirdOption(thirdVariantThirdOptionValue).noImageSource().withDefaultInventoryManagement()
-				.withDefaultInventoryPolicy().withDefaultFulfillmentService().withRequiresShippingDefault()
-				.withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption(thirdVariantFirstOptionValue)
+				.withSecondOption(thirdVariantSecondOptionValue)
+				.withThirdOption(thirdVariantThirdOptionValue)
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyProduct currentShopifyProduct = buildCurrentShopifyProduct(firstVariantCreationRequest,
 				secondVariantCreationRequest, thirdVariantCreationRequest);
@@ -157,42 +187,99 @@ public class ShopifyProductUpdateRequestTest {
 	@Test
 	public void givenAllNewValuesSetAndUnpublishedWhenBuildingShopifyProductUpdateRequestThenExpectCorrectValues() {
 		final ShopifyVariantCreationRequest firstVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption("Red").withSecondOption("Lemon").withThirdOption("24 ea").noImageSource()
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption("Red")
+				.withSecondOption("Lemon")
+				.withThirdOption("24 ea")
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyVariantCreationRequest secondVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption("Green").withSecondOption("Strawberry").withThirdOption("11-t5").noImageSource()
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption("Green")
+				.withSecondOption("Strawberry")
+				.withThirdOption("11-t5")
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyVariantCreationRequest thirdVariantCreationRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption("Pink").withSecondOption("Watermelon").withThirdOption("40 count").noImageSource()
-				.withDefaultInventoryManagement().withDefaultInventoryPolicy().withDefaultFulfillmentService()
-				.withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption("Pink")
+				.withSecondOption("Watermelon")
+				.withThirdOption("40 count")
+				.noImageSource()
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyProduct currentShopifyProduct = buildCurrentShopifyProduct(firstVariantCreationRequest,
 				secondVariantCreationRequest, thirdVariantCreationRequest);
 
 		final ShopifyVariantRequest firstNewShopifyVariantRequest = ShopifyVariantCreationRequest.newBuilder()
-				.withPrice(BigDecimal.TEN).withCompareAtPrice(BigDecimal.TEN).withSku(SOME_SKU)
-				.withBarcode(SOME_BARCODE).withWeight(BigDecimal.ZERO).withAvailable(SOME_QUANTITY)
-				.withFirstOption("Yellow").withSecondOption("Peach").withThirdOption("12 ea")
-				.withImageSource(SOME_FIRST_IMAGE_SOURCE).withDefaultInventoryManagement().withDefaultInventoryPolicy()
-				.withDefaultFulfillmentService().withRequiresShippingDefault().withTaxableDefault().build();
+				.withPrice(BigDecimal.TEN)
+				.withCompareAtPrice(BigDecimal.TEN)
+				.withSku(SOME_SKU)
+				.withBarcode(SOME_BARCODE)
+				.withWeight(BigDecimal.ZERO)
+				.withAvailable(SOME_QUANTITY)
+				.withFirstOption("Yellow")
+				.withSecondOption("Peach")
+				.withThirdOption("12 ea")
+				.withImageSource(SOME_FIRST_IMAGE_SOURCE)
+				.withDefaultInventoryManagement()
+				.withDefaultInventoryPolicy()
+				.withDefaultFulfillmentService()
+				.withRequiresShippingDefault()
+				.withTaxableDefault()
+				.build();
 
 		final ShopifyVariantRequest secondNewShopifyVariantRequest = ShopifyVariantUpdateRequest.newBuilder()
-				.withCurrentShopifyVariant(secondVariantCreationRequest.getRequest()).withSamePrice()
-				.withSameCompareAtPrice().withSameSku().withSameBarcode().withSameWeight().withAvailable(4L)
-				.withSameFirstOption().withSameSecondOption().withSameThirdOption().withImageSource("does not exist")
-				.withSameInventoryManagement().withSameInventoryPolicy().withSameFulfillmentService()
-				.withSameRequiresShipping().withSameTaxable().withSameInventoryItemId().build();
+				.withCurrentShopifyVariant(secondVariantCreationRequest.getRequest())
+				.withSamePrice()
+				.withSameCompareAtPrice()
+				.withSameSku()
+				.withSameBarcode()
+				.withSameWeight()
+				.withAvailable(4L)
+				.withSameFirstOption()
+				.withSameSecondOption()
+				.withSameThirdOption()
+				.withImageSource("does not exist")
+				.withSameInventoryManagement()
+				.withSameInventoryPolicy()
+				.withSameFulfillmentService()
+				.withSameRequiresShipping()
+				.withSameTaxable()
+				.withSameInventoryItemId()
+				.build();
 
 		final List<ShopifyVariantRequest> variantRequests = Arrays.asList(firstNewShopifyVariantRequest,
 				secondNewShopifyVariantRequest);

@@ -26,9 +26,14 @@ public class ShopifyFulfillmentCreationRequestTest {
 	@Test
 	public void givenSomeOrderIdAndSomeTrackingNumberAndSomeTrackingCompanyAndSomeLineItemsWhenCreatingFulfillmentCreationRequestThenReturnCorrectRequest() {
 		final ShopifyFulfillmentCreationRequest shopifyFulfillmentCreationRequest = ShopifyFulfillmentCreationRequest
-				.newBuilder().withOrderId(SOME_ORDER_ID).withTrackingCompany(SOME_TRACKING_COMPANY)
-				.withTrackingNumber(SOME_TRACKING_NUMBER).withNotifyCustomer(SOME_NOTIFY_CUSTOMER)
-				.withLineItems(SOME_LINE_ITEMS).withLocationId(SOME_LOCATION_ID).withTrackingUrls(SOME_TRACKING_URLS)
+				.newBuilder()
+				.withOrderId(SOME_ORDER_ID)
+				.withTrackingCompany(SOME_TRACKING_COMPANY)
+				.withTrackingNumber(SOME_TRACKING_NUMBER)
+				.withNotifyCustomer(SOME_NOTIFY_CUSTOMER)
+				.withLineItems(SOME_LINE_ITEMS)
+				.withLocationId(SOME_LOCATION_ID)
+				.withTrackingUrls(SOME_TRACKING_URLS)
 				.build();
 
 		final ShopifyFulfillment actualRequest = shopifyFulfillmentCreationRequest.getRequest();

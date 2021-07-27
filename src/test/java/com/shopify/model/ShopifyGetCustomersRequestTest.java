@@ -17,8 +17,13 @@ public class ShopifyGetCustomersRequestTest {
 		final List<String> ids = new ArrayList<>();
 		ids.add("some-id");
 		final ShopifyGetCustomersRequest shopifyGetCustomersRequest = ShopifyGetCustomersRequest.newBuilder()
-				.withPageInfo("some-page-info").withLimit(50).withSinceId("since-id").withIds(ids)
-				.withCreatedAtMin(minimumCreationDate).withCreatedAtMax(maximumCreationDate).build();
+				.withPageInfo("some-page-info")
+				.withLimit(50)
+				.withSinceId("since-id")
+				.withIds(ids)
+				.withCreatedAtMin(minimumCreationDate)
+				.withCreatedAtMax(maximumCreationDate)
+				.build();
 		assertEquals("some-page-info", shopifyGetCustomersRequest.getPageInfo());
 		assertEquals(50, shopifyGetCustomersRequest.getLimit());
 		assertEquals("since-id", shopifyGetCustomersRequest.getSinceId());

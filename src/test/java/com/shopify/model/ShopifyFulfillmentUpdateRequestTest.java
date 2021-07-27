@@ -32,10 +32,15 @@ public class ShopifyFulfillmentUpdateRequestTest {
 		currentShopifyFulfillment.setLineItems(Arrays.asList(new ShopifyLineItem()));
 
 		final ShopifyFulfillmentUpdateRequest shopifyFulfillmentUpdateRequest = ShopifyFulfillmentUpdateRequest
-				.newBuilder().withCurrentShopifyFulfillment(currentShopifyFulfillment)
-				.withTrackingCompany(SOME_TRACKING_COMPANY).withTrackingNumber(SOME_TRACKING_NUMBER)
-				.withNotifyCustomer(SOME_NOTIFY_CUSTOMER).withLineItems(SOME_LINE_ITEMS)
-				.withLocationId(SOME_LOCATION_ID).withTrackingUrls(SOME_TRACKING_URLS).build();
+				.newBuilder()
+				.withCurrentShopifyFulfillment(currentShopifyFulfillment)
+				.withTrackingCompany(SOME_TRACKING_COMPANY)
+				.withTrackingNumber(SOME_TRACKING_NUMBER)
+				.withNotifyCustomer(SOME_NOTIFY_CUSTOMER)
+				.withLineItems(SOME_LINE_ITEMS)
+				.withLocationId(SOME_LOCATION_ID)
+				.withTrackingUrls(SOME_TRACKING_URLS)
+				.build();
 
 		final ShopifyFulfillment actualRequest = shopifyFulfillmentUpdateRequest.getRequest();
 

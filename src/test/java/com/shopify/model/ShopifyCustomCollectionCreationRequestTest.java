@@ -17,7 +17,11 @@ public class ShopifyCustomCollectionCreationRequestTest {
 	@Test
 	public void givenSomeValuesWhenBuildingProductCreationRequestThenExpectAllValuesToBeCorrect() {
 		final ShopifyCustomCollectionCreationRequest customCollectionCreationRequest = ShopifyCustomCollectionCreationRequest
-				.newBuilder().withTitle(SOME_TITLE).withHandle(SOME_HANDLE).isPublished(true).build();
+				.newBuilder()
+				.withTitle(SOME_TITLE)
+				.withHandle(SOME_HANDLE)
+				.isPublished(true)
+				.build();
 
 		final ShopifyCustomCollection customCollection = customCollectionCreationRequest.getRequest();
 		assertEquals(SOME_TITLE, customCollection.getTitle());
@@ -28,7 +32,9 @@ public class ShopifyCustomCollectionCreationRequestTest {
 	@Test
 	public void givenMinimalValuesWhenBuildingShopifyCustomCollectionCreationRequestThenExpectCorrectValues() {
 		final ShopifyCustomCollectionCreationRequest customCollectionCreationRequest = ShopifyCustomCollectionCreationRequest
-				.newBuilder().withTitle(SOME_TITLE).build();
+				.newBuilder()
+				.withTitle(SOME_TITLE)
+				.build();
 
 		final ShopifyCustomCollection customCollection = customCollectionCreationRequest.getRequest();
 		assertEquals(SOME_TITLE, customCollection.getTitle());

@@ -19,8 +19,13 @@ public class ShopifyProductMetafieldCreationRequestTest {
 	@Test
 	public void givenSomeValuesWhenCreatingShopifyProductMetafieldCreationRequestThenReturnValues() {
 		final ShopifyProductMetafieldCreationRequest actualShopifyProductMetafieldCreationRequest = ShopifyProductMetafieldCreationRequest
-				.newBuilder().withProductId(SOME_PRODUCT_ID).withNamespace(SOME_NAMESPACE).withKey(SOME_KEY)
-				.withValue(SOME_VALUE).withValueType(SOME_VALUE_TYPE).build();
+				.newBuilder()
+				.withProductId(SOME_PRODUCT_ID)
+				.withNamespace(SOME_NAMESPACE)
+				.withKey(SOME_KEY)
+				.withValue(SOME_VALUE)
+				.withValueType(SOME_VALUE_TYPE)
+				.build();
 
 		assertEquals(SOME_PRODUCT_ID, actualShopifyProductMetafieldCreationRequest.getProductId());
 		assertEquals(SOME_NAMESPACE, actualShopifyProductMetafieldCreationRequest.getRequest().getNamespace());

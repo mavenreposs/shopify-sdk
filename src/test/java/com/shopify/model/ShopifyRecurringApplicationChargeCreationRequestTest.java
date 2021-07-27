@@ -22,9 +22,15 @@ public class ShopifyRecurringApplicationChargeCreationRequestTest {
 	@Test
 	public void givenSomeValuesWhenCreatingRequestThenReturnExpectedRequestValues() {
 		final ShopifyRecurringApplicationChargeCreationRequest actualShopifyRecurringApplicationChargeCreationRequest = ShopifyRecurringApplicationChargeCreationRequest
-				.newBuilder().withName(SOME_NAME).withTerms(SOME_TERMS).withPrice(SOME_PRICE)
-				.withCappedAmount(SOME_CAPPED_AMOUNT).withReturnUrl(SOME_RETURN_URL).withTrialDays(SOME_TRIAL_DAYS)
-				.withTest(true).build();
+				.newBuilder()
+				.withName(SOME_NAME)
+				.withTerms(SOME_TERMS)
+				.withPrice(SOME_PRICE)
+				.withCappedAmount(SOME_CAPPED_AMOUNT)
+				.withReturnUrl(SOME_RETURN_URL)
+				.withTrialDays(SOME_TRIAL_DAYS)
+				.withTest(true)
+				.build();
 		final ShopifyRecurringApplicationCharge actualShopifyRecurringApplicationCharge = actualShopifyRecurringApplicationChargeCreationRequest
 				.getRequest();
 		assertEquals(SOME_NAME, actualShopifyRecurringApplicationCharge.getName());
@@ -39,9 +45,15 @@ public class ShopifyRecurringApplicationChargeCreationRequestTest {
 	@Test
 	public void givenSomeValuesAndNotTestWhenCreatingRequestThenReturnExpectedRequestValues() {
 		final ShopifyRecurringApplicationChargeCreationRequest actualShopifyRecurringApplicationChargeCreationRequest = ShopifyRecurringApplicationChargeCreationRequest
-				.newBuilder().withName(SOME_NAME).withTerms(SOME_TERMS).withPrice(SOME_PRICE)
-				.withCappedAmount(SOME_CAPPED_AMOUNT).withReturnUrl(SOME_RETURN_URL).withTrialDays(SOME_TRIAL_DAYS)
-				.withTest(false).build();
+				.newBuilder()
+				.withName(SOME_NAME)
+				.withTerms(SOME_TERMS)
+				.withPrice(SOME_PRICE)
+				.withCappedAmount(SOME_CAPPED_AMOUNT)
+				.withReturnUrl(SOME_RETURN_URL)
+				.withTrialDays(SOME_TRIAL_DAYS)
+				.withTest(false)
+				.build();
 		final ShopifyRecurringApplicationCharge actualShopifyRecurringApplicationCharge = actualShopifyRecurringApplicationChargeCreationRequest
 				.getRequest();
 		assertEquals(SOME_NAME, actualShopifyRecurringApplicationCharge.getName());

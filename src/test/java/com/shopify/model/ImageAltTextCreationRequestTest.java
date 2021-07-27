@@ -14,7 +14,8 @@ public class ImageAltTextCreationRequestTest {
 	public void givenSomeImageAltTextWhenBuildingMetafieldsThenExpectCorrectMetafields() {
 		final String expectedImageAltText = "banana";
 		final List<Metafield> actualMetafields = ImageAltTextCreationRequest.newBuilder()
-				.withImageAltText(expectedImageAltText).build();
+				.withImageAltText(expectedImageAltText)
+				.build();
 		assertEquals(1, actualMetafields.size());
 		final Metafield actualFirstMetafield = actualMetafields.get(0);
 		assertEquals(ImageAltTextCreationRequest.KEY, actualFirstMetafield.getKey());
