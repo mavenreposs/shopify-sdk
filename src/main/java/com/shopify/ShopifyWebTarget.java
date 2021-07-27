@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class ShopifyWebTarget {
 
-    private final Steps steps;
+    private final ShopifySdk.Steps steps;
 
     private String accessToken;
 
@@ -38,12 +38,12 @@ public class ShopifyWebTarget {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ShopifyWebTarget.class);
 
-    public ShopifyWebTarget(final Steps steps) {
+    public ShopifyWebTarget(final ShopifySdk.Steps steps) {
         this.steps = steps;
         this.accessToken = steps.getAccessToken();
     }
 
-    public Steps getSteps() {
+    public ShopifySdk.Steps getSteps() {
         return steps;
     }
 
