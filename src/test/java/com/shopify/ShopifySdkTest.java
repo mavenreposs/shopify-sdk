@@ -135,8 +135,10 @@ public class ShopifySdkTest {
 	public void setUp() throws JsonProcessingException {
 		final String subdomainUrl = driver.getBaseUrl();
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.SHOP)
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.SHOP)
 				.toString();
 
 		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
@@ -154,31 +156,45 @@ public class ShopifySdkTest {
 						.withStatus(Status.OK.getStatusCode()))
 				.anyTimes();
 
-		shopifySdk = ShopifySdk.newBuilder().withApiUrl(subdomainUrl).withAccessToken(accessToken)
+		shopifySdk = ShopifySdk.newBuilder()
+				.withApiUrl(subdomainUrl)
+				.withAccessToken(accessToken)
 				.withMinimumRequestRetryRandomDelay(200, TimeUnit.MILLISECONDS)
 				.withMaximumRequestRetryTimeout(225, TimeUnit.MILLISECONDS)
-				.withConnectionTimeout(500, TimeUnit.MILLISECONDS).withApiVersion(SOME_API_VERSION).build();
+				.withConnectionTimeout(500, TimeUnit.MILLISECONDS)
+				.withApiVersion(SOME_API_VERSION)
+				.build();
 
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenMinimumDelayIsLargerThanMaximumDelayWhenCreatingShopifySdkThenExpectIllegalArgumentException() {
-		ShopifySdk.newBuilder().withApiUrl("").withAccessToken(accessToken)
+		ShopifySdk.newBuilder()
+				.withApiUrl("")
+				.withAccessToken(accessToken)
 				.withMinimumRequestRetryRandomDelay(10, TimeUnit.DAYS)
-				.withMaximumRequestRetryRandomDelay(5, TimeUnit.SECONDS).withConnectionTimeout(2, TimeUnit.MINUTES)
-				.withReadTimeout(3, TimeUnit.MINUTES).build();
+				.withMaximumRequestRetryRandomDelay(5, TimeUnit.SECONDS)
+				.withConnectionTimeout(2, TimeUnit.MINUTES)
+				.withReadTimeout(3, TimeUnit.MINUTES)
+				.build();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenInvalidMiniumRetryDelayWhenCreatingShopifySdkThenExpectIllegalArgumentException() {
-		ShopifySdk.newBuilder().withApiUrl("").withAccessToken(accessToken)
-				.withMinimumRequestRetryRandomDelay(1, TimeUnit.MICROSECONDS).build();
+		ShopifySdk.newBuilder()
+				.withApiUrl("")
+				.withAccessToken(accessToken)
+				.withMinimumRequestRetryRandomDelay(1, TimeUnit.MICROSECONDS)
+				.build();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void givenInvalidMaximumRetryDelayWhenCreatingShopifySdkThenExpectIllegalArgumentException() {
-		ShopifySdk.newBuilder().withApiUrl("").withAccessToken(accessToken)
-				.withMaximumRequestRetryRandomDelay(1, TimeUnit.MICROSECONDS).build();
+		ShopifySdk.newBuilder()
+				.withApiUrl("")
+				.withAccessToken(accessToken)
+				.withMaximumRequestRetryRandomDelay(1, TimeUnit.MICROSECONDS)
+				.build();
 	}
 
 	@Test
@@ -187,8 +203,10 @@ public class ShopifySdkTest {
 
 		final String subdomainUrl = driver.getBaseUrl();
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifyEndpoint.OAUTH)
-				.append(FORWARD_SLASH).append(ShopifyEndpoint.ACCESS_TOKEN).toString();
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.OAUTH)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ACCESS_TOKEN)
+				.toString();
 
 		final ShopifyAccessTokenRoot shopifyAccessTokenRoot = new ShopifyAccessTokenRoot();
 		shopifyAccessTokenRoot.setAccessToken("897123871827381723");
@@ -201,11 +219,16 @@ public class ShopifySdkTest {
 				giveResponse(expectedResponseBodyString, MediaType.APPLICATION_JSON)
 						.withStatus(Status.OK.getStatusCode()));
 
-		shopifySdk = ShopifySdk.newBuilder().withApiUrl(subdomainUrl).withClientId("some-client-id")
-				.withClientSecret("some-client-secret").withAuthorizationToken("3892742738482")
-				.withMaximumRequestRetryTimeout(2, TimeUnit.SECONDS).build();
+		shopifySdk = ShopifySdk.newBuilder()
+				.withApiUrl(subdomainUrl).withClientId("some-client-id")
+				.withClientSecret("some-client-secret")
+				.withAuthorizationToken("3892742738482")
+				.withMaximumRequestRetryTimeout(2, TimeUnit.SECONDS)
+				.build();
 
-		final String expectedShopPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifyEndpoint.SHOP).toString();
+		final String expectedShopPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.SHOP)
+				.toString();
 
 		final ShopifyShopRoot shopifyShop = new ShopifyShopRoot();
 
@@ -236,8 +259,10 @@ public class ShopifySdkTest {
 
 		final String subdomainUrl = driver.getBaseUrl();
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifyEndpoint.OAUTH)
-				.append(FORWARD_SLASH).append(ShopifyEndpoint.ACCESS_TOKEN).toString();
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.OAUTH)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ACCESS_TOKEN)
+				.toString();
 
 		final ShopifyAccessTokenRoot shopifyAccessTokenRoot = new ShopifyAccessTokenRoot();
 		shopifyAccessTokenRoot.setAccessToken("897123871827381723");
@@ -250,9 +275,13 @@ public class ShopifySdkTest {
 				giveResponse(expectedResponseBodyString, MediaType.APPLICATION_JSON)
 						.withStatus(Status.UNAUTHORIZED.getStatusCode()));
 
-		shopifySdk = ShopifySdk.newBuilder().withApiUrl(subdomainUrl).withClientId("some-client-id")
-				.withClientSecret("some-client-secret").withAuthorizationToken("3892742738482")
-				.withMaximumRequestRetryTimeout(2, TimeUnit.SECONDS).build();
+		shopifySdk = ShopifySdk.newBuilder()
+				.withApiUrl(subdomainUrl)
+				.withClientId("some-client-id")
+				.withClientSecret("some-client-secret")
+				.withAuthorizationToken("3892742738482")
+				.withMaximumRequestRetryTimeout(2, TimeUnit.SECONDS)
+				.build();
 
 		assertNull(shopifySdk.getAccessToken());
 		shopifySdk.getShop();
@@ -268,9 +297,12 @@ public class ShopifySdkTest {
 		lineItem.setSku("some_sku");
 		lineItem.setQuantity(5L);
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
-				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS).toString();
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS)
+				.toString();
 		final ShopifyFulfillment currentFulfillment = buildShopifyFulfillment(lineItem);
 		final ShopifyFulfillmentRoot shopifyFulfillmentRoot = new ShopifyFulfillmentRoot();
 		shopifyFulfillmentRoot.setFulfillment(currentFulfillment);
@@ -289,9 +321,14 @@ public class ShopifySdkTest {
 								.append(expectedPath).toString()));
 
 		final ShopifyFulfillmentCreationRequest request = ShopifyFulfillmentCreationRequest.newBuilder()
-				.withOrderId("1234").withTrackingCompany("USPS").withTrackingNumber("12341234").withNotifyCustomer(true)
-				.withLineItems(Arrays.asList(lineItem)).withLocationId("1")
-				.withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2")).build();
+				.withOrderId("1234")
+				.withTrackingCompany("USPS")
+				.withTrackingNumber("12341234")
+				.withNotifyCustomer(true)
+				.withLineItems(Arrays.asList(lineItem))
+				.withLocationId("1")
+				.withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2"))
+				.build();
 
 		final ShopifyFulfillment actualShopifyFulfillment = shopifySdk.createFulfillment(request);
 
@@ -308,9 +345,12 @@ public class ShopifySdkTest {
 		lineItem.setSku("some_sku");
 		lineItem.setQuantity(5L);
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
-				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS).toString();
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS)
+				.toString();
 		final ShopifyFulfillment currentFulfillment = buildShopifyFulfillment(lineItem);
 		final ShopifyFulfillmentRoot shopifyFulfillmentRoot = new ShopifyFulfillmentRoot();
 		shopifyFulfillmentRoot.setFulfillment(currentFulfillment);
@@ -326,9 +366,14 @@ public class ShopifySdkTest {
 				.anyTimes();
 
 		final ShopifyFulfillmentCreationRequest request = ShopifyFulfillmentCreationRequest.newBuilder()
-				.withOrderId("1234").withTrackingCompany("USPS").withTrackingNumber("12341234").withNotifyCustomer(true)
-				.withLineItems(Arrays.asList(lineItem)).withLocationId("1")
-				.withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2")).build();
+				.withOrderId("1234")
+				.withTrackingCompany("USPS")
+				.withTrackingNumber("12341234")
+				.withNotifyCustomer(true)
+				.withLineItems(Arrays.asList(lineItem))
+				.withLocationId("1")
+				.withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2"))
+				.build();
 
 		shopifySdk.createFulfillment(request);
 
@@ -343,9 +388,13 @@ public class ShopifySdkTest {
 		lineItem.setSku("some_sku");
 		lineItem.setQuantity(5L);
 
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
-				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS).append("/4567").toString();
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+				.append("/1234/").append(ShopifyEndpoint.FULFILLMENTS)
+				.append("/4567")
+				.toString();
 		final ShopifyFulfillment currentFulfillment = buildShopifyFulfillment(lineItem);
 		final ShopifyFulfillmentRoot shopifyFulfillmentRoot = new ShopifyFulfillmentRoot();
 		shopifyFulfillmentRoot.setFulfillment(currentFulfillment);
@@ -361,9 +410,14 @@ public class ShopifySdkTest {
 				giveResponse(expectedResponseBodyString, MediaType.APPLICATION_JSON).withStatus(expectedStatusCode));
 
 		final ShopifyFulfillmentUpdateRequest request = ShopifyFulfillmentUpdateRequest.newBuilder()
-				.withCurrentShopifyFulfillment(currentFulfillment).withTrackingCompany("USPS")
-				.withTrackingNumber("12341234").withNotifyCustomer(true).withLineItems(Arrays.asList(lineItem))
-				.withLocationId("1").withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2")).build();
+				.withCurrentShopifyFulfillment(currentFulfillment)
+				.withTrackingCompany("USPS")
+				.withTrackingNumber("12341234")
+				.withNotifyCustomer(true)
+				.withLineItems(Arrays.asList(lineItem))
+				.withLocationId("1")
+				.withTrackingUrls(Arrays.asList("tracking_url1", "tracking_url2"))
+				.build();
 
 		final ShopifyFulfillment actualShopifyFulfillment = shopifySdk.updateFulfillment(request);
 
@@ -374,8 +428,10 @@ public class ShopifySdkTest {
 	@Test
 	public void givenSomePageAndCreatedAtMinAndCreatedAtMaxOrdersWhenRetrievingOrdersThenRetrieveOrdersWithCorrectValues()
 			throws JsonProcessingException {
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
 				.toString();
 		final DateTime maximumCreationDate = new DateTime();
 		final ShopifyOrdersRoot shopifyOrdersRoot = new ShopifyOrdersRoot();
@@ -600,8 +656,10 @@ public class ShopifySdkTest {
 	@Test
 	public void givenSomePageAndUpdatedAtMinOrdersWhenRetrievingUpdatedOrdersThenRetrieveUpdatedOrdersWithCorrectValues()
 			throws JsonProcessingException {
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
 				.toString();
 		final ShopifyOrdersRoot shopifyOrdersRoot = new ShopifyOrdersRoot();
 		final DateTime maximumUpdatedAtDate = DateTime.now(DateTimeZone.UTC);
@@ -719,8 +777,10 @@ public class ShopifySdkTest {
 	@Test
 	public void givenSomePageAndCreatedAtMinAndCreatedAtMaxOrdersAndAppIdWhenRetrievingOrdersThenRetrieveOrdersWithCorrectValues()
 			throws JsonProcessingException {
-		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
+		final String expectedPath = new StringBuilder()
+				.append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
+				.append(FORWARD_SLASH).append(SOME_API_VERSION)
+				.append(FORWARD_SLASH).append(ShopifyEndpoint.ORDERS)
 				.toString();
 		final DateTime maximumCreationDate = new DateTime();
 		final ShopifyOrdersRoot shopifyOrdersRoot = new ShopifyOrdersRoot();

@@ -79,16 +79,25 @@ public class ShopifySdkDriver {
 
 	@Before
 	public void setUp() {
-		shopifySdk = ShopifySdk.newBuilder().withSubdomain(SHOP_SUBDOMAIN).withAccessToken(ACCESS_TOKEN)
+		shopifySdk = ShopifySdk.newBuilder()
+				.withSubdomain(SHOP_SUBDOMAIN)
+				.withAccessToken(ACCESS_TOKEN)
 				.withMaximumRequestRetryTimeout(5, TimeUnit.SECONDS)
-				.withMaximumRequestRetryRandomDelay(5, TimeUnit.SECONDS).withApiVersion("2020-07").build();
+				.withMaximumRequestRetryRandomDelay(5, TimeUnit.SECONDS)
+				.withApiVersion("2020-07")
+				.build();
 	}
 
 	@Test
 	public void givenSomeShopifyVariantMetafieldCreationRequestWhenCreatingMetafieldThenReturnMetafield() {
 		final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest = ShopifyVariantMetafieldCreationRequest
-				.newBuilder().withVariantId("31905723148").withNamespace("channelape").withKey("test_creation")
-				.withValue("updated").withValueType(MetafieldValueType.STRING).build();
+				.newBuilder()
+				.withVariantId("31905723148")
+				.withNamespace("channelape")
+				.withKey("test_creation")
+				.withValue("updated")
+				.withValueType(MetafieldValueType.STRING)
+				.build();
 		final Metafield metafield = shopifySdk.createVariantMetafield(shopifyVariantMetafieldCreationRequest);
 
 		System.out.println("---------- Metafield -------------");
@@ -263,9 +272,15 @@ public class ShopifySdkDriver {
 		shopifyLineItem.setQuantity(1);
 		final List<ShopifyLineItem> lineItems = Arrays.asList(shopifyLineItem);
 		final ShopifyFulfillmentCreationRequest shopifyFulfillmentCreationRequest = ShopifyFulfillmentCreationRequest
-				.newBuilder().withOrderId("649449373755").withTrackingCompany("USPS").withTrackingNumber("1338")
-				.withNotifyCustomer(true).withLineItems(lineItems).withLocationId("18407653435")
-				.withTrackingUrls(Arrays.asList("https://ups.com/1234", "https://ups.com/432423")).build();
+				.newBuilder()
+				.withOrderId("649449373755")
+				.withTrackingCompany("USPS")
+				.withTrackingNumber("1338")
+				.withNotifyCustomer(true)
+				.withLineItems(lineItems)
+				.withLocationId("18407653435")
+				.withTrackingUrls(Arrays.asList("https://ups.com/1234", "https://ups.com/432423"))
+				.build();
 
 		final ShopifyFulfillment shopifyFulfillment = shopifySdk.createFulfillment(shopifyFulfillmentCreationRequest);
 
@@ -288,10 +303,15 @@ public class ShopifySdkDriver {
 				.filter(f -> "634179616827".equals(f.getId())).findFirst().get();
 
 		final ShopifyFulfillmentUpdateRequest shopifyFulfillmentUpdateRequest = ShopifyFulfillmentUpdateRequest
-				.newBuilder().withCurrentShopifyFulfillment(currentShopifyFulfillment).withTrackingCompany("FedEx")
-				.withTrackingNumber("1339").withNotifyCustomer(true)
-				.withLineItems(currentShopifyFulfillment.getLineItems()).withLocationId("18407653435")
-				.withTrackingUrls(Arrays.asList("123.com")).build();
+				.newBuilder()
+				.withCurrentShopifyFulfillment(currentShopifyFulfillment)
+				.withTrackingCompany("FedEx")
+				.withTrackingNumber("1339")
+				.withNotifyCustomer(true)
+				.withLineItems(currentShopifyFulfillment.getLineItems())
+				.withLocationId("18407653435")
+				.withTrackingUrls(Arrays.asList("123.com"))
+				.build();
 
 		final ShopifyFulfillment shopifyFulfillment = shopifySdk.updateFulfillment(shopifyFulfillmentUpdateRequest);
 
@@ -334,7 +354,9 @@ public class ShopifySdkDriver {
 	@Test
 	public void givenSomeQueryWhenGettingCustomersFromMultiplePagesThenRetrieveCustomers() {
 		final ShopifyGetCustomersRequest shopifyGetCustomersRequest = ShopifyGetCustomersRequest.newBuilder()
-				.withCreatedAtMin(DateTime.now(DateTimeZone.UTC).minusYears(4)).withLimit(10).build();
+				.withCreatedAtMin(DateTime.now(DateTimeZone.UTC).minusYears(4))
+				.withLimit(10)
+				.build();
 		final ShopifyPage<ShopifyCustomer> actualCustomersPage = shopifySdk.getCustomers(shopifyGetCustomersRequest);
 		assertEquals(10, actualCustomersPage.size());
 		assertNotNull(actualCustomersPage.getNextPageInfo());
@@ -344,7 +366,9 @@ public class ShopifySdkDriver {
 		while (nextPageInfo != null) {
 			System.out.println("Getting next customers with page info: " + nextPageInfo);
 			final ShopifyGetCustomersRequest paginatedGetRequest = ShopifyGetCustomersRequest.newBuilder()
-					.withPageInfo(nextPageInfo).withLimit(10).build();
+					.withPageInfo(nextPageInfo)
+					.withLimit(10)
+					.build();
 			final ShopifyPage<ShopifyCustomer> paginatedCustomers = shopifySdk.getCustomers(paginatedGetRequest);
 			nextPageInfo = paginatedCustomers.getNextPageInfo();
 
@@ -376,9 +400,15 @@ public class ShopifySdkDriver {
 		final String expectedReturnUrl = "https://dev.channelape.com/channel/shopify/integrate";
 		final int expectedTrialDays = 14;
 		final ShopifyRecurringApplicationChargeCreationRequest shopifyRecurringApplicationChargeCreationRequest = ShopifyRecurringApplicationChargeCreationRequest
-				.newBuilder().withName(expectedName).withTerms(expectedTerms).withPrice(expectedPrice)
-				.withCappedAmount(expectedCappedAmount).withReturnUrl(expectedReturnUrl)
-				.withTrialDays(expectedTrialDays).withTest(true).build();
+				.newBuilder()
+				.withName(expectedName)
+				.withTerms(expectedTerms)
+				.withPrice(expectedPrice)
+				.withCappedAmount(expectedCappedAmount)
+				.withReturnUrl(expectedReturnUrl)
+				.withTrialDays(expectedTrialDays)
+				.withTest(true)
+				.build();
 
 		final ShopifyRecurringApplicationCharge actualShopifyRecurringApplicationCharge = shopifySdk
 				.createRecurringApplicationCharge(shopifyRecurringApplicationChargeCreationRequest);
@@ -457,12 +487,25 @@ public class ShopifySdkDriver {
 		final List<ShopifyVariantRequest> variantRequests = currentShopifyProduct.getVariants().stream()
 				.map(currentShopifyVariant -> {
 					final String imageSource = imageSources.get(currentShopifyVariant.getPosition() - 1);
-					return ShopifyVariantUpdateRequest.newBuilder().withCurrentShopifyVariant(currentShopifyVariant)
-							.withPrice(new BigDecimal(new Random().nextDouble() * 100)).withSameCompareAtPrice()
-							.withSameSku().withSameBarcode().withSameWeight().withAvailable(4L).withSameFirstOption()
-							.withSameSecondOption().withSameThirdOption().withImageSource(imageSource)
-							.withSameInventoryManagement().withSameInventoryPolicy().withSameFulfillmentService()
-							.withSameRequiresShipping().withSameTaxable().withSameInventoryItemId().build();
+					return ShopifyVariantUpdateRequest.newBuilder()
+							.withCurrentShopifyVariant(currentShopifyVariant)
+							.withPrice(new BigDecimal(new Random().nextDouble() * 100))
+							.withSameCompareAtPrice()
+							.withSameSku()
+							.withSameBarcode()
+							.withSameWeight()
+							.withAvailable(4L)
+							.withSameFirstOption()
+							.withSameSecondOption()
+							.withSameThirdOption()
+							.withImageSource(imageSource)
+							.withSameInventoryManagement()
+							.withSameInventoryPolicy()
+							.withSameFulfillmentService()
+							.withSameRequiresShipping()
+							.withSameTaxable()
+							.withSameInventoryItemId()
+							.build();
 				}).collect(Collectors.toList());
 
 		final ShopifyProductUpdateRequest shopifyProductUpdateRequest = ShopifyProductUpdateRequest.newBuilder()
@@ -576,7 +619,10 @@ public class ShopifySdkDriver {
 
 	@Test
 	public void whenRevokingInvalidOAuthTokenThenReturnFalse() {
-		shopifySdk = ShopifySdk.newBuilder().withSubdomain(SHOP_SUBDOMAIN).withAccessToken("ASDF").build();
+		shopifySdk = ShopifySdk.newBuilder()
+				.withSubdomain(SHOP_SUBDOMAIN)
+				.withAccessToken("ASDF")
+				.build();
 		outputHeader("Revoke OAuth Token");
 		assertFalse(shopifySdk.revokeOAuthToken());
 	}
@@ -622,7 +668,10 @@ public class ShopifySdkDriver {
 	@Test
 	public void givenSomeGiftCardCreationRequestWhenCreatingGiftCardThenCreateGiftCard() throws Exception {
 		final ShopifyGiftCardCreationRequest giftCard = ShopifyGiftCardCreationRequest.newBuilder()
-				.withInitialValue(new BigDecimal(25.00)).withCode("ABCJFKLDSJZZ4CAPE").withCurrency("USD").build();
+				.withInitialValue(new BigDecimal(25.00))
+				.withCode("ABCJFKLDSJZZ4CAPE")
+				.withCurrency("USD")
+				.build();
 
 		final ObjectMapper mapper = ShopifySdkObjectMapper.buildMapper();
 		final String dtoAsString = mapper.writeValueAsString(giftCard);
@@ -692,11 +741,18 @@ public class ShopifySdkDriver {
 				shopifyAttribute3);
 
 		final ShopifyOrderCreationRequest shopifyOrderCreationRequest = ShopifyOrderCreationRequest.newBuilder()
-				.withProcessedAt(new DateTime()).withName(UUID.randomUUID().toString()).withCustomer(shopifyCustomer)
-				.withLineItems(Arrays.asList(shopifyLineItem1)).withShippingAddress(shopifyAddress)
-				.withBillingAddress(shopifyAddress).withMetafields(Collections.emptyList())
-				.withShippingLines(shopifyShippingLines).withFinancialStatus("pending").withNote("some-note123")
-				.withNoteAttributes(someNoteAttributes).build();
+				.withProcessedAt(new DateTime())
+				.withName(UUID.randomUUID().toString())
+				.withCustomer(shopifyCustomer)
+				.withLineItems(Arrays.asList(shopifyLineItem1))
+				.withShippingAddress(shopifyAddress)
+				.withBillingAddress(shopifyAddress)
+				.withMetafields(Collections.emptyList())
+				.withShippingLines(shopifyShippingLines)
+				.withFinancialStatus("pending")
+				.withNote("some-note123")
+				.withNoteAttributes(someNoteAttributes)
+				.build();
 		final ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(Include.NON_NULL);
 		final String dtoAsString = mapper.writeValueAsString(shopifyOrderCreationRequest);
@@ -715,10 +771,23 @@ public class ShopifySdkDriver {
 	public void givenSomeValuesWhenUpdatingAnOrderThenExpectValuesToBeUpdatedOnOrder() throws JsonProcessingException {
 
 		final ShopifyOrderShippingAddressUpdateRequest shopifyOrderUpdateRequest = ShopifyOrderShippingAddressUpdateRequest
-				.newBuilder().withId("1124214472765").withAddress1("Testing From SDK Driver2").withAddress2("Suite 100")
-				.withCity("Scranton").withProvince("Pennsylvania").withProvinceCode("PA").withZip("18503")
-				.withCountry("United States").withCountryCode("US").withPhone("9829374293874").withFirstName("Ryan")
-				.withLastName("Kazokas").withCompany("ChannelApe").withLatitude(null).withLongitude(null).build();
+				.newBuilder()
+				.withId("1124214472765")
+				.withAddress1("Testing From SDK Driver2")
+				.withAddress2("Suite 100")
+				.withCity("Scranton")
+				.withProvince("Pennsylvania")
+				.withProvinceCode("PA")
+				.withZip("18503")
+				.withCountry("United States")
+				.withCountryCode("US")
+				.withPhone("9829374293874")
+				.withFirstName("Ryan")
+				.withLastName("Kazokas")
+				.withCompany("ChannelApe")
+				.withLatitude(null)
+				.withLongitude(null)
+				.build();
 
 		final ShopifyOrder updateOrder = shopifySdk.updateOrderShippingAddress(shopifyOrderUpdateRequest);
 		assertEquals("Testing From SDK Driver2", updateOrder.getShippingAddress().getAddress1());
@@ -729,8 +798,12 @@ public class ShopifySdkDriver {
 			throws JsonProcessingException {
 
 		final ShopifyCustomerUpdateRequest shopifyOrderUpdateRequest = ShopifyCustomerUpdateRequest.newBuilder()
-				.withId("6780238412").withFirstName("RyanTest").withLastName("Kazokas123")
-				.withEmail("rkazokas@channelape.com").withPhone("5702392904").build();
+				.withId("6780238412")
+				.withFirstName("RyanTest")
+				.withLastName("Kazokas123")
+				.withEmail("rkazokas@channelape.com")
+				.withPhone("5702392904")
+				.build();
 
 		final ShopifyCustomer updatedCustomer = shopifySdk.updateCustomer(shopifyOrderUpdateRequest);
 		assertEquals("RyanTest", updatedCustomer.getFirstName());
@@ -739,10 +812,15 @@ public class ShopifySdkDriver {
 	@Test
 	public void givenSomeErrorOccurrsWhenCreatingFulfillmentThenExpectCorrectErrors() {
 		try {
-			shopifySdk.createFulfillment(ShopifyFulfillmentCreationRequest.newBuilder().withOrderId("2854620102717")
-					.withTrackingCompany("UPS").withTrackingNumber("ABC-123").withNotifyCustomer(false)
-					.withLineItems(new LinkedList<>()).withLocationId("5523767400")
-					.withTrackingUrls(Arrays.asList("http://google.com/123")).build());
+			shopifySdk.createFulfillment(ShopifyFulfillmentCreationRequest.newBuilder()
+					.withOrderId("2854620102717")
+					.withTrackingCompany("UPS")
+					.withTrackingNumber("ABC-123")
+					.withNotifyCustomer(false)
+					.withLineItems(new LinkedList<>())
+					.withLocationId("5523767400")
+					.withTrackingUrls(Arrays.asList("http://google.com/123"))
+					.build());
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -759,8 +837,11 @@ public class ShopifySdkDriver {
 	}
 
 	private void outputHeader(final String header, final int indent) {
-		output(new StringBuilder().append(HEADER_DELIMITER).append(SPACE).append(header).append(SPACE)
-				.append(HEADER_DELIMITER).toString(), indent);
+		output(new StringBuilder()
+				.append(HEADER_DELIMITER).append(SPACE)
+				.append(header).append(SPACE)
+				.append(HEADER_DELIMITER)
+				.toString(), indent);
 	}
 
 	private void output(final Object text) {
