@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.request.ShopifyProductCreationRequest;
 import com.shopify.model.request.ShopifyVariantCreationRequest;
 import com.shopify.model.structs.*;
@@ -73,16 +74,22 @@ public class ShopifyProductCreationRequestTest {
 				.withRequiresShippingDefault().withTaxableDefault().build();
 
 		final ShopifyProductCreationRequest actualShopifyProductCreationRequest = ShopifyProductCreationRequest
-				.newBuilder().withTitle(SOME_TITLE).withMetafieldsGlobalTitleTag(SOME_METAFIELDS_GLOBAL_TITLE_TAG)
-				.withProductType(SOME_PRODUCT_TYPE).withBodyHtml(SOME_BODY_HTML)
-				.withMetafieldsGlobalDescriptionTag(SOME_METAFIELDS_GLOBAL_DESCRIPTION_TAG).withVendor(SOME_VENDOR)
+				.newBuilder()
+				.withTitle(SOME_TITLE)
+				.withMetafieldsGlobalTitleTag(SOME_METAFIELDS_GLOBAL_TITLE_TAG)
+				.withProductType(SOME_PRODUCT_TYPE)
+				.withBodyHtml(SOME_BODY_HTML)
+				.withMetafieldsGlobalDescriptionTag(SOME_METAFIELDS_GLOBAL_DESCRIPTION_TAG)
+				.withVendor(SOME_VENDOR)
 				.withTags(SOME_TAGS)
 				.withSortedOptionNames(
 						Arrays.asList(SOME_FIRST_OPTION_NAME, SOME_SECOND_OPTION_NAME, SOME_THIRD_OPTION_NAME))
 				.withImageSources(Arrays.asList(SOME_FIRST_IMAGE_SOURCE, SOME_SECOND_IMAGE_SOURCE))
 				.withVariantCreationRequests(Arrays.asList(firstVariantCreationRequest, secondVariantCreationRequest,
 						thirdVariantCreationRequest))
-				.withPublished(true).build();
+				.withPublished(true)
+				.withStatus(ProductStatus.DRAFT)
+				.build();
 
 		final ShopifyProduct actualShopifyProduct = actualShopifyProductCreationRequest.getRequest();
 		assertEquals(SOME_TITLE, actualShopifyProduct.getTitle());
@@ -168,16 +175,22 @@ public class ShopifyProductCreationRequestTest {
 				.withRequiresShippingDefault().withTaxableDefault().build();
 
 		final ShopifyProductCreationRequest actualShopifyProductCreationRequest = ShopifyProductCreationRequest
-				.newBuilder().withTitle(SOME_TITLE).withMetafieldsGlobalTitleTag(SOME_METAFIELDS_GLOBAL_TITLE_TAG)
-				.withProductType(SOME_PRODUCT_TYPE).withBodyHtml(SOME_BODY_HTML)
-				.withMetafieldsGlobalDescriptionTag(SOME_METAFIELDS_GLOBAL_DESCRIPTION_TAG).withVendor(SOME_VENDOR)
+				.newBuilder()
+				.withTitle(SOME_TITLE)
+				.withMetafieldsGlobalTitleTag(SOME_METAFIELDS_GLOBAL_TITLE_TAG)
+				.withProductType(SOME_PRODUCT_TYPE)
+				.withBodyHtml(SOME_BODY_HTML)
+				.withMetafieldsGlobalDescriptionTag(SOME_METAFIELDS_GLOBAL_DESCRIPTION_TAG)
+				.withVendor(SOME_VENDOR)
 				.withTags(SOME_TAGS)
 				.withSortedOptionNames(
 						Arrays.asList(SOME_FIRST_OPTION_NAME, SOME_SECOND_OPTION_NAME, SOME_THIRD_OPTION_NAME))
 				.withImageSources(Arrays.asList(SOME_FIRST_IMAGE_SOURCE, SOME_SECOND_IMAGE_SOURCE))
 				.withVariantCreationRequests(Arrays.asList(firstVariantCreationRequest, secondVariantCreationRequest,
 						thirdVariantCreationRequest))
-				.withPublished(false).build();
+				.withPublished(false)
+				.withStatus(ProductStatus.DRAFT)
+				.build();
 
 		final ShopifyProduct actualShopifyProduct = actualShopifyProductCreationRequest.getRequest();
 		assertEquals(SOME_TITLE, actualShopifyProduct.getTitle());

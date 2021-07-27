@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.request.*;
 import com.shopify.model.structs.Image;
 import com.shopify.model.structs.Option;
@@ -93,9 +94,20 @@ public class ShopifyProductUpdateRequestTest {
 				secondVariantCreationRequest, thirdVariantCreationRequest);
 
 		final ShopifyProductUpdateRequest actualShopifyProductUpdateRequest = ShopifyProductUpdateRequest.newBuilder()
-				.withCurrentShopifyProduct(currentShopifyProduct).withSameTitle().withSameMetafieldsGlobalTitleTag()
-				.withSameProductType().withSameBodyHtml().withSameMetafieldsGlobalDescriptionTag().withSameVendor()
-				.withSameTags().withSameOptions().withSameImages().withSameVariants().withPublished(true).build();
+				.withCurrentShopifyProduct(currentShopifyProduct)
+				.withSameTitle()
+				.withSameMetafieldsGlobalTitleTag()
+				.withSameProductType()
+				.withSameBodyHtml()
+				.withSameMetafieldsGlobalDescriptionTag()
+				.withSameVendor()
+				.withSameTags()
+				.withSameOptions()
+				.withSameImages()
+				.withSameVariants()
+				.withPublished(true)
+				.withSameStatus()
+				.build();
 
 		final ShopifyProduct actualShopifyProduct = actualShopifyProductUpdateRequest.getRequest();
 		assertEquals(SOME_CURRENT_TITLE, actualShopifyProduct.getTitle());
@@ -185,15 +197,21 @@ public class ShopifyProductUpdateRequestTest {
 		final List<ShopifyVariantRequest> variantRequests = Arrays.asList(firstNewShopifyVariantRequest,
 				secondNewShopifyVariantRequest);
 		final ShopifyProductUpdateRequest actualShopifyProductUpdateRequest = ShopifyProductUpdateRequest.newBuilder()
-				.withCurrentShopifyProduct(currentShopifyProduct).withTitle(SOME_NEW_TITLE)
+				.withCurrentShopifyProduct(currentShopifyProduct)
+				.withTitle(SOME_NEW_TITLE)
 				.withMetafieldsGlobalTitleTag(SOME_NEW_METAFIELDS_GLOBAL_TITLE_TAG)
-				.withProductType(SOME_NEW_PRODUCT_TYPE).withBodyHtml(SOME_NEW_BODY_HTML)
+				.withProductType(SOME_NEW_PRODUCT_TYPE)
+				.withBodyHtml(SOME_NEW_BODY_HTML)
 				.withMetafieldsGlobalDescriptionTag(SOME_NEW_METAFIELDS_GLOBAL_DESCRIPTION_TAG)
-				.withVendor(SOME_NEW_VENDOR).withTags(SOME_NEW_TAGS)
+				.withVendor(SOME_NEW_VENDOR)
+				.withTags(SOME_NEW_TAGS)
 				.withSortedOptionNames(Arrays.asList(SOME_NEW_FIRST_OPTION_NAME, SOME_NEW_SECOND_OPTION_NAME,
 						SOME_NEW_THIRD_OPTION_NAME))
-				.withImageSources(Arrays.asList(SOME_FIRST_IMAGE_SOURCE)).withVariantRequests(variantRequests)
-				.withPublished(false).build();
+				.withImageSources(Arrays.asList(SOME_FIRST_IMAGE_SOURCE))
+				.withVariantRequests(variantRequests)
+				.withPublished(false)
+				.withSameStatus()
+				.build();
 
 		final ShopifyProduct actualShopifyProduct = actualShopifyProductUpdateRequest.getRequest();
 		assertEquals(SOME_NEW_TITLE, actualShopifyProduct.getTitle());
@@ -241,15 +259,22 @@ public class ShopifyProductUpdateRequestTest {
 			final ShopifyVariantCreationRequest secondVariantCreationRequest,
 			final ShopifyVariantCreationRequest thirdVariantCreationRequest) {
 		final ShopifyProduct currentShopifyProduct = ShopifyProductCreationRequest.newBuilder()
-				.withTitle(SOME_CURRENT_TITLE).withMetafieldsGlobalTitleTag(SOME_CURRENT_METAFIELDS_GLOBAL_TITLE_TAG)
-				.withProductType(SOME_CURRENT_PRODUCT_TYPE).withBodyHtml(SOME_CURRENT_BODY_HTML)
+				.withTitle(SOME_CURRENT_TITLE)
+				.withMetafieldsGlobalTitleTag(SOME_CURRENT_METAFIELDS_GLOBAL_TITLE_TAG)
+				.withProductType(SOME_CURRENT_PRODUCT_TYPE)
+				.withBodyHtml(SOME_CURRENT_BODY_HTML)
 				.withMetafieldsGlobalDescriptionTag(SOME_CURRENT_METAFIELDS_GLOBAL_DESCRIPTION_TAG)
-				.withVendor(SOME_CURRENT_VENDOR).withTags(SOME_CURRENT_TAGS)
+				.withVendor(SOME_CURRENT_VENDOR)
+				.withTags(SOME_CURRENT_TAGS)
 				.withSortedOptionNames(Arrays.asList(SOME_CURRENT_FIRST_OPTION_NAME, SOME_CURRENT_SECOND_OPTION_NAME,
 						SOME_CURRENT_THIRD_OPTION_NAME))
-				.withImageSources(Collections.emptyList()).withVariantCreationRequests(Arrays
+				.withImageSources(Collections.emptyList())
+				.withVariantCreationRequests(Arrays
 						.asList(firstVariantCreationRequest, secondVariantCreationRequest, thirdVariantCreationRequest))
-				.withPublished(true).build().getRequest();
+				.withPublished(true)
+				.withStatus(ProductStatus.DRAFT)
+				.build()
+				.getRequest();
 		final Image firstImage = new Image();
 		firstImage.setId(SOME_CURRENT_FIRST_IMAGE_ID);
 		final Image secondImage = new Image();

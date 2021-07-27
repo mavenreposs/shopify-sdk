@@ -466,10 +466,20 @@ public class ShopifySdkDriver {
 				}).collect(Collectors.toList());
 
 		final ShopifyProductUpdateRequest shopifyProductUpdateRequest = ShopifyProductUpdateRequest.newBuilder()
-				.withCurrentShopifyProduct(currentShopifyProduct).withTitle(expectedTitle)
-				.withSameMetafieldsGlobalTitleTag().withSameProductType().withBodyHtml(expectedBodyHtml)
-				.withSameMetafieldsGlobalDescriptionTag().withSameVendor().withSameTags().withSameOptions()
-				.withImageSources(imageSources).withVariantRequests(variantRequests).withPublished(true).build();
+				.withCurrentShopifyProduct(currentShopifyProduct)
+				.withTitle(expectedTitle)
+				.withSameMetafieldsGlobalTitleTag()
+				.withSameProductType()
+				.withBodyHtml(expectedBodyHtml)
+				.withSameMetafieldsGlobalDescriptionTag()
+				.withSameVendor()
+				.withSameTags()
+				.withSameOptions()
+				.withImageSources(imageSources)
+				.withVariantRequests(variantRequests)
+				.withPublished(true)
+				.withSameStatus()
+				.build();
 
 		final ShopifyProduct updatedShopifyProduct = shopifySdk.updateProduct(shopifyProductUpdateRequest);
 
