@@ -62,13 +62,4 @@ public class ShopifyEndpointTest {
         System.out.println(shopifyDeprecatedApiCalls);
     }
 
-    @Test
-    public void getUrls() {
-        final WebTarget productsUrl = shopifySdk.getProductsUrl(null, 1);
-        System.out.println(productsUrl);
-
-        final WebTarget ordersUrl = shopifySdk.getOrdersUrl(1);
-        System.out.println(ordersUrl);
-    }
-
 }
