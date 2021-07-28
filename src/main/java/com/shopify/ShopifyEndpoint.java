@@ -40,6 +40,8 @@ public class ShopifyEndpoint {
     public static final String GIFT_CARDS = "gift_cards";
     public static final String REFUND_KIND = "refund";
     public static final String SET = "set";
+    public static final String CUSTOMERS = "customers";
+    public static final String SEARCH = "search";
 
     // new
     public static final String DEPRECATED_API_CALLS = "deprecated_api_calls";
