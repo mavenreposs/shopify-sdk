@@ -81,6 +81,8 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 	public static interface FulfillmentServiceStep {
 		public RequiresShippingStep withFulfillmentService(final String fulfillmentService);
 
+		public RequiresShippingStep withFulfillmentService(final FulfillmentService fulfillmentService);
+
 		public RequiresShippingStep withDefaultFulfillmentService();
 	}
 
@@ -260,6 +262,12 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 		@Override
 		public RequiresShippingStep withFulfillmentService(final String fulfillmentService) {
 			shopifyVariant.setFulfillmentService(fulfillmentService);
+			return this;
+		}
+
+		@Override
+		public RequiresShippingStep withFulfillmentService(final FulfillmentService fulfillmentService) {
+			shopifyVariant.setFulfillmentService(fulfillmentService.toString());
 			return this;
 		}
 
