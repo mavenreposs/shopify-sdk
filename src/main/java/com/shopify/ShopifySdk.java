@@ -369,36 +369,14 @@ public class ShopifySdk implements ShopifySdkAction {
 
 	public ShopifyRecurringApplicationCharge createRecurringApplicationCharge(
 			final ShopifyRecurringApplicationChargeCreationRequest shopifyRecurringApplicationChargeCreationRequest) {
-//		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootRequest = new ShopifyRecurringApplicationChargeRoot();
-//		final ShopifyRecurringApplicationCharge shopifyRecurringApplicationChargeRequest = shopifyRecurringApplicationChargeCreationRequest
-//				.getRequest();
-//		shopifyRecurringApplicationChargeRootRequest
-//				.setRecurringApplicationCharge(shopifyRecurringApplicationChargeRequest);
-//
-//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.RECURRING_APPLICATION_CHARGES),
-//				shopifyRecurringApplicationChargeRootRequest);
-//		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootResponse = response
-//				.readEntity(ShopifyRecurringApplicationChargeRoot.class);
-//		return shopifyRecurringApplicationChargeRootResponse.getRecurringApplicationCharge();
 		return recurringApplicationChargeAction.createRecurringApplicationCharge(shopifyRecurringApplicationChargeCreationRequest);
 	}
 
 	public ShopifyRecurringApplicationCharge getRecurringApplicationCharge(final String chargeId) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.RECURRING_APPLICATION_CHARGES).path(chargeId));
-//		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootResponse = response
-//				.readEntity(ShopifyRecurringApplicationChargeRoot.class);
-//		return shopifyRecurringApplicationChargeRootResponse.getRecurringApplicationCharge();
 		return recurringApplicationChargeAction.getRecurringApplicationCharge(chargeId);
 	}
 
 	public ShopifyRecurringApplicationCharge activateRecurringApplicationCharge(final String chargeId) {
-//		final ShopifyRecurringApplicationCharge shopifyRecurringApplicationChargeRequest = getRecurringApplicationCharge(
-//				chargeId);
-//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.RECURRING_APPLICATION_CHARGES).path(chargeId).path(ShopifyEndpoint.ACTIVATE),
-//				shopifyRecurringApplicationChargeRequest);
-//		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootResponse = response
-//				.readEntity(ShopifyRecurringApplicationChargeRoot.class);
-//		return shopifyRecurringApplicationChargeRootResponse.getRecurringApplicationCharge();
 		return recurringApplicationChargeAction.activateRecurringApplicationCharge(chargeId);
 	}
 
