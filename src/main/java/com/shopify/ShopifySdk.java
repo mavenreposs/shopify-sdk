@@ -65,7 +65,7 @@ public class ShopifySdk implements ShopifySdkAction {
 	private static final String MINIMUM_REQUEST_RETRY_DELAY_CANNOT_BE_LARGER_THAN_MAXIMUM_REQUEST_RETRY_DELAY_MESSAGE = "Maximum request retry delay must be larger than minimum request retry delay.";
 	private static final String INVALID_MINIMUM_REQUEST_RETRY_DELAY_MESSAGE = "Minimum request retry delay cannot be set lower than 200 milliseconds.";
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ShopifySdk.class);
+	public static final Logger LOGGER = LoggerFactory.getLogger(ShopifySdk.class);
 
 	private static final String HTTPS = "https://";
 	private static final String API_TARGET = ".myshopify.com/admin";
@@ -77,7 +77,7 @@ public class ShopifySdk implements ShopifySdkAction {
 	private static final String CLIENT_SECRET = "client_secret";
 	private static final String AUTHORIZATION_CODE = "code";
 
-	private static final int DEFAULT_REQUEST_LIMIT = 50;
+	public static final int DEFAULT_REQUEST_LIMIT = 50;
 
 	private static final String SHOP_RETRIEVED_MESSAGE = "Starting to make calls for Shopify store with ID of {} and name of {}";
 	private static final String COULD_NOT_BE_SAVED_SHOPIFY_ERROR_MESSAGE = "could not successfully be saved";
@@ -158,9 +158,10 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public ShopifyProduct getProduct(final String productId) {
-		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
-		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
-		return shopifyProductRootResponse.getProduct();
+//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
+//		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
+//		return shopifyProductRootResponse.getProduct();
+		return new ProductActionImpl(this).getProduct(productId);
 	}
 
 	public ShopifyVariant getVariant(final String variantId) {
@@ -170,16 +171,19 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public ShopifyPage<ShopifyProduct> getProducts(final int pageSize) {
-		return this.getProducts(null, pageSize);
+//		return this.getProducts(null, pageSize);
+		return new ProductActionImpl(this).getProducts(pageSize);
 	}
 
 	public ShopifyPage<ShopifyProduct> getProducts(final String pageInfo, final int pageSize) {
-		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
-				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
-		System.out.println(url);
-		final Response response = shopifyWebTarget.get(url);
-		final ShopifyProductsRoot shopifyProductsRoot = response.readEntity(ShopifyProductsRoot.class);
-		return mapPagedResponse(shopifyProductsRoot.getProducts(), response);
+//		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
+//				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
+//		System.out.println(url);
+//		final Response response = shopifyWebTarget.get(url);
+//		final ShopifyProductsRoot shopifyProductsRoot = response.readEntity(ShopifyProductsRoot.class);
+//		return mapPagedResponse(shopifyProductsRoot.getProducts(), response);
+
+		return new ProductActionImpl(this).getProducts(pageInfo, pageSize);
 	}
 
 	public WebTarget getProductsUrl(final String pageInfo, final int pageSize) {
@@ -189,24 +193,26 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public ShopifyProducts getProducts() {
-		final List<ShopifyProduct> shopifyProducts = new LinkedList<>();
-
-		ShopifyPage<ShopifyProduct> shopifyProductsPage = getProducts(DEFAULT_REQUEST_LIMIT);
-		LOGGER.info("Retrieved {} products from first page", shopifyProductsPage.size());
-		shopifyProducts.addAll(shopifyProductsPage);
-		while (shopifyProductsPage.getNextPageInfo() != null) {
-			shopifyProductsPage = getProducts(shopifyProductsPage.getNextPageInfo(), DEFAULT_REQUEST_LIMIT);
-			LOGGER.info("Retrieved {} products from page {}", shopifyProductsPage.size(),
-					shopifyProductsPage.getNextPageInfo());
-			shopifyProducts.addAll(shopifyProductsPage);
-		}
-		return new ShopifyProducts(shopifyProducts);
+//		final List<ShopifyProduct> shopifyProducts = new LinkedList<>();
+//
+//		ShopifyPage<ShopifyProduct> shopifyProductsPage = getProducts(DEFAULT_REQUEST_LIMIT);
+//		LOGGER.info("Retrieved {} products from first page", shopifyProductsPage.size());
+//		shopifyProducts.addAll(shopifyProductsPage);
+//		while (shopifyProductsPage.getNextPageInfo() != null) {
+//			shopifyProductsPage = getProducts(shopifyProductsPage.getNextPageInfo(), DEFAULT_REQUEST_LIMIT);
+//			LOGGER.info("Retrieved {} products from page {}", shopifyProductsPage.size(),
+//					shopifyProductsPage.getNextPageInfo());
+//			shopifyProducts.addAll(shopifyProductsPage);
+//		}
+//		return new ShopifyProducts(shopifyProducts);
+		return new ProductActionImpl(this).getProducts();
 	}
 
 	public int getProductCount() {
-		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(ShopifyEndpoint.COUNT));
-		final Count count = response.readEntity(Count.class);
-		return count.getCount();
+//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(ShopifyEndpoint.COUNT));
+//		final Count count = response.readEntity(Count.class);
+//		return count.getCount();
+		return new ProductActionImpl(this).getProductCount();
 	}
 
 	public int getOrderCount() {
@@ -746,7 +752,7 @@ public class ShopifySdk implements ShopifySdkAction {
 		return ClientBuilder.newClient().register(JacksonFeature.class).register(provider);
 	}
 
-	private <T> ShopifyPage<T> mapPagedResponse(final List<T> items, final Response response) {
+	public  <T> ShopifyPage<T> mapPagedResponse(final List<T> items, final Response response) {
 
 		final ShopifyPage<T> shopifyPage = new ShopifyPage<>();
 		shopifyPage.addAll(items);
