@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.shopify.actions.ProductActionImpl;
 import com.shopify.actions.ProductImageActionImpl;
+import com.shopify.actions.ProductVariantActionImpl;
 import com.shopify.actions.ShopActionImpl;
 import com.shopify.model.roots.*;
 import com.shopify.model.structs.*;
@@ -157,6 +158,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		}
 	}
 
+	public ShopifyShopRoot getShop() {
+		return new ShopActionImpl(this).getShop();
+	}
+
 	public ShopifyProduct getProduct(final String productId) {
 		return new ProductActionImpl(this).getProduct(productId);
 	}
@@ -177,6 +182,30 @@ public class ShopifySdk implements ShopifySdkAction {
 		return new ProductActionImpl(this).getProductCount();
 	}
 
+	public ShopifyProduct createProduct(final ShopifyProductCreationRequest shopifyProductCreationRequest) {
+		return new ProductActionImpl(this).createProduct(shopifyProductCreationRequest);
+	}
+
+	public ShopifyProduct updateProduct(final ShopifyProductUpdateRequest shopifyProductUpdateRequest) {
+		return new ProductActionImpl(this).updateProduct(shopifyProductUpdateRequest);
+	}
+
+	public boolean deleteProduct(final String productId) {
+		return new ProductActionImpl(this).deleteProduct(productId);
+	}
+
+	public Image createProductImage(final String productId, final String imageSource) {
+		return new ProductImageActionImpl(this).createProductImage(productId, imageSource);
+	}
+
+	public Image createProductImage(final String productId, final String imageSource, final int position) {
+		return new ProductImageActionImpl(this).createProductImage(productId, imageSource, position);
+	}
+
+	public boolean deleteProductImage(final String productId, final String imageId) {
+		return new ProductImageActionImpl(this).deleteProductImage(productId, imageId);
+	}
+
 //	public WebTarget getProductsUrl(final String pageInfo, final int pageSize) {
 //		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
 //				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
@@ -184,9 +213,10 @@ public class ShopifySdk implements ShopifySdkAction {
 //	}
 
 	public ShopifyVariant getVariant(final String variantId) {
-		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId));
-		final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
-		return shopifyVariantRootResponse.getVariant();
+//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId));
+//		final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
+//		return shopifyVariantRootResponse.getVariant();
+		return new ProductVariantActionImpl(this).getVariant(variantId);
 	}
 
 	public int getOrderCount() {
@@ -240,59 +270,32 @@ public class ShopifySdk implements ShopifySdkAction {
 		return shopifyCustomCollectionRootResponse.getCustomCollection();
 	}
 
-	public ShopifyShopRoot getShop() {
-		return new ShopActionImpl(this).getShop();
-	}
-
-	public ShopifyProduct createProduct(final ShopifyProductCreationRequest shopifyProductCreationRequest) {
-		return new ProductActionImpl(this).createProduct(shopifyProductCreationRequest);
-	}
-
-	public ShopifyProduct updateProduct(final ShopifyProductUpdateRequest shopifyProductUpdateRequest) {
-		return new ProductActionImpl(this).updateProduct(shopifyProductUpdateRequest);
-	}
-
-	public boolean deleteProduct(final String productId) {
-		return new ProductActionImpl(this).deleteProduct(productId);
-	}
-
 	public ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest) {
-		final ShopifyVariant shopifyVariant = shopifyVariantUpdateRequest.getRequest();
-		final String shopifyVariantId = shopifyVariant.getId();
-		if (StringUtils.isNotBlank(shopifyVariantUpdateRequest.getImageSource())) {
-			final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
-			final Image imageRequest = new Image();
-			imageRequest.setSource(shopifyVariantUpdateRequest.getImageSource());
-			final List<Metafield> metafields = ImageAltTextCreationRequest.newBuilder()
-					.withImageAltText(shopifyVariant.getTitle()).build();
-			imageRequest.setMetafields(metafields);
-			imageRequest.setVariantIds(Arrays.asList(shopifyVariantId));
-			shopifyImageRootRequest.setImage(imageRequest);
-			final String productId = shopifyVariant.getProductId();
-			final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.IMAGES),
-					shopifyImageRootRequest);
-			final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
-			final Image createdImage = shopifyImageRootResponse.getImage();
-			shopifyVariant.setImageId(createdImage.getId());
-		}
-
-		final ShopifyVariantRoot shopifyVariantRootRequest = new ShopifyVariantRoot();
-		shopifyVariantRootRequest.setVariant(shopifyVariant);
-		final Response response = shopifyWebTarget.put(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(shopifyVariantId), shopifyVariantRootRequest);
-		final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
-		return shopifyVariantRootResponse.getVariant();
-	}
-
-	public Image createProductImage(final String productId, final String imageSource) {
-		return new ProductImageActionImpl(this).createProductImage(productId, imageSource);
-	}
-
-	public Image createProductImage(final String productId, final String imageSource, final int position) {
-		return new ProductImageActionImpl(this).createProductImage(productId, imageSource, position);
-	}
-
-	public boolean deleteProductImage(final String productId, final String imageId) {
-		return new ProductImageActionImpl(this).deleteProductImage(productId, imageId);
+//		final ShopifyVariant shopifyVariant = shopifyVariantUpdateRequest.getRequest();
+//		final String shopifyVariantId = shopifyVariant.getId();
+//		if (StringUtils.isNotBlank(shopifyVariantUpdateRequest.getImageSource())) {
+//			final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
+//			final Image imageRequest = new Image();
+//			imageRequest.setSource(shopifyVariantUpdateRequest.getImageSource());
+//			final List<Metafield> metafields = ImageAltTextCreationRequest.newBuilder()
+//					.withImageAltText(shopifyVariant.getTitle()).build();
+//			imageRequest.setMetafields(metafields);
+//			imageRequest.setVariantIds(Arrays.asList(shopifyVariantId));
+//			shopifyImageRootRequest.setImage(imageRequest);
+//			final String productId = shopifyVariant.getProductId();
+//			final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.IMAGES),
+//					shopifyImageRootRequest);
+//			final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+//			final Image createdImage = shopifyImageRootResponse.getImage();
+//			shopifyVariant.setImageId(createdImage.getId());
+//		}
+//
+//		final ShopifyVariantRoot shopifyVariantRootRequest = new ShopifyVariantRoot();
+//		shopifyVariantRootRequest.setVariant(shopifyVariant);
+//		final Response response = shopifyWebTarget.put(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(shopifyVariantId), shopifyVariantRootRequest);
+//		final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
+//		return shopifyVariantRootResponse.getVariant();
+		return new ProductVariantActionImpl(this).updateVariant(shopifyVariantUpdateRequest);
 	}
 
 	public ShopifyRecurringApplicationCharge createRecurringApplicationCharge(
