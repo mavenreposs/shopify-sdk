@@ -202,15 +202,118 @@ public class ShopifySdk implements ShopifySdkAction {
 	public boolean deleteProductImage(final String productId, final String imageId) {
 		return new ProductImageActionImpl(this).deleteProductImage(productId, imageId);
 	}
-	
+
 	public ShopifyVariant getVariant(final String variantId) {
 		return new ProductVariantActionImpl(this).getVariant(variantId);
 	}
 
+	public ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest) {
+		return new ProductVariantActionImpl(this).updateVariant(shopifyVariantUpdateRequest);
+	}
+
+	public ShopifyOrder getOrder(final String orderId) {
+		return new OrdersActionImpl(this).getOrder(orderId);
+	}
+
+	public List<ShopifyTransaction> getOrderTransactions(final String orderId) {
+		return new OrdersActionImpl(this).getOrderTransactions(orderId);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders() {
+		return new OrdersActionImpl(this).getOrders();
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final int pageSize) {
+		return new OrdersActionImpl(this).getOrders(pageSize);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final int pageSize) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate, pageSize);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate);
+	}
+
+	public ShopifyPage<ShopifyOrder> getUpdatedOrdersCreatedBefore(final DateTime minimumUpdatedAtDate,
+																   final DateTime maximumUpdatedAtDate, final DateTime maximumCreatedAtDate, final int pageSize) {
+		return new OrdersActionImpl(this).getUpdatedOrdersCreatedBefore(minimumUpdatedAtDate, maximumUpdatedAtDate, maximumCreatedAtDate, pageSize);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
+											   final int pageSize) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, pageSize);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
+											   final String appId) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, appId);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
+											   final String appId, final int pageSize) {
+		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, appId, pageSize);
+	}
+
+	public ShopifyPage<ShopifyOrder> getOrders(final String pageInfo, final int pageSize) {
+		return new OrdersActionImpl(this).getOrders(pageInfo, pageSize);
+	}
+
+	public ShopifyFulfillment createFulfillment(
+			final ShopifyFulfillmentCreationRequest shopifyFulfillmentCreationRequest) {
+		return new OrdersActionImpl(this).createFulfillment(shopifyFulfillmentCreationRequest);
+	}
+
+	public ShopifyFulfillment updateFulfillment(final ShopifyFulfillmentUpdateRequest shopifyFulfillmentUpdateRequest) {
+		return new OrdersActionImpl(this).updateFulfillment(shopifyFulfillmentUpdateRequest);
+	}
+
+	public ShopifyOrder createOrder(final ShopifyOrderCreationRequest shopifyOrderCreationRequest) {
+		return new OrdersActionImpl(this).createOrder(shopifyOrderCreationRequest);
+	}
+
+	public ShopifyOrder updateOrderShippingAddress(
+			final ShopifyOrderShippingAddressUpdateRequest shopifyOrderUpdateRequest) {
+		return new OrdersActionImpl(this).updateOrderShippingAddress(shopifyOrderUpdateRequest);
+	}
+
+	public ShopifyFulfillment cancelFulfillment(final String orderId, final String fulfillmentId) {
+		return new OrdersActionImpl(this).cancelFulfillment(orderId, fulfillmentId);
+	}
+
+	public ShopifyOrder closeOrder(final String orderId) {
+		return new OrdersActionImpl(this).closeOrder(orderId);
+	}
+
+	public ShopifyOrder cancelOrder(final String orderId, final String reason) {
+		return new OrdersActionImpl(this).cancelOrder(orderId, reason);
+	}
+
+	public List<ShopifyOrderRisk> getOrderRisks(final String orderId) {
+		return new OrdersActionImpl(this).getOrderRisks(orderId);
+	}
+
+	private ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
+		return new OrdersActionImpl(this).calculateRefund(shopifyRefundCreationRequest);
+	}
+
+	public List<Metafield> getOrderMetafields(final String orderId) {
+		return new OrdersActionImpl(this).getOrderMetafields(orderId);
+	}
+
+	public ShopifyRefund refund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
+		return new OrdersActionImpl(this).refund(shopifyRefundCreationRequest);
+	}
+
 	public int getOrderCount() {
-		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.ORDERS).path(ShopifyEndpoint.COUNT));
-		final Count count = response.readEntity(Count.class);
-		return count.getCount();
+//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.ORDERS).path(ShopifyEndpoint.COUNT));
+//		final Count count = response.readEntity(Count.class);
+//		return count.getCount();
+		return new OrdersActionImpl(this).getOrderCount();
 	}
 
 	public ShopifyPage<ShopifyCustomCollection> getCustomCollections(final int pageSize) {
@@ -258,10 +361,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		return shopifyCustomCollectionRootResponse.getCustomCollection();
 	}
 
-	public ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest) {
-		return new ProductVariantActionImpl(this).updateVariant(shopifyVariantUpdateRequest);
-	}
-
 	public ShopifyRecurringApplicationCharge createRecurringApplicationCharge(
 			final ShopifyRecurringApplicationChargeCreationRequest shopifyRecurringApplicationChargeCreationRequest) {
 		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootRequest = new ShopifyRecurringApplicationChargeRoot();
@@ -292,76 +391,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootResponse = response
 				.readEntity(ShopifyRecurringApplicationChargeRoot.class);
 		return shopifyRecurringApplicationChargeRootResponse.getRecurringApplicationCharge();
-	}
-
-	public ShopifyOrder getOrder(final String orderId) {
-		return new OrdersActionImpl(this).getOrder(orderId);
-	}
-
-	public List<ShopifyTransaction> getOrderTransactions(final String orderId) {
-		return new OrdersActionImpl(this).getOrderTransactions(orderId);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders() {
-		return new OrdersActionImpl(this).getOrders();
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final int pageSize) {
-		return new OrdersActionImpl(this).getOrders(pageSize);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final int pageSize) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate, pageSize);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate);
-	}
-
-	public ShopifyPage<ShopifyOrder> getUpdatedOrdersCreatedBefore(final DateTime minimumUpdatedAtDate,
-			final DateTime maximumUpdatedAtDate, final DateTime maximumCreatedAtDate, final int pageSize) {
-		return new OrdersActionImpl(this).getUpdatedOrdersCreatedBefore(minimumUpdatedAtDate, maximumUpdatedAtDate, maximumCreatedAtDate, pageSize);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
-			final int pageSize) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, pageSize);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
-			final String appId) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, appId);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate,
-			final String appId, final int pageSize) {
-		return new OrdersActionImpl(this).getOrders(mininumCreationDate, maximumCreationDate, appId, pageSize);
-	}
-
-	public ShopifyPage<ShopifyOrder> getOrders(final String pageInfo, final int pageSize) {
-		return new OrdersActionImpl(this).getOrders(pageInfo, pageSize);
-	}
-
-	public ShopifyFulfillment createFulfillment(
-			final ShopifyFulfillmentCreationRequest shopifyFulfillmentCreationRequest) {
-		return new OrdersActionImpl(this).createFulfillment(shopifyFulfillmentCreationRequest);
-	}
-
-	public ShopifyFulfillment updateFulfillment(final ShopifyFulfillmentUpdateRequest shopifyFulfillmentUpdateRequest) {
-		return new OrdersActionImpl(this).updateFulfillment(shopifyFulfillmentUpdateRequest);
-	}
-
-	public ShopifyOrder createOrder(final ShopifyOrderCreationRequest shopifyOrderCreationRequest) {
-		return new OrdersActionImpl(this).createOrder(shopifyOrderCreationRequest);
-	}
-
-	public ShopifyOrder updateOrderShippingAddress(
-			final ShopifyOrderShippingAddressUpdateRequest shopifyOrderUpdateRequest) {
-		return new OrdersActionImpl(this).updateOrderShippingAddress(shopifyOrderUpdateRequest);
 	}
 
 	public ShopifyCustomer updateCustomer(final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest) {
@@ -411,18 +440,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		return getCustomers(response);
 	}
 
-	public ShopifyFulfillment cancelFulfillment(final String orderId, final String fulfillmentId) {
-		return new OrdersActionImpl(this).cancelFulfillment(orderId, fulfillmentId);
-	}
-
-	public ShopifyOrder closeOrder(final String orderId) {
-		return new OrdersActionImpl(this).closeOrder(orderId);
-	}
-
-	public ShopifyOrder cancelOrder(final String orderId, final String reason) {
-		return new OrdersActionImpl(this).cancelOrder(orderId, reason);
-	}
-
 	public Metafield createVariantMetafield(
 			final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest) {
 		final MetafieldRoot metafieldRoot = new MetafieldRoot();
@@ -455,10 +472,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		return metafieldsRootResponse.getMetafields();
 	}
 
-	public List<ShopifyOrderRisk> getOrderRisks(final String orderId) {
-		return new OrdersActionImpl(this).getOrderRisks(orderId);
-	}
-
 	public List<ShopifyLocation> getLocations() {
 		final String locationsEndpoint = new StringBuilder().append(ShopifyEndpoint.LOCATIONS).append(ShopifyEndpoint.JSON).toString();
 		final Response response = shopifyWebTarget.get(getWebTarget().path(locationsEndpoint));
@@ -476,14 +489,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		final ShopifyInventoryLevelRoot shopifyInventoryLevelRootResponse = response
 				.readEntity(ShopifyInventoryLevelRoot.class);
 		return shopifyInventoryLevelRootResponse.getInventoryLevel();
-	}
-
-	public List<Metafield> getOrderMetafields(final String orderId) {
-		return new OrdersActionImpl(this).getOrderMetafields(orderId);
-	}
-
-	public ShopifyRefund refund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
-		return new OrdersActionImpl(this).refund(shopifyRefundCreationRequest);
 	}
 
 	public ShopifyGiftCard createGiftCard(final ShopifyGiftCardCreationRequest shopifyGiftCardCreationRequest) {
@@ -510,9 +515,7 @@ public class ShopifySdk implements ShopifySdkAction {
 		return mapPagedResponse(shopifyCustomersRootResponse.getCustomers(), response);
 	}
 
-	private ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
-		return new OrdersActionImpl(this).calculateRefund(shopifyRefundCreationRequest);
-	}
+
 
 	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
 			final ShopifyProduct shopifyProduct) {
@@ -625,10 +628,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		}
 		return null;
 	}
-
-//	private WebTarget buildOrdersEndpoint() {
-//		return getWebTarget().path(ShopifyEndpoint.ORDERS);
-//	}
 
 	public ShopifyWebTarget getShopifyWebTarget() {
 		return shopifyWebTarget;

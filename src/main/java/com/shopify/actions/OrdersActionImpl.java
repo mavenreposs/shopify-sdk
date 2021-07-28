@@ -218,6 +218,12 @@ public class OrdersActionImpl implements OrdersAction {
         return shopifyRefundRootResponse.getRefund();
     }
 
+    public int getOrderCount() {
+        final Response response = shopifySdk.getShopifyWebTarget().get(shopifySdk.getWebTarget().path(ShopifyEndpoint.ORDERS).path(ShopifyEndpoint.COUNT));
+        final Count count = response.readEntity(Count.class);
+        return count.getCount();
+    }
+
     private WebTarget buildOrdersEndpoint() {
         return shopifySdk.getWebTarget().path(ShopifyEndpoint.ORDERS);
     }
