@@ -24,7 +24,7 @@ public class OrdersActionImpl implements OrdersAction {
 
     private final ShopifySdk shopifySdk;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductActionImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrdersActionImpl.class);
 
     public OrdersActionImpl(ShopifySdk shopifySdk) {
         this.shopifySdk = shopifySdk;

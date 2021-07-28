@@ -24,7 +24,7 @@ public class CustomCollectionActionImpl implements CustomCollectionAction {
 
     private final ShopifySdk shopifySdk;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductActionImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomCollectionActionImpl.class);
 
     public CustomCollectionActionImpl(ShopifySdk shopifySdk) {
         this.shopifySdk = shopifySdk;

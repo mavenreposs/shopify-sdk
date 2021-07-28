@@ -25,7 +25,7 @@ public class CustomerActionImpl implements CustomerAction {
 
     private final ShopifySdk shopifySdk;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductActionImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerActionImpl.class);
 
     public CustomerActionImpl(ShopifySdk shopifySdk) {
         this.shopifySdk = shopifySdk;
