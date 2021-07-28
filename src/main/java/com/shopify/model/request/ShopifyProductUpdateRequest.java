@@ -79,6 +79,8 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 	public static interface SortedOptionNamesStep {
 		public ImageSourcesStep withSortedOptionNames(final List<String> sortedOptionNames);
 
+		public ImageSourcesStep withSortedOptions(final List<Option> sortedOptions);
+
 		public ImageSourcesStep withSameOptions();
 	}
 
@@ -259,6 +261,20 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 				shopifyProduct.setOptions(options);
 				changed = true;
 			}
+			return this;
+		}
+
+		@Override
+		public ImageSourcesStep withSortedOptions(final List<Option> sortedOptions) {
+			final List<Option> options = new ArrayList<>(sortedOptions.size());
+			for (int i = 0; i < sortedOptions.size(); i++) {
+				final Option option = sortedOptions.get(i);
+				final int position = i + 1;
+				option.setPosition(position);
+				options.add(option);
+			}
+			shopifyProduct.setOptions(options);
+			changed = true;
 			return this;
 		}
 
