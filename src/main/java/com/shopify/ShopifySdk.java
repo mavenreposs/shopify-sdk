@@ -158,61 +158,35 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public ShopifyProduct getProduct(final String productId) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));
-//		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
-//		return shopifyProductRootResponse.getProduct();
 		return new ProductActionImpl(this).getProduct(productId);
 	}
+
+	public ShopifyPage<ShopifyProduct> getProducts(final int pageSize) {
+		return new ProductActionImpl(this).getProducts(pageSize);
+	}
+
+	public ShopifyPage<ShopifyProduct> getProducts(final String pageInfo, final int pageSize) {
+		return new ProductActionImpl(this).getProducts(pageInfo, pageSize);
+	}
+
+	public ShopifyProducts getProducts() {
+		return new ProductActionImpl(this).getProducts();
+	}
+
+	public int getProductCount() {
+		return new ProductActionImpl(this).getProductCount();
+	}
+
+//	public WebTarget getProductsUrl(final String pageInfo, final int pageSize) {
+//		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
+//				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
+//		return url;
+//	}
 
 	public ShopifyVariant getVariant(final String variantId) {
 		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId));
 		final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
 		return shopifyVariantRootResponse.getVariant();
-	}
-
-	public ShopifyPage<ShopifyProduct> getProducts(final int pageSize) {
-//		return this.getProducts(null, pageSize);
-		return new ProductActionImpl(this).getProducts(pageSize);
-	}
-
-	public ShopifyPage<ShopifyProduct> getProducts(final String pageInfo, final int pageSize) {
-//		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
-//				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
-//		System.out.println(url);
-//		final Response response = shopifyWebTarget.get(url);
-//		final ShopifyProductsRoot shopifyProductsRoot = response.readEntity(ShopifyProductsRoot.class);
-//		return mapPagedResponse(shopifyProductsRoot.getProducts(), response);
-
-		return new ProductActionImpl(this).getProducts(pageInfo, pageSize);
-	}
-
-	public WebTarget getProductsUrl(final String pageInfo, final int pageSize) {
-		final WebTarget url = getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
-				.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
-		return url;
-	}
-
-	public ShopifyProducts getProducts() {
-//		final List<ShopifyProduct> shopifyProducts = new LinkedList<>();
-//
-//		ShopifyPage<ShopifyProduct> shopifyProductsPage = getProducts(DEFAULT_REQUEST_LIMIT);
-//		LOGGER.info("Retrieved {} products from first page", shopifyProductsPage.size());
-//		shopifyProducts.addAll(shopifyProductsPage);
-//		while (shopifyProductsPage.getNextPageInfo() != null) {
-//			shopifyProductsPage = getProducts(shopifyProductsPage.getNextPageInfo(), DEFAULT_REQUEST_LIMIT);
-//			LOGGER.info("Retrieved {} products from page {}", shopifyProductsPage.size(),
-//					shopifyProductsPage.getNextPageInfo());
-//			shopifyProducts.addAll(shopifyProductsPage);
-//		}
-//		return new ShopifyProducts(shopifyProducts);
-		return new ProductActionImpl(this).getProducts();
-	}
-
-	public int getProductCount() {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(ShopifyEndpoint.COUNT));
-//		final Count count = response.readEntity(Count.class);
-//		return count.getCount();
-		return new ProductActionImpl(this).getProductCount();
 	}
 
 	public int getOrderCount() {
