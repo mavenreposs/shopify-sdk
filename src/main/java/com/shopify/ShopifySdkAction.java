@@ -1,10 +1,8 @@
 package com.shopify;
 
-import com.shopify.actions.ProductAction;
-import com.shopify.actions.ProductImageAction;
-import com.shopify.actions.ProductVariantAction;
-import com.shopify.actions.ShopAction;
+import com.shopify.actions.*;
 
 public interface ShopifySdkAction extends ShopAction,
+        OrdersAction,
         ProductImageAction, ProductVariantAction, ProductAction {
 }
