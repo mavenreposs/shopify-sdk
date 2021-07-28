@@ -5,10 +5,14 @@ import com.shopify.ShopifySdk;
 import com.shopify.model.ShopifyPage;
 import com.shopify.model.ShopifyProducts;
 import com.shopify.model.request.ShopifyProductCreationRequest;
+import com.shopify.model.request.ShopifyProductMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyProductUpdateRequest;
+import com.shopify.model.roots.MetafieldRoot;
+import com.shopify.model.roots.MetafieldsRoot;
 import com.shopify.model.roots.ShopifyProductRoot;
 import com.shopify.model.roots.ShopifyProductsRoot;
 import com.shopify.model.structs.Count;
+import com.shopify.model.structs.Metafield;
 import com.shopify.model.structs.ShopifyProduct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -108,6 +112,22 @@ public class ProductActionImpl implements ProductAction {
         final Response response = shopifySdk.getShopifyWebTarget().get(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(ShopifyEndpoint.COUNT));
         final Count count = response.readEntity(Count.class);
         return count.getCount();
+    }
+
+    public Metafield createProductMetafield(
+            final ShopifyProductMetafieldCreationRequest shopifyProductMetafieldCreationRequest) {
+        final MetafieldRoot metafieldRoot = new MetafieldRoot();
+        metafieldRoot.setMetafield(shopifyProductMetafieldCreationRequest.getRequest());
+        final Response response = shopifySdk.getShopifyWebTarget().post(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS)
+                .path(shopifyProductMetafieldCreationRequest.getProductId()).path(ShopifyEndpoint.METAFIELDS), metafieldRoot);
+        final MetafieldRoot metafieldRootResponse = response.readEntity(MetafieldRoot.class);
+        return metafieldRootResponse.getMetafield();
+    }
+
+    public List<Metafield> getProductMetafields(final String productId) {
+        final Response response = shopifySdk.getShopifyWebTarget().get(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.METAFIELDS));
+        final MetafieldsRoot metafieldsRootResponse = response.readEntity(MetafieldsRoot.class);
+        return metafieldsRootResponse.getMetafields();
     }
 
 }

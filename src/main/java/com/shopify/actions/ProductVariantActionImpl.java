@@ -3,7 +3,10 @@ package com.shopify.actions;
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
 import com.shopify.model.request.ImageAltTextCreationRequest;
+import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyVariantUpdateRequest;
+import com.shopify.model.roots.MetafieldRoot;
+import com.shopify.model.roots.MetafieldsRoot;
 import com.shopify.model.roots.ShopifyImageRoot;
 import com.shopify.model.roots.ShopifyVariantRoot;
 import com.shopify.model.structs.Image;
@@ -62,6 +65,22 @@ public class ProductVariantActionImpl implements ProductVariantAction {
         final Response response = shopifySdk.getShopifyWebTarget().put(shopifySdk.getWebTarget().path(ShopifyEndpoint.VARIANTS).path(shopifyVariantId), shopifyVariantRootRequest);
         final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
         return shopifyVariantRootResponse.getVariant();
+    }
+
+    public Metafield createVariantMetafield(
+            final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest) {
+        final MetafieldRoot metafieldRoot = new MetafieldRoot();
+        metafieldRoot.setMetafield(shopifyVariantMetafieldCreationRequest.getRequest());
+        final Response response = shopifySdk.getShopifyWebTarget().post(shopifySdk.getWebTarget().path(ShopifyEndpoint.VARIANTS)
+                .path(shopifyVariantMetafieldCreationRequest.getVariantId()).path(ShopifyEndpoint.METAFIELDS), metafieldRoot);
+        final MetafieldRoot metafieldRootResponse = response.readEntity(MetafieldRoot.class);
+        return metafieldRootResponse.getMetafield();
+    }
+
+    public List<Metafield> getVariantMetafields(final String variantId) {
+        final Response response = shopifySdk.getShopifyWebTarget().get(shopifySdk.getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId).path(ShopifyEndpoint.METAFIELDS));
+        final MetafieldsRoot metafieldsRootResponse = response.readEntity(MetafieldsRoot.class);
+        return metafieldsRootResponse.getMetafields();
     }
 
 }

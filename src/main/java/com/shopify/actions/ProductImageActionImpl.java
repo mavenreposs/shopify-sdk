@@ -2,8 +2,11 @@ package com.shopify.actions;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.model.request.ShopifyProductRequest;
 import com.shopify.model.roots.ShopifyImageRoot;
+import com.shopify.model.roots.ShopifyProductRoot;
 import com.shopify.model.structs.Image;
+import com.shopify.model.structs.ShopifyProduct;
 
 import javax.ws.rs.core.Response;
 
@@ -56,6 +59,29 @@ public class ProductImageActionImpl implements ProductImageAction {
                 .path(ShopifyEndpoint.PRODUCTS).path(productId)
                 .path(ShopifyEndpoint.IMAGES).path(imageId));
         return Response.Status.OK.getStatusCode() == response.getStatus();
+    }
+
+    public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
+                                              final ShopifyProduct shopifyProduct) {
+        setVariantImageIds(shopifyProductRequest, shopifyProduct);
+        final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
+        shopifyProductRootRequest.setProduct(shopifyProduct);
+        final Response response = shopifySdk.getShopifyWebTarget().put(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(shopifyProduct.getId()),
+                shopifyProductRootRequest);
+        final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
+        return shopifyProductRootResponse.getProduct();
+    }
+
+    private void setVariantImageIds(final ShopifyProductRequest shopifyProductRequest,
+                                    final ShopifyProduct shopifyProduct) {
+        shopifyProduct.getVariants().stream().forEach(variant -> {
+            final int variantPosition = variant.getPosition();
+            if (shopifyProductRequest.hasVariantImagePosition(variantPosition)) {
+                final int imagePosition = shopifyProductRequest.getVariantImagePosition(variantPosition);
+                shopifyProduct.getImages().stream().filter(image -> image.getPosition() == imagePosition).findFirst()
+                        .ifPresent(variantImage -> variant.setImageId(variantImage.getId()));
+            }
+        });
     }
 
 }

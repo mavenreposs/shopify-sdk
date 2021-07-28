@@ -3,8 +3,12 @@ package com.shopify.actions;
 import com.shopify.model.ShopifyPage;
 import com.shopify.model.ShopifyProducts;
 import com.shopify.model.request.ShopifyProductCreationRequest;
+import com.shopify.model.request.ShopifyProductMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyProductUpdateRequest;
+import com.shopify.model.structs.Metafield;
 import com.shopify.model.structs.ShopifyProduct;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,5 +34,9 @@ public interface ProductAction {
 
     boolean deleteProduct(final String productId);
 
+    Metafield createProductMetafield(
+            final ShopifyProductMetafieldCreationRequest shopifyProductMetafieldCreationRequest);
+
+    List<Metafield> getProductMetafields(final String productId);
 
 }
