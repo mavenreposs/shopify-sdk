@@ -1,7 +1,6 @@
 package com.shopify;
 
 import java.net.URI;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -312,53 +311,59 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public ShopifyPage<ShopifyCustomCollection> getCustomCollections(final int pageSize) {
-//		final Response response = shopifyWebTarget.get(
-//				getWebTarget().path(ShopifyEndpoint.CUSTOM_COLLECTIONS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize));
-//		final ShopifyCustomCollectionsRoot shopifyCustomCollectionsRoot = response
-//				.readEntity(ShopifyCustomCollectionsRoot.class);
-//		return mapPagedResponse(shopifyCustomCollectionsRoot.getCustomCollections(), response);
 		return customCollectionAction.getCustomCollections(pageSize);
 	}
 
 	public ShopifyPage<ShopifyCustomCollection> getCustomCollections(final String pageInfo, final int pageSize) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.CUSTOM_COLLECTIONS)
-//				.queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize).queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo));
-//		final ShopifyCustomCollectionsRoot shopifyCustomCollectionsRoot = response
-//				.readEntity(ShopifyCustomCollectionsRoot.class);
-//		return mapPagedResponse(shopifyCustomCollectionsRoot.getCustomCollections(), response);
 		return customCollectionAction.getCustomCollections(pageInfo, pageSize);
 	}
 
 	public List<ShopifyCustomCollection> getCustomCollections() {
-//		final List<ShopifyCustomCollection> shopifyCustomCollections = new LinkedList<>();
-//
-//		ShopifyPage<ShopifyCustomCollection> customCollectionsPage = getCustomCollections(DEFAULT_REQUEST_LIMIT);
-//		LOGGER.info("Retrieved {} custom collections from first page", customCollectionsPage.size());
-//		shopifyCustomCollections.addAll(customCollectionsPage);
-//
-//		while (customCollectionsPage.getNextPageInfo() != null) {
-//			customCollectionsPage = getCustomCollections(customCollectionsPage.getNextPageInfo(),
-//					DEFAULT_REQUEST_LIMIT);
-//			LOGGER.info("Retrieved {} custom collections from page info {}", customCollectionsPage.size(),
-//					customCollectionsPage.getNextPageInfo());
-//			shopifyCustomCollections.addAll(customCollectionsPage);
-//		}
-//
-//		return shopifyCustomCollections;
-
 		return customCollectionAction.getCustomCollections();
 	}
 
 	public ShopifyCustomCollection createCustomCollection(
 			final ShopifyCustomCollectionCreationRequest shopifyCustomCollectionCreationRequest) {
-//		final ShopifyCustomCollectionRoot shopifyCustomCollectionRootRequest = new ShopifyCustomCollectionRoot();
-//		final ShopifyCustomCollection shopifyCustomCollection = shopifyCustomCollectionCreationRequest.getRequest();
-//		shopifyCustomCollectionRootRequest.setCustomCollection(shopifyCustomCollection);
-//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.CUSTOM_COLLECTIONS), shopifyCustomCollectionRootRequest);
-//		final ShopifyCustomCollectionRoot shopifyCustomCollectionRootResponse = response
-//				.readEntity(ShopifyCustomCollectionRoot.class);
-//		return shopifyCustomCollectionRootResponse.getCustomCollection();
 		return customCollectionAction.createCustomCollection(shopifyCustomCollectionCreationRequest);
+	}
+
+	public ShopifyCustomer updateCustomer(final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest) {
+		return customerAction.updateCustomer(shopifyCustomerUpdateRequest);
+	}
+
+	public ShopifyCustomer getCustomer(final String customerId) {
+		return customerAction.getCustomer(customerId);
+	}
+
+	public ShopifyPage<ShopifyCustomer> getCustomers(final ShopifyGetCustomersRequest shopifyGetCustomersRequest) {
+		return customerAction.getCustomers(shopifyGetCustomersRequest);
+	}
+
+	public ShopifyPage<ShopifyCustomer> searchCustomers(final String query) {
+		return customerAction.searchCustomers(query);
+	}
+
+	public Metafield createVariantMetafield(
+			final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest) {
+		return productVariantAction.createVariantMetafield(shopifyVariantMetafieldCreationRequest);
+	}
+
+	public List<Metafield> getVariantMetafields(final String variantId) {
+		return productVariantAction.getVariantMetafields(variantId);
+	}
+
+	public Metafield createProductMetafield(
+			final ShopifyProductMetafieldCreationRequest shopifyProductMetafieldCreationRequest) {
+		return productAction.createProductMetafield(shopifyProductMetafieldCreationRequest);
+	}
+
+	public List<Metafield> getProductMetafields(final String productId) {
+		return productAction.getProductMetafields(productId);
+	}
+
+	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
+											  final ShopifyProduct shopifyProduct) {
+		return productImageAction.updateProductImages(shopifyProductRequest, shopifyProduct);
 	}
 
 	public ShopifyRecurringApplicationCharge createRecurringApplicationCharge(
@@ -391,76 +396,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		final ShopifyRecurringApplicationChargeRoot shopifyRecurringApplicationChargeRootResponse = response
 				.readEntity(ShopifyRecurringApplicationChargeRoot.class);
 		return shopifyRecurringApplicationChargeRootResponse.getRecurringApplicationCharge();
-	}
-
-	public ShopifyCustomer updateCustomer(final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest) {
-//		final ShopifyCustomerUpdateRoot shopifyCustomerUpdateRequestRoot = new ShopifyCustomerUpdateRoot();
-//		shopifyCustomerUpdateRequestRoot.setCustomer(shopifyCustomerUpdateRequest);
-//		final Response response = shopifyWebTarget.put(getWebTarget().path(CUSTOMERS).path(shopifyCustomerUpdateRequest.getId()),
-//				shopifyCustomerUpdateRequestRoot);
-//		final ShopifyCustomerRoot shopifyCustomerRootResponse = response.readEntity(ShopifyCustomerRoot.class);
-//		return shopifyCustomerRootResponse.getCustomer();
-		return customerAction.updateCustomer(shopifyCustomerUpdateRequest);
-	}
-
-	public ShopifyCustomer getCustomer(final String customerId) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(CUSTOMERS).path(customerId));
-//		final ShopifyCustomerRoot shopifyCustomerRootResponse = response.readEntity(ShopifyCustomerRoot.class);
-//		return shopifyCustomerRootResponse.getCustomer();
-		return customerAction.getCustomer(customerId);
-	}
-
-	public ShopifyPage<ShopifyCustomer> getCustomers(final ShopifyGetCustomersRequest shopifyGetCustomersRequest) {
-//		WebTarget target = getWebTarget().path(CUSTOMERS);
-//		if (shopifyGetCustomersRequest.getPageInfo() != null) {
-//			target = target.queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, shopifyGetCustomersRequest.getPageInfo());
-//		}
-//		if (shopifyGetCustomersRequest.getLimit() != 0) {
-//			target = target.queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, shopifyGetCustomersRequest.getLimit());
-//		} else {
-//			target = target.queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, DEFAULT_REQUEST_LIMIT);
-//		}
-//		if (shopifyGetCustomersRequest.getIds() != null) {
-//			target = target.queryParam(ShopifyEndpoint.IDS_QUERY_PARAMETER, String.join(",", shopifyGetCustomersRequest.getIds()));
-//		}
-//		if (shopifyGetCustomersRequest.getSinceId() != null) {
-//			target = target.queryParam(ShopifyEndpoint.SINCE_ID_QUERY_PARAMETER, shopifyGetCustomersRequest.getSinceId());
-//		}
-//		if (shopifyGetCustomersRequest.getCreatedAtMin() != null) {
-//			target = target.queryParam(ShopifyEndpoint.CREATED_AT_MIN_QUERY_PARAMETER, shopifyGetCustomersRequest.getCreatedAtMin());
-//		}
-//		if (shopifyGetCustomersRequest.getCreatedAtMax() != null) {
-//			target = target.queryParam(ShopifyEndpoint.CREATED_AT_MAX_QUERY_PARAMETER, shopifyGetCustomersRequest.getCreatedAtMax());
-//		}
-//		final Response response = shopifyWebTarget.get(target);
-//		return getCustomers(response);
-
-		return customerAction.getCustomers(shopifyGetCustomersRequest);
-	}
-
-	public ShopifyPage<ShopifyCustomer> searchCustomers(final String query) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(CUSTOMERS).path(SEARCH)
-//				.queryParam(ShopifyEndpoint.QUERY_QUERY_PARAMETER, query).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, DEFAULT_REQUEST_LIMIT));
-//		return getCustomers(response);
-		return customerAction.searchCustomers(query);
-	}
-
-	public Metafield createVariantMetafield(
-			final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest) {
-		return new ProductVariantActionImpl(this).createVariantMetafield(shopifyVariantMetafieldCreationRequest);
-	}
-
-	public List<Metafield> getVariantMetafields(final String variantId) {
-		return new ProductVariantActionImpl(this).getVariantMetafields(variantId);
-	}
-
-	public Metafield createProductMetafield(
-			final ShopifyProductMetafieldCreationRequest shopifyProductMetafieldCreationRequest) {
-		return new ProductActionImpl(this).createProductMetafield(shopifyProductMetafieldCreationRequest);
-	}
-
-	public List<Metafield> getProductMetafields(final String productId) {
-		return new ProductActionImpl(this).getProductMetafields(productId);
 	}
 
 	public List<ShopifyLocation> getLocations() {
@@ -499,16 +434,6 @@ public class ShopifySdk implements ShopifySdkAction {
 
 	public String getAccessToken() {
 		return accessToken;
-	}
-
-//	private ShopifyPage<ShopifyCustomer> getCustomers(final Response response) {
-//		final ShopifyCustomersRoot shopifyCustomersRootResponse = response.readEntity(ShopifyCustomersRoot.class);
-//		return mapPagedResponse(shopifyCustomersRootResponse.getCustomers(), response);
-//	}
-
-	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
-			final ShopifyProduct shopifyProduct) {
-		return new ProductImageActionImpl(this).updateProductImages(shopifyProductRequest, shopifyProduct);
 	}
 
 	private String generateToken() {
