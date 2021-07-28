@@ -1,7 +1,6 @@
 package com.shopify;
 
 import java.net.URI;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -310,9 +309,6 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public int getOrderCount() {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.ORDERS).path(ShopifyEndpoint.COUNT));
-//		final Count count = response.readEntity(Count.class);
-//		return count.getCount();
 		return new OrdersActionImpl(this).getOrderCount();
 	}
 
@@ -442,37 +438,19 @@ public class ShopifySdk implements ShopifySdkAction {
 
 	public Metafield createVariantMetafield(
 			final ShopifyVariantMetafieldCreationRequest shopifyVariantMetafieldCreationRequest) {
-//		final MetafieldRoot metafieldRoot = new MetafieldRoot();
-//		metafieldRoot.setMetafield(shopifyVariantMetafieldCreationRequest.getRequest());
-//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.VARIANTS)
-//				.path(shopifyVariantMetafieldCreationRequest.getVariantId()).path(ShopifyEndpoint.METAFIELDS), metafieldRoot);
-//		final MetafieldRoot metafieldRootResponse = response.readEntity(MetafieldRoot.class);
-//		return metafieldRootResponse.getMetafield();
 		return new ProductVariantActionImpl(this).createVariantMetafield(shopifyVariantMetafieldCreationRequest);
 	}
 
 	public List<Metafield> getVariantMetafields(final String variantId) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId).path(ShopifyEndpoint.METAFIELDS));
-//		final MetafieldsRoot metafieldsRootResponse = response.readEntity(MetafieldsRoot.class);
-//		return metafieldsRootResponse.getMetafields();
 		return new ProductVariantActionImpl(this).getVariantMetafields(variantId);
 	}
 
 	public Metafield createProductMetafield(
 			final ShopifyProductMetafieldCreationRequest shopifyProductMetafieldCreationRequest) {
-//		final MetafieldRoot metafieldRoot = new MetafieldRoot();
-//		metafieldRoot.setMetafield(shopifyProductMetafieldCreationRequest.getRequest());
-//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS)
-//				.path(shopifyProductMetafieldCreationRequest.getProductId()).path(ShopifyEndpoint.METAFIELDS), metafieldRoot);
-//		final MetafieldRoot metafieldRootResponse = response.readEntity(MetafieldRoot.class);
-//		return metafieldRootResponse.getMetafield();
 		return new ProductActionImpl(this).createProductMetafield(shopifyProductMetafieldCreationRequest);
 	}
 
 	public List<Metafield> getProductMetafields(final String productId) {
-//		final Response response = shopifyWebTarget.get(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.METAFIELDS));
-//		final MetafieldsRoot metafieldsRootResponse = response.readEntity(MetafieldsRoot.class);
-//		return metafieldsRootResponse.getMetafields();
 		return new ProductActionImpl(this).getProductMetafields(productId);
 	}
 
@@ -519,31 +497,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return mapPagedResponse(shopifyCustomersRootResponse.getCustomers(), response);
 	}
 
-
-
 	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
 			final ShopifyProduct shopifyProduct) {
-//		setVariantImageIds(shopifyProductRequest, shopifyProduct);
-//		final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
-//		shopifyProductRootRequest.setProduct(shopifyProduct);
-//		final Response response = shopifyWebTarget.put(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(shopifyProduct.getId()),
-//				shopifyProductRootRequest);
-//		final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
-//		return shopifyProductRootResponse.getProduct();
 		return new ProductImageActionImpl(this).updateProductImages(shopifyProductRequest, shopifyProduct);
 	}
-
-//	private void setVariantImageIds(final ShopifyProductRequest shopifyProductRequest,
-//			final ShopifyProduct shopifyProduct) {
-//		shopifyProduct.getVariants().stream().forEach(variant -> {
-//			final int variantPosition = variant.getPosition();
-//			if (shopifyProductRequest.hasVariantImagePosition(variantPosition)) {
-//				final int imagePosition = shopifyProductRequest.getVariantImagePosition(variantPosition);
-//				shopifyProduct.getImages().stream().filter(image -> image.getPosition() == imagePosition).findFirst()
-//						.ifPresent(variantImage -> variant.setImageId(variantImage.getId()));
-//			}
-//		});
-//	}
 
 	private String generateToken() {
 		try {
