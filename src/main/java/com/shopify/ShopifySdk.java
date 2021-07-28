@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.shopify.actions.ProductActionImpl;
+import com.shopify.actions.ProductImageActionImpl;
 import com.shopify.actions.ShopActionImpl;
 import com.shopify.model.roots.*;
 import com.shopify.model.structs.*;
@@ -323,22 +324,28 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public Image createProductImage(final String productId, final String imageSource) {
-		final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
-		final Image imageRequest = new Image();
-		imageRequest.setSource(imageSource);
-		shopifyImageRootRequest.setImage(imageRequest);
-		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.IMAGES),
-				shopifyImageRootRequest);
-		final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
-		final Image createdImage = shopifyImageRootResponse.getImage();
-		return createdImage;
+//		final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
+//		final Image imageRequest = new Image();
+//		imageRequest.setSource(imageSource);
+//		shopifyImageRootRequest.setImage(imageRequest);
+//		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId).path(ShopifyEndpoint.IMAGES),
+//				shopifyImageRootRequest);
+//		final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+//		final Image createdImage = shopifyImageRootResponse.getImage();
+//		return createdImage;
+		return new ProductImageActionImpl(this).createProductImage(productId, imageSource);
+	}
+
+	public Image createProductImage(final String productId, final String imageSource, final int position) {
+		return new ProductImageActionImpl(this).createProductImage(productId, imageSource, position);
 	}
 
 	public boolean deleteProductImage(final String productId, final String imageId) {
-		final Response response = shopifyWebTarget.delete(getWebTarget()
-				.path(ShopifyEndpoint.PRODUCTS).path(productId)
-				.path(ShopifyEndpoint.IMAGES).path(imageId));
-		return Status.OK.getStatusCode() == response.getStatus();
+//		final Response response = shopifyWebTarget.delete(getWebTarget()
+//				.path(ShopifyEndpoint.PRODUCTS).path(productId)
+//				.path(ShopifyEndpoint.IMAGES).path(imageId));
+//		return Status.OK.getStatusCode() == response.getStatus();
+		return new ProductImageActionImpl(this).deleteProductImage(productId, imageId);
 	}
 
 	public ShopifyRecurringApplicationCharge createRecurringApplicationCharge(
