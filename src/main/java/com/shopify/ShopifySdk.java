@@ -300,10 +300,6 @@ public class ShopifySdk implements ShopifySdkAction {
 		return ordersAction.getOrderRisks(orderId);
 	}
 
-	private ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
-		return ordersAction.calculateRefund(shopifyRefundCreationRequest);
-	}
-
 	public List<Metafield> getOrderMetafields(final String orderId) {
 		return ordersAction.getOrderMetafields(orderId);
 	}

@@ -59,8 +59,6 @@ public interface OrdersAction {
 
     ShopifyRefund refund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest);
 
-    ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest);
-
     int getOrderCount();
 
 }

@@ -206,7 +206,7 @@ public class OrdersActionImpl implements OrdersAction {
         return shopifyRefundRootResponse.getRefund();
     }
 
-    public ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
+    private ShopifyRefund calculateRefund(final ShopifyRefundCreationRequest shopifyRefundCreationRequest) {
         final ShopifyRefundRoot shopifyRefundRoot = new ShopifyRefundRoot();
 
         shopifyRefundRoot.setRefund(shopifyRefundCreationRequest.getRequest());
