@@ -20,6 +20,7 @@ public class ShopActionImpl implements ShopAction {
         this.shopifySdk = shopifySdk;
     }
 
+    @Override
     public ShopifyShopRoot getShop() {
         final Response response = shopifySdk.getShopifyWebTarget()
                 .get(shopifySdk.getWebTarget().path(ShopifyEndpoint.SHOP));

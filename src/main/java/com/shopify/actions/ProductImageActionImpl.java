@@ -21,6 +21,7 @@ public class ProductImageActionImpl implements ProductImageAction {
         this.shopifySdk = shopifySdk;
     }
 
+    @Override
     public Image createProductImage(final String productId, final String imageSource) {
         final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
         final Image imageRequest = new Image();
@@ -34,6 +35,7 @@ public class ProductImageActionImpl implements ProductImageAction {
         return createdImage;
     }
 
+    @Override
     public Image createProductImage(final String productId, final String imageSource, final int position) {
         final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
         final Image imageRequest = new Image();
@@ -48,6 +50,7 @@ public class ProductImageActionImpl implements ProductImageAction {
         return createdImage;
     }
 
+    @Override
     public boolean deleteProductImage(final String productId, final String imageId) {
         final Response response = shopifySdk.getShopifyWebTarget().delete(shopifySdk.getWebTarget()
                 .path(ShopifyEndpoint.PRODUCTS).path(productId)
