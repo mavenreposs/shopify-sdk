@@ -92,6 +92,7 @@ public class ShopifyVariantRequestOption1ComparatorTest {
 				.withSku("1")
 				.withBarcode("11")
 				.withWeight(BigDecimal.ZERO)
+				.noWeightUnit()
 				.withAvailable(4)
 				.withFirstOption(firstOption)
 				.noSecondOption()

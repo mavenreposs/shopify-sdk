@@ -188,6 +188,7 @@ public class ShopifyVariantUpdateRequestTest {
 				.withSku(SOME_CURRENT_SKU)
 				.withBarcode(SOME_CURRENT_BARCODE)
 				.withWeight(SOME_CURRENT_GRAMS_AMOUNT)
+				.noWeightUnit()
 				.withAvailable(SOME_CURRENT_QUANTITY)
 				.withFirstOption(SOME_CURRENT_FIRST_OPTION)
 				.withSecondOption(SOME_CURRENT_SECOND_OPTION)
