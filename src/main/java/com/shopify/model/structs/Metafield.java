@@ -7,12 +7,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.enums.MetafieldValueType;
 import org.joda.time.DateTime;
 
 import com.shopify.model.adapters.DateTimeAdapter;
 import com.shopify.model.adapters.MetafieldValueTypeAdapter;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)

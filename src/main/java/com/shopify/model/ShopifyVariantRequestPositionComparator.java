@@ -4,9 +4,7 @@ import com.shopify.model.request.ShopifyVariantRequest;
 
 import java.util.Comparator;
 
-public class ShopifyVariantRequestPositionComparator implements Comparator<ShopifyVariantRequest>
-
-{
+public class ShopifyVariantRequestPositionComparator implements Comparator<ShopifyVariantRequest> {
 	@Override
 	public int compare(final ShopifyVariantRequest shopifyVariantRequest,
 			final ShopifyVariantRequest otherShopifyVariantRequest) {

@@ -1,6 +1,7 @@
 package com.shopify.model.roots;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.structs.ShopifyTransaction;
 
 import java.util.LinkedList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyTransactionsRoot {

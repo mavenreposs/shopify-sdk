@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.*;
 import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.structs.*;
@@ -17,6 +19,7 @@ import org.joda.time.DateTimeZone;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyProductCreationRequest implements ShopifyProductRequest {

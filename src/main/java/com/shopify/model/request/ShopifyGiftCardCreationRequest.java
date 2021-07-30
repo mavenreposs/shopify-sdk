@@ -1,11 +1,13 @@
 package com.shopify.model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.structs.ShopifyGiftCard;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyGiftCardCreationRequest {

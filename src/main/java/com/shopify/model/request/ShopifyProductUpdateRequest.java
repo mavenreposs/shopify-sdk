@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.*;
 import com.shopify.model.enums.ProductStatus;
 import com.shopify.model.structs.*;
@@ -22,6 +23,7 @@ import org.joda.time.DateTimeZone;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
@@ -86,6 +88,7 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 
 	public static interface ImageSourcesStep {
 		public VariantUpdateRequestsStep withImageSources(final List<String> imageSources);
+		public VariantUpdateRequestsStep withImages(final List<Image> images);
 
 		public VariantUpdateRequestsStep withSameImages();
 	}
@@ -242,6 +245,17 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 				images.add(image);
 			}
 
+			shopifyProduct.setImages(images);
+			return this;
+		}
+
+		@Override
+		public VariantUpdateRequestsStep withImages(final List<Image> images) {
+			final List<Metafield> metafields = ImageAltTextCreationRequest.newBuilder()
+					.withImageAltText(shopifyProduct.getTitle()).build();
+			images.forEach(image -> {
+				image.setMetafields(metafields);
+			});
 			shopifyProduct.setImages(images);
 			return this;
 		}

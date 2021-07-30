@@ -1,6 +1,7 @@
 package com.shopify.model.structs;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Create by zhengdong.wang@bloomchic.tech
  * Date 2021/7/24 17:58
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
 public class ShopifyClientDetail {
