@@ -64,6 +64,7 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 
 	public static interface ImageSourceStep {
 		public InventoryManagementStep withImageSource(final String imageSource);
+		public InventoryManagementStep withImageId(final String imageId);
 
 		public InventoryManagementStep noImageSource();
 	}
@@ -224,6 +225,12 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 		@Override
 		public InventoryManagementStep withImageSource(final String imageSource) {
 			this.imageSource = imageSource;
+			return this;
+		}
+
+		@Override
+		public InventoryManagementStep withImageId(final String imageId) {
+			shopifyVariant.setImageId(imageId);
 			return this;
 		}
 
