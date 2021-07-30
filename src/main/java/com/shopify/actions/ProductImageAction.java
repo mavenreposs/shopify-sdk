@@ -6,6 +6,8 @@ import com.shopify.model.structs.ShopifyProduct;
 
 public interface ProductImageAction {
 
+    Image createProductImage(final String productId, final Image image);
+
     Image createProductImage(final String productId, final String imageSource);
 
     Image createProductImage(final String productId, final String imageSource, final int position);

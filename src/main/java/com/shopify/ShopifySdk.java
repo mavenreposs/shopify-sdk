@@ -195,6 +195,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return productAction.deleteProduct(productId);
 	}
 
+	public Image createProductImage(final String productId, final Image imageRequest) {
+		return productImageAction.createProductImage(productId, imageRequest);
+	}
+
 	public Image createProductImage(final String productId, final String imageSource) {
 		return productImageAction.createProductImage(productId, imageSource);
 	}

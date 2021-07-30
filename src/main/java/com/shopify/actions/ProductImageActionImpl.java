@@ -25,6 +25,18 @@ public class ProductImageActionImpl implements ProductImageAction {
     }
 
     @Override
+    public Image createProductImage(final String productId, final Image imageRequest) {
+        final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
+        shopifyImageRootRequest.setImage(imageRequest);
+        final Response response = shopifySdk.getShopifyWebTarget().post(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId)
+                        .path(ShopifyEndpoint.IMAGES),
+                shopifyImageRootRequest);
+        final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+        final Image createdImage = shopifyImageRootResponse.getImage();
+        return createdImage;
+    }
+
+    @Override
     public Image createProductImage(final String productId, final String imageSource) {
         final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
         final Image imageRequest = new Image();
