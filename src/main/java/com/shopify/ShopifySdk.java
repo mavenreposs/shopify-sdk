@@ -1,5 +1,6 @@
 package com.shopify;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 import java.util.Set;
@@ -469,7 +470,7 @@ public class ShopifySdk implements ShopifySdkAction {
 			try {
 				final Shop shop = this.getShop().getShop();
 				LOGGER.info(SHOP_RETRIEVED_MESSAGE, shop.getId(), shop.getName());
-			} catch (ShopifyClientException exception) {
+			} catch (Exception exception) {
 				LOGGER.info(SHOP_EXCEPTION_MESSAGE, exception.getMessage());
 			}
 		}
