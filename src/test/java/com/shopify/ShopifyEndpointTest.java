@@ -3,12 +3,13 @@ package com.shopify;
 import com.shopify.model.ShopifyPage;
 import com.shopify.model.structs.ShopifyDeprecatedApiCall;
 import com.shopify.model.structs.ShopifyProduct;
+import org.glassfish.jersey.logging.LoggingFeature;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.ws.rs.client.WebTarget;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class ShopifyEndpointTest {
 
@@ -60,6 +61,12 @@ public class ShopifyEndpointTest {
     public void getDeprecatedApiCalls() {
         final List<ShopifyDeprecatedApiCall> shopifyDeprecatedApiCalls = shopifySdk.getDeprecatedApiCalls();
         System.out.println(shopifyDeprecatedApiCalls);
+    }
+
+    @Test
+    public void enableLogging() {
+        shopifySdk.getWebTarget().register(new LoggingFeature(java.util.logging.Logger.getLogger(ShopifySdk.class.getName()), Level.OFF, LoggingFeature.Verbosity.PAYLOAD_TEXT, 819200000));
+        System.out.println(shopifySdk.getShop());
     }
 
 }
