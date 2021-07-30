@@ -1204,6 +1204,7 @@ public class ShopifySdkTest {
 				.withSku("ABC-123")
 				.withBarcode("XYZ-123")
 				.withWeight(somePrice)
+				.noWeightUnit()
 				.withAvailable(13)
 				.withFirstOption("Shoes")
 				.withSecondOption("Red")
