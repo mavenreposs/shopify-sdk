@@ -60,6 +60,10 @@ public class ShopifyVariant {
 	@XmlTransient
 	private long available;
 
+	private int weight;
+	@XmlElement(name = "weight_unit")
+	private String weightUnit;
+
 	public String getId() {
 		return id;
 	}
@@ -229,6 +233,22 @@ public class ShopifyVariant {
 		this.available = available;
 	}
 
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public String getWeightUnit() {
+		return weightUnit;
+	}
+
+	public void setWeightUnit(String weightUnit) {
+		this.weightUnit = weightUnit;
+	}
+
 	@Override
 	public String toString() {
 		return "ShopifyVariant{" +
@@ -253,6 +273,8 @@ public class ShopifyVariant {
 				", taxable=" + taxable +
 				", inventoryItemId='" + inventoryItemId + '\'' +
 				", available=" + available +
+				", weight=" + weight +
+				", weightUnit='" + weightUnit + '\'' +
 				'}';
 	}
 }

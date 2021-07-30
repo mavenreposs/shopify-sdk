@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shopify.model.enums.FulfillmentService;
 import com.shopify.model.enums.InventoryPolicy;
+import com.shopify.model.enums.WeightUnit;
 import com.shopify.model.structs.ShopifyVariant;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -37,7 +39,13 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 	}
 
 	public static interface WeightStep {
-		public AvailableStep withWeight(final BigDecimal weight);
+		public WeightUnitStep withWeight(final BigDecimal weight);
+		public WeightUnitStep withWeight(final int weight);
+	}
+
+	public static interface WeightUnitStep {
+		public AvailableStep withWeightUnit(final WeightUnit unit);
+		public AvailableStep noWeightUnit();
 	}
 
 	public static interface AvailableStep {
@@ -134,7 +142,7 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 		this.imageSource = imageSource;
 	}
 
-	private static class Steps implements PriceStep, CompareAtPriceStep, SkuStep, BarcodeStep, WeightStep,
+	private static class Steps implements PriceStep, CompareAtPriceStep, SkuStep, BarcodeStep, WeightStep, WeightUnitStep,
 			AvailableStep, FirstOptionStep, SecondOptionStep, ThirdOptionStep, ImageSourceStep, InventoryManagementStep,
 			InventoryPolicyStep, FulfillmentServiceStep, RequiresShippingStep, TaxableStep, BuildStep {
 		private static final String DEFAULT_INVENTORY_MANAGEMENT = "shopify";
@@ -192,9 +200,26 @@ public class ShopifyVariantCreationRequest implements ShopifyVariantRequest {
 		}
 
 		@Override
-		public AvailableStep withWeight(final BigDecimal weight) {
+		public WeightUnitStep withWeight(final BigDecimal weight) {
 			final long grams = weight.setScale(ZERO, RoundingMode.HALF_UP).longValueExact();
 			shopifyVariant.setGrams(grams);
+			return this;
+		}
+
+		@Override
+		public WeightUnitStep withWeight(final int weight) {
+			shopifyVariant.setWeight(weight);
+			return this;
+		}
+
+		@Override
+		public AvailableStep withWeightUnit(final WeightUnit unit) {
+			shopifyVariant.setWeightUnit(unit.toString());
+			return this;
+		}
+
+		@Override
+		public AvailableStep noWeightUnit() {
 			return this;
 		}
 
