@@ -8,7 +8,7 @@
 
 	<name>Shopify SDK</name>
 	<description>Java SDK for Shopify REST API.</description>
-	<url>https://github.com/channelape/shopify-sdk</url>
+	<url>https://github.com/mavenreposs/shopify-sdk</url>
 
 	<licenses>
 		<license>
@@ -18,7 +18,7 @@
 	</licenses>
 
 	<issueManagement>
-		<url>https://github.com/channelape/shopify-sdk/issues</url>
+		<url>https://github.com/mavenreposs/shopify-sdk/issues</url>
 		<system>GitHub</system>
 	</issueManagement>
 
