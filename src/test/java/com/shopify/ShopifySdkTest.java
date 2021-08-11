@@ -1023,7 +1023,7 @@ public class ShopifySdkTest {
 		assertEquals(shopifyLocation1.getZip(), actualShopifyLocations.get(0).getZip());
 		assertEquals(shopifyLocation1.getCountry(), actualShopifyLocations.get(0).getCountry());
 		assertEquals(shopifyLocation1.getCountryCode(), actualShopifyLocations.get(0).getCountryCode());
-		assertEquals(shopifyLocation1.getCountryName(), actualShopifyLocations.get(0).getCountryName());
+		assertEquals(shopifyLocation1.getLocalizedCountryName(), actualShopifyLocations.get(0).getLocalizedCountryName());
 		assertEquals(shopifyLocation1.getProvinceCode(), actualShopifyLocations.get(0).getProvinceCode());
 
 		assertEquals(shopifyLocation2.getAddress1(), actualShopifyLocations.get(1).getAddress1());
@@ -1033,7 +1033,7 @@ public class ShopifySdkTest {
 		assertEquals(shopifyLocation2.getZip(), actualShopifyLocations.get(1).getZip());
 		assertEquals(shopifyLocation2.getCountry(), actualShopifyLocations.get(1).getCountry());
 		assertEquals(shopifyLocation2.getCountryCode(), actualShopifyLocations.get(1).getCountryCode());
-		assertEquals(shopifyLocation2.getCountryName(), actualShopifyLocations.get(1).getCountryName());
+		assertEquals(shopifyLocation2.getLocalizedCountryName(), actualShopifyLocations.get(1).getLocalizedCountryName());
 		assertEquals(shopifyLocation2.getProvinceCode(), actualShopifyLocations.get(1).getProvinceCode());
 	}
 
@@ -3932,7 +3932,7 @@ public class ShopifySdkTest {
 		shopifyLocation.setName(name);
 		shopifyLocation.setProvince("PEnnsylvania");
 		shopifyLocation.setProvinceCode("PA");
-		shopifyLocation.setCountryName("United States");
+		shopifyLocation.setLocalizedCountryName("United States");
 		return shopifyLocation;
 	}
 
