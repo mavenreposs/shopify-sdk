@@ -8,6 +8,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * https://shopify.dev/api/admin/rest/reference/inventory/location?api%5Bversion%5D=2021-04
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
@@ -20,18 +23,35 @@ public class ShopifyLocation {
 	private String address2;
 	private String city;
 	private String zip;
-	private String country;
 	private String phone;
 	private String province;
-
-	@XmlElement(name = "country_code")
-	private String countryCode;
-
-	@XmlElement(name = "country_name")
-	private String countryName;
-
 	@XmlElement(name = "province_code")
 	private String provinceCode;
+	/**
+	 * The localized name of the location's region. Typically a province, state, or prefecture.
+	 */
+	@XmlElement(name = "localized_province_name")
+	private String localizedProvinceName;
+	private String country;
+	@XmlElement(name = "country_code")
+	private String countryCode;
+	/**
+	 * The localized name of the location's country.
+	 */
+	@XmlElement(name = "localized_country_name")
+	private String localizedCountryName;
+
+	/**
+	 * Whether the location is active. If true, then the location can be used to sell products, stock inventory, and fulfill orders.
+	 * Merchants can deactivate locations from the Shopify admin.
+	 * Deactivated locations don't contribute to the shop's location limit.
+	 */
+	private boolean active;
+	@XmlElement(name = "created_at")
+	private String createdAt;
+	@XmlElement(name = "updated_at")
+	private String updatedAt;
+	private boolean legacy;
 
 	public String getId() {
 		return id;
@@ -73,8 +93,28 @@ public class ShopifyLocation {
 		return countryCode;
 	}
 
-	public String getCountryName() {
-		return countryName;
+	public String getLocalizedProvinceName() {
+		return localizedProvinceName;
+	}
+
+	public String getLocalizedCountryName() {
+		return localizedCountryName;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public boolean isLegacy() {
+		return legacy;
 	}
 
 	public String getProvinceCode() {
@@ -121,12 +161,32 @@ public class ShopifyLocation {
 		this.countryCode = countryCode;
 	}
 
-	public void setCountryName(final String countryName) {
-		this.countryName = countryName;
-	}
-
 	public void setProvinceCode(final String provinceCode) {
 		this.provinceCode = provinceCode;
+	}
+
+	public void setLocalizedProvinceName(String localizedProvinceName) {
+		this.localizedProvinceName = localizedProvinceName;
+	}
+
+	public void setLocalizedCountryName(String localizedCountryName) {
+		this.localizedCountryName = localizedCountryName;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public void setLegacy(boolean legacy) {
+		this.legacy = legacy;
 	}
 
 	@Override
@@ -138,12 +198,17 @@ public class ShopifyLocation {
 				", address2='" + address2 + '\'' +
 				", city='" + city + '\'' +
 				", zip='" + zip + '\'' +
-				", country='" + country + '\'' +
 				", phone='" + phone + '\'' +
 				", province='" + province + '\'' +
-				", countryCode='" + countryCode + '\'' +
-				", countryName='" + countryName + '\'' +
 				", provinceCode='" + provinceCode + '\'' +
+				", localizedProvinceName='" + localizedProvinceName + '\'' +
+				", country='" + country + '\'' +
+				", countryCode='" + countryCode + '\'' +
+				", localizedCountryName='" + localizedCountryName + '\'' +
+				", active=" + active +
+				", createdAt='" + createdAt + '\'' +
+				", updatedAt='" + updatedAt + '\'' +
+				", legacy=" + legacy +
 				'}';
 	}
 }
