@@ -52,7 +52,8 @@ public class ProductActionImpl implements ProductAction {
 
     @Override
     public ShopifyPage<ShopifyProduct> getProducts(final String pageInfo, final int pageSize) {
-        final WebTarget url = shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
+        final WebTarget url = shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS)
+                .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo);
         final Response response = shopifySdk.getShopifyWebTarget().get(url);
         final ShopifyProductsRoot shopifyProductsRoot = response.readEntity(ShopifyProductsRoot.class);
