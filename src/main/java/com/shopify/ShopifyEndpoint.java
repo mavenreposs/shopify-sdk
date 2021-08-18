@@ -26,6 +26,7 @@ public class ShopifyEndpoint {
     public static final String PAGE_INFO_QUERY_PARAMETER = "page_info";
     public static final String STATUS_QUERY_PARAMETER = "status";
     public static final String ANY_STATUSES = "any";
+    public static final String OPEN_STATUSES = "open";
     public static final String CREATED_AT_MIN_QUERY_PARAMETER = "created_at_min";
     public static final String CREATED_AT_MAX_QUERY_PARAMETER = "created_at_max";
     public static final String UPDATED_AT_MIN_QUERY_PARAMETER = "updated_at_min";
