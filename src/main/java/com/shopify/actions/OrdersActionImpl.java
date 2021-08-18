@@ -37,7 +37,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getOrders(final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
                 .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize));
         return getOrders(response);
     }
@@ -49,7 +50,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
                 .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.CREATED_AT_MIN_QUERY_PARAMETER, mininumCreationDate.toString()));
         return getOrders(response);
@@ -62,7 +64,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getUpdatedOrdersCreatedBefore(final DateTime minimumUpdatedAtDate, final DateTime maximumUpdatedAtDate, final DateTime maximumCreatedAtDate, final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
                 .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.UPDATED_AT_MIN_QUERY_PARAMETER, minimumUpdatedAtDate.toString())
                 .queryParam(ShopifyEndpoint.UPDATED_AT_MAX_QUERY_PARAMETER, maximumUpdatedAtDate.toString())
@@ -72,7 +75,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate, final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
                 .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.CREATED_AT_MIN_QUERY_PARAMETER, mininumCreationDate.toString())
                 .queryParam(ShopifyEndpoint.CREATED_AT_MAX_QUERY_PARAMETER, maximumCreationDate.toString()));
@@ -86,7 +90,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getOrders(final DateTime mininumCreationDate, final DateTime maximumCreationDate, final String appId, final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.STATUS_QUERY_PARAMETER, ShopifyEndpoint.ANY_STATUSES)
                 .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.CREATED_AT_MIN_QUERY_PARAMETER, mininumCreationDate.toString())
                 .queryParam(ShopifyEndpoint.CREATED_AT_MAX_QUERY_PARAMETER, maximumCreationDate.toString())
@@ -96,7 +101,8 @@ public class OrdersActionImpl implements OrdersAction {
 
     @Override
     public ShopifyPage<ShopifyOrder> getOrders(final String pageInfo, final int pageSize) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint().queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
+        final Response response = shopifySdk.getShopifyWebTarget().get(buildOrdersEndpoint()
+                .queryParam(ShopifyEndpoint.LIMIT_QUERY_PARAMETER, pageSize)
                 .queryParam(ShopifyEndpoint.PAGE_INFO_QUERY_PARAMETER, pageInfo));
         return getOrders(response);
     }
