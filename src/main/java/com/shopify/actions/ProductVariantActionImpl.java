@@ -34,7 +34,21 @@ public class ProductVariantActionImpl implements ProductVariantAction {
 
     @Override
     public ShopifyVariant getVariant(final String variantId) {
-        final Response response = shopifySdk.getShopifyWebTarget().get(shopifySdk.getWebTarget().path(ShopifyEndpoint.VARIANTS).path(variantId));
+        final Response response = shopifySdk.getShopifyWebTarget().get(
+                shopifySdk.getWebTarget()
+                        .path(ShopifyEndpoint.VARIANTS).path(variantId));
+        final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
+        return shopifyVariantRootResponse.getVariant();
+    }
+
+    @Override
+    public ShopifyVariant updateVariant(final ShopifyVariant shopifyVariant) {
+        final ShopifyVariantRoot shopifyVariantRootRequest = new ShopifyVariantRoot();
+        shopifyVariantRootRequest.setVariant(shopifyVariant);
+        final Response response = shopifySdk.getShopifyWebTarget().put(
+                shopifySdk.getWebTarget()
+                        .path(ShopifyEndpoint.VARIANTS)
+                        .path(String.valueOf(shopifyVariant.getId())), shopifyVariantRootRequest);
         final ShopifyVariantRoot shopifyVariantRootResponse = response.readEntity(ShopifyVariantRoot.class);
         return shopifyVariantRootResponse.getVariant();
     }

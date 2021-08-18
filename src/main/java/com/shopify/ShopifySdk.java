@@ -215,6 +215,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return productVariantAction.getVariant(variantId);
 	}
 
+	public ShopifyVariant updateVariant(final ShopifyVariant shopifyVariant) {
+		return productVariantAction.updateVariant(shopifyVariant);
+	}
+
 	public ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest) {
 		return productVariantAction.updateVariant(shopifyVariantUpdateRequest);
 	}

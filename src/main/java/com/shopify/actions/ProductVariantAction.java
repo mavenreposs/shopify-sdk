@@ -11,6 +11,8 @@ public interface ProductVariantAction {
 
     ShopifyVariant getVariant(final String variantId);
 
+    ShopifyVariant updateVariant(final ShopifyVariant shopifyVariant);
+
     ShopifyVariant updateVariant(final ShopifyVariantUpdateRequest shopifyVariantUpdateRequest);
 
     Metafield createVariantMetafield(
