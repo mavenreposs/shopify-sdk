@@ -207,6 +207,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return productImageAction.createProductImage(productId, imageSource, position);
 	}
 
+	public Image createVariantImage(ShopifyImageRoot shopifyImageRootRequest) {
+		return productImageAction.createVariantImage(shopifyImageRootRequest);
+	}
+
 	public boolean deleteProductImage(final String productId, final String imageId) {
 		return productImageAction.deleteProductImage(productId, imageId);
 	}

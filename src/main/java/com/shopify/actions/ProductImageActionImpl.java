@@ -66,6 +66,17 @@ public class ProductImageActionImpl implements ProductImageAction {
     }
 
     @Override
+    public Image createVariantImage(ShopifyImageRoot shopifyImageRootRequest) {
+        Image image = shopifyImageRootRequest.getImage();
+        Response response = shopifySdk.getShopifyWebTarget().post(
+                shopifySdk.getWebTarget()
+                        .path(ShopifyEndpoint.PRODUCTS).path(image.getProductId())
+                        .path(ShopifyEndpoint.IMAGES), shopifyImageRootRequest);
+        final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+        return shopifyImageRootResponse.getImage();
+    }
+
+    @Override
     public boolean deleteProductImage(final String productId, final String imageId) {
         final Response response = shopifySdk.getShopifyWebTarget().delete(shopifySdk.getWebTarget()
                 .path(ShopifyEndpoint.PRODUCTS).path(productId)
