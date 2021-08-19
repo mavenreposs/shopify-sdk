@@ -195,4 +195,33 @@ public class ShopifyFulfillment {
 		this.locationId = locationId;
 	}
 
+	@Override
+	public String toString() {
+		return "ShopifyFulfillment{" +
+				"id='" + id + '\'' +
+				", orderId='" + orderId + '\'' +
+				", status='" + status + '\'' +
+				", createdAt=" + createdAt +
+				", updatedAt=" + updatedAt +
+				", trackingCompany='" + trackingCompany + '\'' +
+				", trackingNumber='" + trackingNumber + '\'' +
+				", notifyCustomer=" + notifyCustomer +
+				", lineItems=" + lineItems +
+				", trackingUrl='" + trackingUrl + '\'' +
+				", trackingUrls=" + trackingUrls +
+				", locationId='" + locationId + '\'' +
+				", name='" + name + '\'' +
+				", order_id=" + order_id +
+				", receipt=" + receipt +
+				", service='" + service + '\'' +
+				", shipment_status='" + shipment_status + '\'' +
+				", tracking_company='" + tracking_company + '\'' +
+				", tracking_number='" + tracking_number + '\'' +
+				", tracking_numbers=" + tracking_numbers +
+				", tracking_url='" + tracking_url + '\'' +
+				", tracking_urls=" + tracking_urls +
+				", updated_at='" + updated_at + '\'' +
+				", payment_details=" + payment_details +
+				'}';
+	}
 }
