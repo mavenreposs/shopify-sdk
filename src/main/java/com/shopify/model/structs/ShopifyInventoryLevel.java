@@ -22,6 +22,9 @@ public class ShopifyInventoryLevel {
 
 	private long available;
 
+	@XmlElement(name = "updated_at")
+	private String updatedAt;
+
 	public String getInventoryItemId() {
 		return inventoryItemId;
 	}
@@ -46,12 +49,21 @@ public class ShopifyInventoryLevel {
 		this.available = available;
 	}
 
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	@Override
 	public String toString() {
 		return "ShopifyInventoryLevel{" +
 				"inventoryItemId='" + inventoryItemId + '\'' +
 				", locationId='" + locationId + '\'' +
 				", available=" + available +
+				", updatedAt='" + updatedAt + '\'' +
 				'}';
 	}
 }
