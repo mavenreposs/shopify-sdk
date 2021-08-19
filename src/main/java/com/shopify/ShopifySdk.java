@@ -113,6 +113,9 @@ public class ShopifySdk implements ShopifySdkAction {
 	private final CustomCollectionAction customCollectionAction = new CustomCollectionActionImpl(this);
 	private final CustomerAction customerAction = new CustomerActionImpl(this);
 	private final RecurringApplicationChargeAction recurringApplicationChargeAction = new RecurringApplicationChargeActionImpl(this);
+	private final LocationAction locationAction = new LocationActionImpl(this);
+	private final InventoryLevelAction inventoryLevelAction = new InventoryLevelActionImpl(this);
+	private final GiftCardAction giftCardAction = new GiftCardActionImpl(this);
 
 	public static ShopifySdkBuilder.SubdomainStep newBuilder() {
 		return ShopifySdkBuilder.newBuilder();
@@ -395,31 +398,16 @@ public class ShopifySdk implements ShopifySdkAction {
 	}
 
 	public List<ShopifyLocation> getLocations() {
-		final String locationsEndpoint = new StringBuilder().append(ShopifyEndpoint.LOCATIONS).append(ShopifyEndpoint.JSON).toString();
-		final Response response = shopifyWebTarget.get(getWebTarget().path(locationsEndpoint));
-		final ShopifyLocationsRoot shopifyLocationRootResponse = response.readEntity(ShopifyLocationsRoot.class);
-		return shopifyLocationRootResponse.getLocations();
+		return locationAction.getLocations();
 	}
 
 	public ShopifyInventoryLevel updateInventoryLevel(final String inventoryItemId, final String locationId,
 			final long quantity) {
-		final ShopifyInventoryLevel shopifyInventoryLevel = new ShopifyInventoryLevel();
-		shopifyInventoryLevel.setAvailable(quantity);
-		shopifyInventoryLevel.setLocationId(locationId);
-		shopifyInventoryLevel.setInventoryItemId(inventoryItemId);
-		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.INVENTORY_LEVELS).path(ShopifyEndpoint.SET), shopifyInventoryLevel);
-		final ShopifyInventoryLevelRoot shopifyInventoryLevelRootResponse = response
-				.readEntity(ShopifyInventoryLevelRoot.class);
-		return shopifyInventoryLevelRootResponse.getInventoryLevel();
+		return inventoryLevelAction.updateInventoryLevel(inventoryItemId, locationId, quantity);
 	}
 
 	public ShopifyGiftCard createGiftCard(final ShopifyGiftCardCreationRequest shopifyGiftCardCreationRequest) {
-		final ShopifyGiftCardRoot shopifyGiftCardRoot = new ShopifyGiftCardRoot();
-		final ShopifyGiftCard shopifyGiftCard = shopifyGiftCardCreationRequest.getRequest();
-		shopifyGiftCardRoot.setGiftCard(shopifyGiftCard);
-		final Response response = shopifyWebTarget.post(getWebTarget().path(ShopifyEndpoint.GIFT_CARDS), shopifyGiftCardRoot);
-		final ShopifyGiftCardRoot shopifyOrderRootResponse = response.readEntity(ShopifyGiftCardRoot.class);
-		return shopifyOrderRootResponse.getGiftCard();
+		return giftCardAction.createGiftCard(shopifyGiftCardCreationRequest);
 	}
 
 	public List<ShopifyDeprecatedApiCall> getDeprecatedApiCalls() {
