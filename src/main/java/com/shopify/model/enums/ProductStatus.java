@@ -21,13 +21,35 @@ public enum ProductStatus {
 
 	private final String value;
 
+	static final String NO_MATCHING_ENUMS_ERROR_MESSAGE = "No matching enum found for %s";
+
 	private ProductStatus(final String value) {
 		this.value = value;
+	}
+
+	public static ProductStatus toEnum(String value) {
+		if (ACTIVE.toString().equals(value)) {
+			return ProductStatus.ACTIVE;
+		} else if (ARCHIVED.toString().equals(value)) {
+			return ProductStatus.ARCHIVED;
+		} else if (DRAFT.toString().equals(value)) {
+			return ProductStatus.DRAFT;
+		}
+		throw new IllegalArgumentException(String.format(NO_MATCHING_ENUMS_ERROR_MESSAGE, value));
 	}
 
 	@Override
 	public String toString() {
 		return value;
+	}
+
+	/**
+	 * Enum Object matching
+	 * @param enumObject Enum Object
+	 * @return boolean
+	 */
+	public boolean matching(ProductStatus enumObject) {
+		return this.equals(enumObject);
 	}
 
 }

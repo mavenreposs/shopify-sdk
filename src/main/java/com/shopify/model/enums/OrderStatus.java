@@ -31,13 +31,37 @@ public enum OrderStatus {
 
     private final String value;
 
+    static final String NO_MATCHING_ENUMS_ERROR_MESSAGE = "No matching enum found for %s";
+
     OrderStatus(final String value) {
         this.value = value;
+    }
+
+    public static OrderStatus toEnum(String value) {
+        if (OPEN.toString().equals(value)) {
+            return OrderStatus.OPEN;
+        } else if (CLOSED.toString().equals(value)) {
+            return OrderStatus.CLOSED;
+        } else if (CANCELLED.toString().equals(value)) {
+            return OrderStatus.CANCELLED;
+        } else if (ANY.toString().equals(value)) {
+            return OrderStatus.ANY;
+        }
+        throw new IllegalArgumentException(String.format(NO_MATCHING_ENUMS_ERROR_MESSAGE, value));
     }
 
     @Override
     public String toString() {
         return value;
+    }
+
+    /**
+     * Enum Object matching
+     * @param enumObject Enum Object
+     * @return boolean
+     */
+    public boolean matching(OrderStatus enumObject) {
+        return this.equals(enumObject);
     }
 
 }

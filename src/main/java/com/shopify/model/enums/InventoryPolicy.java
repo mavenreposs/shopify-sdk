@@ -25,4 +25,13 @@ public enum InventoryPolicy {
 		return value;
 	}
 
+	/**
+	 * Enum Object matching
+	 * @param enumObject Enum Object
+	 * @return boolean
+	 */
+	public boolean matching(InventoryPolicy enumObject) {
+		return this.equals(enumObject);
+	}
+
 }

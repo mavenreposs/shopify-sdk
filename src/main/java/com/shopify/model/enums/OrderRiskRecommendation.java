@@ -27,4 +27,13 @@ public enum OrderRiskRecommendation {
 		return value;
 	}
 
+	/**
+	 * Enum Object matching
+	 * @param enumObject Enum Object
+	 * @return boolean
+	 */
+	public boolean matching(OrderRiskRecommendation enumObject) {
+		return this.equals(enumObject);
+	}
+
 }

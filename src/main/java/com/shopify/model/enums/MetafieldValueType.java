@@ -25,4 +25,13 @@ public enum MetafieldValueType {
 		return value;
 	}
 
+	/**
+	 * Enum Object matching
+	 * @param enumObject Enum Object
+	 * @return boolean
+	 */
+	public boolean matching(MetafieldValueType enumObject) {
+		return this.equals(enumObject);
+	}
+
 }
