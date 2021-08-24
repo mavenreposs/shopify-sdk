@@ -194,6 +194,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return productAction.updateProduct(shopifyProductUpdateRequest);
 	}
 
+	public ShopifyProduct updateProduct(final ShopifyProduct shopifyProduct) {
+		return productAction.updateProduct(shopifyProduct);
+	}
+
 	public boolean deleteProduct(final String productId) {
 		return productAction.deleteProduct(productId);
 	}
