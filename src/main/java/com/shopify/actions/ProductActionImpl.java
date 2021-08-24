@@ -102,6 +102,18 @@ public class ProductActionImpl implements ProductAction {
     }
 
     @Override
+    public ShopifyProduct updateProduct(final ShopifyProduct shopifyProduct) {
+        final ShopifyProductRoot shopifyProductRootRequest = new ShopifyProductRoot();
+        shopifyProductRootRequest.setProduct(shopifyProduct);
+        final Response response = shopifySdk.getShopifyWebTarget()
+                .put(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(shopifyProduct.getId()),
+                        shopifyProductRootRequest);
+        final ShopifyProductRoot shopifyProductRootResponse = response.readEntity(ShopifyProductRoot.class);
+        final ShopifyProduct updatedShopifyProduct = shopifyProductRootResponse.getProduct();
+        return updatedShopifyProduct;
+    }
+
+    @Override
     public boolean deleteProduct(final String productId) {
         final Response response = shopifySdk.getShopifyWebTarget()
                 .delete(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId));

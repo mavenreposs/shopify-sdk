@@ -32,6 +32,8 @@ public interface ProductAction {
 
     ShopifyProduct updateProduct(final ShopifyProductUpdateRequest shopifyProductUpdateRequest);
 
+    ShopifyProduct updateProduct(final ShopifyProduct shopifyProduct);
+
     boolean deleteProduct(final String productId);
 
     Metafield createProductMetafield(
