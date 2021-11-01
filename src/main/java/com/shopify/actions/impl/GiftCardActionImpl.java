@@ -1,7 +1,9 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.GiftCardAction;
+import com.shopify.actions.impl.CustomerActionImpl;
 import com.shopify.model.request.ShopifyGiftCardCreationRequest;
 import com.shopify.model.roots.ShopifyGiftCardRoot;
 import com.shopify.model.structs.ShopifyGiftCard;

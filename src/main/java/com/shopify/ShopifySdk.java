@@ -1,6 +1,5 @@
 package com.shopify;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +14,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.shopify.actions.*;
+import com.shopify.actions.impl.*;
 import com.shopify.model.roots.*;
 import com.shopify.model.structs.*;
 import org.apache.commons.lang3.StringUtils;

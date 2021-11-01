@@ -1,7 +1,8 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.ProductVariantAction;
 import com.shopify.model.request.ImageAltTextCreationRequest;
 import com.shopify.model.request.ShopifyVariantMetafieldCreationRequest;
 import com.shopify.model.request.ShopifyVariantUpdateRequest;

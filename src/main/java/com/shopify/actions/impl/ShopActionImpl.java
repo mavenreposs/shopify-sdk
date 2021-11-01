@@ -1,7 +1,8 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.ShopAction;
 import com.shopify.model.roots.ShopifyShopRoot;
 
 import javax.ws.rs.core.Response;

@@ -1,7 +1,9 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.InventoryLevelAction;
+import com.shopify.actions.impl.CustomerActionImpl;
 import com.shopify.model.roots.ShopifyInventoryLevelRoot;
 import com.shopify.model.structs.ShopifyInventoryLevel;
 import org.slf4j.Logger;

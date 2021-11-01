@@ -1,7 +1,8 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.RecurringApplicationChargeAction;
 import com.shopify.model.request.ShopifyRecurringApplicationChargeCreationRequest;
 import com.shopify.model.roots.ShopifyRecurringApplicationChargeRoot;
 import com.shopify.model.structs.ShopifyRecurringApplicationCharge;

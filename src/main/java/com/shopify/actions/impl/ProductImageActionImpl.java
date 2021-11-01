@@ -1,7 +1,8 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.ProductImageAction;
 import com.shopify.model.request.ShopifyProductRequest;
 import com.shopify.model.roots.ShopifyImageRoot;
 import com.shopify.model.roots.ShopifyProductRoot;

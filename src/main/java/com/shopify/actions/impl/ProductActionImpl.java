@@ -1,7 +1,8 @@
-package com.shopify.actions;
+package com.shopify.actions.impl;
 
 import com.shopify.ShopifyEndpoint;
 import com.shopify.ShopifySdk;
+import com.shopify.actions.ProductAction;
 import com.shopify.model.ShopifyPage;
 import com.shopify.model.ShopifyProducts;
 import com.shopify.model.request.ShopifyProductCreationRequest;
