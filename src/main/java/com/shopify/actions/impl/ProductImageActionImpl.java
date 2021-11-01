@@ -78,6 +78,24 @@ public class ProductImageActionImpl implements ProductImageAction {
     }
 
     @Override
+    public Image updateProductImage(final String productId, final Image imageRequest) {
+        final ShopifyImageRoot shopifyImageRootRequest = new ShopifyImageRoot();
+        imageRequest.setSource(null);
+        imageRequest.setName(null);
+        imageRequest.setAlt(null);
+        imageRequest.setCreatedAt(null);
+        imageRequest.setUpdatedAt(null);
+        imageRequest.setHeight(null);
+        imageRequest.setWidth(null);
+        shopifyImageRootRequest.setImage(imageRequest);
+        final Response response = shopifySdk.getShopifyWebTarget().put(shopifySdk.getWebTarget().path(ShopifyEndpoint.PRODUCTS).path(productId)
+                        .path(ShopifyEndpoint.IMAGES).path(imageRequest.getId()),
+                shopifyImageRootRequest);
+        final ShopifyImageRoot shopifyImageRootResponse = response.readEntity(ShopifyImageRoot.class);
+        return shopifyImageRootResponse.getImage();
+    }
+
+    @Override
     public boolean deleteProductImage(final String productId, final String imageId) {
         final Response response = shopifySdk.getShopifyWebTarget().delete(shopifySdk.getWebTarget()
                 .path(ShopifyEndpoint.PRODUCTS).path(productId)

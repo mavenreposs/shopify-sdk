@@ -15,6 +15,8 @@ public interface ProductImageAction {
 
     Image createVariantImage(ShopifyImageRoot shopifyImageRootRequest);
 
+    Image updateProductImage(final String productId, final Image image);
+
     boolean deleteProductImage(final String productId, final String imageId);
 
     ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,

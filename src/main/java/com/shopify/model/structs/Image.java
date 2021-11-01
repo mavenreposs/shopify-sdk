@@ -38,9 +38,9 @@ public class Image {
 	@XmlElement(name = "alt")
 	private String alt;
 	@XmlElement(name = "width")
-	private int width;
+	private Integer width;
 	@XmlElement(name = "height")
-	private int height;
+	private Integer height;
 
 	public String getId() {
 		return id;
@@ -122,19 +122,19 @@ public class Image {
 		this.alt = alt;
 	}
 
-	public int getWidth() {
+	public Integer getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
+	public void setWidth(Integer width) {
 		this.width = width;
 	}
 
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 

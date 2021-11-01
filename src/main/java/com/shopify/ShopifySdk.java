@@ -383,6 +383,10 @@ public class ShopifySdk implements ShopifySdkAction {
 		return productAction.getProductMetafields(productId);
 	}
 
+	public Image updateProductImage(final String productId, final Image image) {
+		return productImageAction.updateProductImage(productId, image);
+	}
+
 	public ShopifyProduct updateProductImages(final ShopifyProductRequest shopifyProductRequest,
 											  final ShopifyProduct shopifyProduct) {
 		return productImageAction.updateProductImages(shopifyProductRequest, shopifyProduct);
