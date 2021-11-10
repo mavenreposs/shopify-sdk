@@ -15,7 +15,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author Zhengdong Wang
  * @version jdk11
- * @CreateDate 2021/11/10 11:06
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

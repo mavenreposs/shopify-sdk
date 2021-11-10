@@ -12,7 +12,6 @@ import java.util.List;
  *
  * @author Zhengdong Wang
  * @version jdk11
- * @CreateDate 2021/11/10 09:44
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

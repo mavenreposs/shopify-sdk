@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
  *
  * @author Zhengdong Wang
  * @version jdk11
- * @CreateDate 2021/11/10 10:58
  */
 public class InventoryItemActionImpl implements InventoryItemAction {
 
