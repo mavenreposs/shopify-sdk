@@ -115,6 +115,7 @@ public class ShopifySdk implements ShopifySdkAction {
 	private final RecurringApplicationChargeAction recurringApplicationChargeAction = new RecurringApplicationChargeActionImpl(this);
 	private final LocationAction locationAction = new LocationActionImpl(this);
 	private final InventoryLevelAction inventoryLevelAction = new InventoryLevelActionImpl(this);
+	private final InventoryItemAction inventoryItemAction = new InventoryItemActionImpl(this);
 	private final GiftCardAction giftCardAction = new GiftCardActionImpl(this);
 
 	public static ShopifySdkBuilder.SubdomainStep newBuilder() {
@@ -412,6 +413,18 @@ public class ShopifySdk implements ShopifySdkAction {
 	public ShopifyInventoryLevel updateInventoryLevel(final String inventoryItemId, final String locationId,
 			final long quantity) {
 		return inventoryLevelAction.updateInventoryLevel(inventoryItemId, locationId, quantity);
+	}
+
+	public ShopifyInventoryItem getInventoryItem(final String inventoryItemId) {
+		return inventoryItemAction.getInventoryItem(inventoryItemId);
+	}
+
+	public ShopifyInventoryItem updateInventoryItem(final ShopifyInventoryItem shopifyInventoryItem) {
+		return inventoryItemAction.updateInventoryItem(shopifyInventoryItem);
+	}
+
+	public ShopifyInventoryItem updateInventoryItem(final String inventoryItemId, boolean requiresShipping) {
+		return inventoryItemAction.updateInventoryItem(inventoryItemId, requiresShipping);
 	}
 
 	public ShopifyGiftCard createGiftCard(final ShopifyGiftCardCreationRequest shopifyGiftCardCreationRequest) {
