@@ -21,6 +21,7 @@ public class ShopifyEndpoint {
     public static final String RISKS = "risks";
     public static final String LOCATIONS = "locations";
     public static final String INVENTORY_LEVELS = "inventory_levels";
+    public static final String INVENTORY_ITEMS = "inventory_items";
     public static final String JSON = ".json";
     public static final String LIMIT_QUERY_PARAMETER = "limit";
     public static final String PAGE_INFO_QUERY_PARAMETER = "page_info";
