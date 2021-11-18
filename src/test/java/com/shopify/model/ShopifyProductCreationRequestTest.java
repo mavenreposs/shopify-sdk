@@ -157,11 +157,11 @@ public class ShopifyProductCreationRequestTest {
 
 		final List<ShopifyVariant> actualShopifyVariants = actualShopifyProduct.getVariants();
 		assertEquals(3, actualShopifyVariants.size());
-		assertEquals(1, actualShopifyVariants.get(0).getPosition());
+		assertEquals(Integer.valueOf(1), actualShopifyVariants.get(0).getPosition());
 		assertSame(secondVariantCreationRequest.getRequest(), actualShopifyVariants.get(0));
-		assertEquals(2, actualShopifyVariants.get(1).getPosition());
+		assertEquals(Integer.valueOf(2), actualShopifyVariants.get(1).getPosition());
 		assertSame(thirdVariantCreationRequest.getRequest(), actualShopifyVariants.get(1));
-		assertEquals(3, actualShopifyVariants.get(2).getPosition());
+		assertEquals(Integer.valueOf(3), actualShopifyVariants.get(2).getPosition());
 		assertSame(firstVariantCreationRequest.getRequest(), actualShopifyVariants.get(2));
 
 		assertFalse(actualShopifyProductCreationRequest.hasVariantImagePosition(1));
@@ -290,11 +290,11 @@ public class ShopifyProductCreationRequestTest {
 
 		final List<ShopifyVariant> actualShopifyVariants = actualShopifyProduct.getVariants();
 		assertEquals(3, actualShopifyVariants.size());
-		assertEquals(1, actualShopifyVariants.get(0).getPosition());
+		assertEquals(Integer.valueOf(1), actualShopifyVariants.get(0).getPosition());
 		assertSame(secondVariantCreationRequest.getRequest(), actualShopifyVariants.get(0));
-		assertEquals(2, actualShopifyVariants.get(1).getPosition());
+		assertEquals(Integer.valueOf(2), actualShopifyVariants.get(1).getPosition());
 		assertSame(thirdVariantCreationRequest.getRequest(), actualShopifyVariants.get(1));
-		assertEquals(3, actualShopifyVariants.get(2).getPosition());
+		assertEquals(Integer.valueOf(3), actualShopifyVariants.get(2).getPosition());
 		assertSame(firstVariantCreationRequest.getRequest(), actualShopifyVariants.get(2));
 
 		assertFalse(actualShopifyProductCreationRequest.hasVariantImagePosition(1));
