@@ -31,8 +31,8 @@ public class ShopifyVariant {
 	private BigDecimal compareAtPrice;
 	private String sku;
 	private String barcode;
-	private int position;
-	private long grams;
+	private Integer position;
+	private Long grams;
 	@XmlTransient
 	private Long inventoryQuantity;
 	@XmlElement(name = "image_id")
@@ -51,16 +51,16 @@ public class ShopifyVariant {
 	@XmlElement(name = "fulfillment_service")
 	private String fulfillmentService;
 	@XmlElement(name = "requires_shipping")
-	private boolean requiresShipping;
-	private boolean taxable;
+	private Boolean requiresShipping;
+	private Boolean taxable;
 
 	@XmlElement(name = "inventory_item_id")
 	private String inventoryItemId;
 
 	@XmlTransient
-	private long available;
+	private Long available;
 
-	private int weight;
+	private Integer weight;
 	@XmlElement(name = "weight_unit")
 	private String weightUnit;
 
@@ -120,19 +120,19 @@ public class ShopifyVariant {
 		this.barcode = barcode;
 	}
 
-	public int getPosition() {
+	public Integer getPosition() {
 		return position;
 	}
 
-	public void setPosition(final int position) {
+	public void setPosition(final Integer position) {
 		this.position = position;
 	}
 
-	public long getGrams() {
+	public Long getGrams() {
 		return grams;
 	}
 
-	public void setGrams(final long grams) {
+	public void setGrams(final Long grams) {
 		this.grams = grams;
 	}
 
@@ -201,19 +201,19 @@ public class ShopifyVariant {
 		this.fulfillmentService = fulfillmentService;
 	}
 
-	public boolean isRequiresShipping() {
+	public Boolean isRequiresShipping() {
 		return requiresShipping;
 	}
 
-	public void setRequiresShipping(final boolean requiresShipping) {
+	public void setRequiresShipping(final Boolean requiresShipping) {
 		this.requiresShipping = requiresShipping;
 	}
 
-	public boolean isTaxable() {
+	public Boolean isTaxable() {
 		return taxable;
 	}
 
-	public void setTaxable(final boolean taxable) {
+	public void setTaxable(final Boolean taxable) {
 		this.taxable = taxable;
 	}
 
@@ -225,19 +225,19 @@ public class ShopifyVariant {
 		this.inventoryItemId = inventoryItemId;
 	}
 
-	public long getAvailable() {
+	public Long getAvailable() {
 		return available;
 	}
 
-	public void setAvailable(final long available) {
+	public void setAvailable(final Long available) {
 		this.available = available;
 	}
 
-	public int getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
