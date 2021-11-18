@@ -32,7 +32,7 @@ public class ShopifyVariantUpdateRequestTest {
 	private static final BigDecimal SOME_NEW_PRICE_AMOUNT = new BigDecimal("15.99");
 	private static final BigDecimal SOME_NEW_COMPARE_AT_PRICE_AMOUNT = new BigDecimal("25.99");
 	private static final BigDecimal SOME_NEW_GRAMS_AMOUNT = new BigDecimal("406.252");
-	private static final long SOME_NEW_QUANTITY = 26;
+	private static final long SOME_NEW_QUANTITY = 26L;
 	private static final String SOME_NEW_FIRST_OPTION = "25 ea";
 	private static final String SOME_NEW_SECOND_OPTION = "Lime";
 	private static final String SOME_NEW_THIRD_OPTION = "Right";
@@ -74,8 +74,8 @@ public class ShopifyVariantUpdateRequestTest {
 		assertEquals(SOME_CURRENT_PRICE_AMOUNT.toPlainString(), actualShopifyVariant.getPrice().toPlainString());
 		assertEquals(SOME_CURRENT_COMPARE_AT_PRICE_AMOUNT.toPlainString(),
 				actualShopifyVariant.getCompareAtPrice().toPlainString());
-		assertEquals(405, actualShopifyVariant.getGrams());
-		assertEquals(SOME_CURRENT_QUANTITY, actualShopifyVariant.getAvailable());
+		assertEquals(Long.valueOf(405L), actualShopifyVariant.getGrams());
+		assertEquals(Long.valueOf(SOME_CURRENT_QUANTITY), actualShopifyVariant.getAvailable());
 		assertEquals(SOME_CURRENT_FIRST_OPTION, actualShopifyVariant.getOption1());
 		assertEquals(SOME_CURRENT_SECOND_OPTION, actualShopifyVariant.getOption2());
 		assertEquals(SOME_CURRENT_THIRD_OPTION, actualShopifyVariant.getOption3());
@@ -121,8 +121,8 @@ public class ShopifyVariantUpdateRequestTest {
 		assertEquals(SOME_NEW_PRICE_AMOUNT.toPlainString(), actualShopifyVariant.getPrice().toPlainString());
 		assertEquals(SOME_NEW_COMPARE_AT_PRICE_AMOUNT.toPlainString(),
 				actualShopifyVariant.getCompareAtPrice().toPlainString());
-		assertEquals(406, actualShopifyVariant.getGrams());
-		assertEquals(SOME_NEW_QUANTITY, actualShopifyVariant.getAvailable());
+		assertEquals(Long.valueOf(406L), actualShopifyVariant.getGrams());
+		assertEquals(Long.valueOf(SOME_NEW_QUANTITY), actualShopifyVariant.getAvailable());
 		assertEquals(SOME_NEW_FIRST_OPTION, actualShopifyVariant.getOption1());
 		assertEquals(SOME_NEW_SECOND_OPTION, actualShopifyVariant.getOption2());
 		assertEquals(SOME_NEW_THIRD_OPTION, actualShopifyVariant.getOption3());
@@ -169,8 +169,8 @@ public class ShopifyVariantUpdateRequestTest {
 		assertEquals(SOME_NEW_PRICE_AMOUNT.toPlainString(), actualShopifyVariant.getPrice().toPlainString());
 		assertEquals(SOME_NEW_COMPARE_AT_PRICE_AMOUNT.toPlainString(),
 				actualShopifyVariant.getCompareAtPrice().toPlainString());
-		assertEquals(406, actualShopifyVariant.getGrams());
-		assertEquals(SOME_NEW_QUANTITY, actualShopifyVariant.getAvailable());
+		assertEquals(Long.valueOf(406L), actualShopifyVariant.getGrams());
+		assertEquals(Long.valueOf(SOME_NEW_QUANTITY), actualShopifyVariant.getAvailable());
 		assertNull(actualShopifyVariant.getOption1());
 		assertNull(actualShopifyVariant.getOption2());
 		assertNull(actualShopifyVariant.getOption3());

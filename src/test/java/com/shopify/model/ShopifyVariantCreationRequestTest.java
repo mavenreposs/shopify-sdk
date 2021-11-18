@@ -20,7 +20,7 @@ public class ShopifyVariantCreationRequestTest {
 	private static final BigDecimal SOME_PRICE_AMOUNT = new BigDecimal("14.99");
 	private static final BigDecimal SOME_COMPARE_AT_PRICE_AMOUNT = new BigDecimal("14.99");
 	private static final BigDecimal SOME_GRAMS_AMOUNT = new BigDecimal("405.252");
-	private static final long SOME_QUANTITY = 25;
+	private static final long SOME_QUANTITY = 25L;
 	private static final String SOME_FIRST_OPTION = "24 ea";
 	private static final String SOME_SECOND_OPTION = "Lemon";
 	private static final String SOME_THIRD_OPTION = "Left";
@@ -58,8 +58,8 @@ public class ShopifyVariantCreationRequestTest {
 		assertEquals(SOME_BARCODE, actualShopifyVariant.getBarcode());
 		assertEquals(SOME_PRICE_AMOUNT.toPlainString(), actualShopifyVariant.getPrice().toPlainString());
 		assertNull(actualShopifyVariant.getCompareAtPrice());
-		assertEquals(405, actualShopifyVariant.getGrams());
-		assertEquals(SOME_QUANTITY, actualShopifyVariant.getAvailable());
+		assertEquals(Long.valueOf(405L), actualShopifyVariant.getGrams());
+		assertEquals(Long.valueOf(SOME_QUANTITY), actualShopifyVariant.getAvailable());
 		assertEquals(SOME_FIRST_OPTION, actualShopifyVariant.getOption1());
 		assertEquals(SOME_SECOND_OPTION, actualShopifyVariant.getOption2());
 		assertEquals(SOME_THIRD_OPTION, actualShopifyVariant.getOption3());
@@ -100,8 +100,8 @@ public class ShopifyVariantCreationRequestTest {
 		assertEquals(SOME_PRICE_AMOUNT.toPlainString(), actualShopifyVariant.getPrice().toPlainString());
 		assertEquals(SOME_COMPARE_AT_PRICE_AMOUNT.toPlainString(),
 				actualShopifyVariant.getCompareAtPrice().toPlainString());
-		assertEquals(405, actualShopifyVariant.getGrams());
-		assertEquals(SOME_QUANTITY, actualShopifyVariant.getAvailable());
+		assertEquals(Long.valueOf(405L), actualShopifyVariant.getGrams());
+		assertEquals(Long.valueOf(SOME_QUANTITY), actualShopifyVariant.getAvailable());
 		assertEquals(SOME_FIRST_OPTION, actualShopifyVariant.getOption1());
 		assertEquals(SOME_SECOND_OPTION, actualShopifyVariant.getOption2());
 		assertEquals(SOME_THIRD_OPTION, actualShopifyVariant.getOption3());

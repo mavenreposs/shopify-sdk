@@ -1256,7 +1256,7 @@ public class ShopifySdkTest {
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("sku").asText());
 		assertEquals(somePrice,
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("price").decimalValue());
-		assertEquals(shopifyVariantCreationRequest.getRequest().getGrams(),
+		assertEquals(shopifyVariantCreationRequest.getRequest().getGrams().longValue(),
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("grams").asLong());
 		assertNull(actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("available"));
 		assertEquals(shopifyVariantCreationRequest.getRequest().getOption1(),
@@ -1338,7 +1338,7 @@ public class ShopifySdkTest {
 		shopifyVariant.setSku("ABC-123");
 		shopifyVariant.setImageId("1");
 		shopifyVariant.setPrice(BigDecimal.valueOf(42.11));
-		shopifyVariant.setGrams(12);
+		shopifyVariant.setGrams(12L);
 		shopifyVariant.setAvailable(3L);
 		shopifyVariant.setRequiresShipping(true);
 		shopifyVariant.setTaxable(true);
@@ -1409,7 +1409,7 @@ public class ShopifySdkTest {
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("sku").asText());
 		assertEquals(shopifyProduct.getVariants().get(0).getPrice(),
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("price").decimalValue());
-		assertEquals(shopifyProduct.getVariants().get(0).getGrams(),
+		assertEquals(shopifyProduct.getVariants().get(0).getGrams().longValue(),
 				actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("grams").asLong());
 		assertNull(actualCreateRequestBody.getContent().get("product").get("variants").get(0).get("available"));
 		assertEquals(shopifyProduct.getVariants().get(0).getOption1(),
@@ -1560,7 +1560,7 @@ public class ShopifySdkTest {
 		shopifyVariant.setSku("ABC-123");
 		shopifyVariant.setImageId("1");
 		shopifyVariant.setPrice(BigDecimal.valueOf(42.11));
-		shopifyVariant.setGrams(12);
+		shopifyVariant.setGrams(12L);
 		shopifyVariant.setAvailable(3L);
 		shopifyVariant.setRequiresShipping(true);
 		shopifyVariant.setTaxable(true);
@@ -2025,7 +2025,7 @@ public class ShopifySdkTest {
 		shopifyVariant.setSku("ABC-123");
 		shopifyVariant.setImageId("1");
 		shopifyVariant.setPrice(BigDecimal.valueOf(42.11));
-		shopifyVariant.setGrams(12);
+		shopifyVariant.setGrams(12L);
 		shopifyVariant.setAvailable(3L);
 		shopifyVariant.setRequiresShipping(true);
 		shopifyVariant.setTaxable(true);
